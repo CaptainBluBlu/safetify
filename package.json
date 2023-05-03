@@ -85,5 +85,8 @@
     "uploader": "^3.11.0",
     "validator": "^13.9.0",
     "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^4.13.0"
   }
 }
