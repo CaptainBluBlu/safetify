@@ -11,7 +11,7 @@ export default function Home() {
   const [err, setError] = useState("");
   const [data, setData] = useState({
    "email": "adminnextjs@gmail.com",
-  "password": "1234password",
+  "password": "1234567890",
   })
   const { email, password } = data;
   const changeHandler = (e) => {
