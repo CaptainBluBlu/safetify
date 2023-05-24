@@ -3,16 +3,6 @@ import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), {ssr: false,});
 
-
-const SettingsCom = () => {
-  return (
-    <div>
-		  <Seo title="Dashboard"/>
-      <Dashboard/>
-    </div>
-  )
-}
-
 function SettingsCom() {
   // Profile Information state
   const [fullName, setFullName] = useState('');
