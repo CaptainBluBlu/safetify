@@ -10,10 +10,55 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id         Int    @id @default(autoincrement())
-  email      String @unique
-  FirstName  String
-  SecondName String
+model Post {
+  id        String     @default(cuid()) @id
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  String?
 }
 
+enum Role {
+  USER
+  ADMIN
+  VOLUNTEER
+}
+
+
+model User {
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  posts         Post[]
+  lastLogin     DateTime? @map(name: "last_login")
+  phoneNumber   String?   @map(name: "phone_number")
+  @@map(name: "users")
+}
+
+model EmergencyContact {
+  id        String   @default(cuid()) @id
+  name      String
+  phone     String
+  position String
+
+}
+
+model EmergencyHousing {
+  id        String   @default(cuid()) @id
+  personInCharged      String
+  phone     String
+  address   String
+  geoLocation    Json
+  longtitude     Float
+  latitude       Float
+  status      String
+  currentOccupants    Int
+  capacity    Int
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  @@map(name: "emergency_housing")
+
+}
