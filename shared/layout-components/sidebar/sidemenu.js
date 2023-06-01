@@ -10,7 +10,6 @@ export const MENUITEMS = [
             { path: `/components/housing/emergency-housing`, icon: 'fe fe-home', type: 'link', active: false, selected: false, title: 'Emergency Housing' },
             //create for file report with file icon
             { path: `/components/report/file-report`, icon: 'fe fe-file', type: 'link', active: false, selected: false, title: 'File Report' },
-            
         ]
     },
     {
