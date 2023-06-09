@@ -1,7 +1,27 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 const SocialPage = () => {
+	const PublicGroupStyle = {};
+
+	// Handles the responsive design for the page
+	const [isMd, setIsMd] = useState(window.innerWidth >= 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMd(window.innerWidth >= 768);
+		};
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	if (window.innerWidth < 768) {
+		PublicGroupStyle.paddingTop = "2em";
+	}
+
 	const userThoughts = [
 		{
 			id: 1,
@@ -25,9 +45,9 @@ const SocialPage = () => {
 
 	return (
 		<Container>
-			<Row>
+			<Row style={{ paddingTop: "2em" }} paddingTop="3em">
 				<Col md={6}>
-					<h2>User Thoughts</h2>
+					<h2>Public Post</h2>
 					{userThoughts.map((thought) => (
 						<Card key={thought.id} className="mb-3">
 							<Card.Body>
@@ -40,7 +60,7 @@ const SocialPage = () => {
 						</Card>
 					))}
 				</Col>
-				<Col md={6}>
+				<Col style={PublicGroupStyle} md={6}>
 					<h2>Public Groups</h2>
 					{publicGroups.map((group) => (
 						<Card key={group.id} className="mb-3">

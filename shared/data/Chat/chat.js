@@ -9,6 +9,7 @@ import {
 	Row,
 	Form,
 	Button,
+	Container,
 } from "react-bootstrap";
 import ChatBubble from "./ChatBubble.js";
 
@@ -45,46 +46,63 @@ const ChatPage = () => {
 			<PageHeader titles="Chat" active="Chat" items={["Home"]} />
 			{/* The Chat */}
 			<Row>
-				<Col sm={12} md={12} lg={12} xl={12} xxl={12}>
-					<Card>
+				<Col sm={12} md={12}>
+					<Card style={{ minHeight: "70vh" }}>
 						<Card.Header>
 							<Card.Title as="h3">Group Chat</Card.Title>
 						</Card.Header>
 						<Card.Body>
-							<Row>
-								<Col sm={12} md={12} lg={12} xl={12} xxl={12}>
-									<div className="chat-container">
-										<div className="chat-messages">
-											{messages.map((message) => (
-												<ChatBubble
-													key={message.id}
-													sender={message.sender}
-													content={message.content}
-													timestamp={message.timestamp}
-													isSender={message.isSender}
-												/>
-											))}
+							<Container fluid>
+								<Row>
+									<Col sm={12} md={4} style={{ borderRight: "1px solid grey" }}>
+										<div className="chat-sidebar">
+											<h4>Group Members</h4>
+											<ul>
+												<li>John</li>
+												<li>Jane</li>
+												<li>Bob</li>
+												<li>Joe</li>
+												<li>Jack</li>
+												<li>Jill</li>
+												<li>Jim</li>
+											</ul>
 										</div>
-										<Form>
-											<Form.Group controlId="messageForm">
-												<Row>
-													<Col xs={10}>
-														<Form.Control
-															type="text"
-															placeholder="Type your message..."
-														/>
-													</Col>
-													<Col xs={1}>
-														<Button variant="primary" type="submit">
-															Send
-														</Button>
-													</Col>
-												</Row>
-											</Form.Group>
-										</Form>
-									</div>
-								</Col>
-							</Row>
+									</Col>
+
+									<Col sm={12} md={8}>
+										<div className="chat-container">
+											<div className="chat-messages">
+												{messages.map((message) => (
+													<ChatBubble
+														key={message.id}
+														sender={message.sender}
+														content={message.content}
+														timestamp={message.timestamp}
+														isSender={message.isSender}
+													/>
+												))}
+											</div>
+											<Form>
+												<Form.Group controlId="messageForm">
+													<Row>
+														<Col xs={10}>
+															<Form.Control
+																type="text"
+																placeholder="Type your message..."
+															/>
+														</Col>
+														<Col xs={1}>
+															<Button variant="primary" type="submit">
+																Send
+															</Button>
+														</Col>
+													</Row>
+												</Form.Group>
+											</Form>
+										</div>
+									</Col>
+								</Row>
+							</Container>
 						</Card.Body>
 					</Card>
 				</Col>
