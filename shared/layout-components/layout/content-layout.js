@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../footer/FooterComponent.js";
 import { Provider } from "react-redux";
-import store from "../../redux/store.jsx";
+import store from "../../Redux/store.jsx";
 import dynamic from "next/dynamic";
 import Rightside from "../rightside/RightsideComponent.js";
 import BacktoTop from "../backtotop/BacktotopComponent.js";
