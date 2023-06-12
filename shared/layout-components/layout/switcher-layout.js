@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 // import Header2 from '../header/header2'
 const Sidebar = dynamic(()=>import('../sidebar/sidebar'), { ssr: false })
 import dynamic from 'next/dynamic';
-import Footer from '../footer/footer';
-import BacktoTop from "../backtotop/backtotop";
+import Footer from '../footer/FooterComponent';
+import BacktoTop from "../backtotop/BacktotopComponent";
 import { Provider } from 'react-redux';
 import store from "../../../shared/redux/store"
 import Head from 'next/head';
-import Rightside from "../rightside/rightside";
+import Rightside from "../rightside/RightsideComponent";
 
 const Header2 = dynamic(()=>import('../header/header2'), { ssr: false })
 import SSRProvider from 'react-bootstrap/SSRProvider';

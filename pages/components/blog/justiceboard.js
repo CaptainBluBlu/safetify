@@ -4,9 +4,9 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Seo from '@/shared/layout-components/seo/seo';
 
-const Justiceboard = dynamic(() => import("../../../shared/data/datadashboard/justiceboard"), {ssr: false,});
+const Justiceboard = dynamic(() => import("../../../shared/data/justiceboard/justiceBoardMain"), {ssr: false,});
 
-const JusticeBoard = () => {
+const JusticeBoardCom = () => {
     return (
         <div>
             <Seo title="Justice Board"/>
@@ -15,6 +15,6 @@ const JusticeBoard = () => {
     )
 }
 
-JusticeBoard.layout = "Contentlayout"
+JusticeBoardCom.layout = "Contentlayout"
 
-export default JusticeBoard
+export default JusticeBoardCom

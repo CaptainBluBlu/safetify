@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../footer/footer";
+import Footer from "../footer/FooterComponent.js";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
 import dynamic from "next/dynamic";
-import Rightside from "../rightside/rightside";
-import BacktoTop from "../backtotop/backtotop";
-import Header from "../header/header";
+import Rightside from "../rightside/RightsideComponent.js";
+import BacktoTop from "../backtotop/BacktotopComponent.js";
+import Header from "../header/HeaderComponent.js";
 const Switcher = dynamic(() => import("../switcher/switcher"), { ssr: false });
 const Sidebar = dynamic(() => import("../sidebar/sidebar"), { ssr: false });
 import SSRProvider from 'react-bootstrap/SSRProvider';

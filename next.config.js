@@ -10,6 +10,9 @@ const nextConfig = {
     loader:"akamai",
     path:""
   },
+  compilerOptions: {
+    baseUrl: '.',
+  },
 }
 
 module.exports = nextConfig

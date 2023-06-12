@@ -2,7 +2,7 @@ import Seo from "@/shared/layout-components/seo/seo";
 import dynamic from "next/dynamic";
 import React from "react";
 const JusticeBoard = dynamic(
-	() => import("../../../shared/data/justiceboard/justiceBoard.js"),
+	() => import("../../../shared/data/justiceboard/justiceBoardMain.js"),
 	{ ssr: false }
 );
 
