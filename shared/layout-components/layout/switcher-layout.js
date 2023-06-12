@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Footer from '../footer/FooterComponent';
 import BacktoTop from "../backtotop/BacktotopComponent";
 import { Provider } from 'react-redux';
-import store from "../../../shared/redux/store.jsx"
+import store from "@/shared/redux/store.jsx"
 import Head from 'next/head';
 import Rightside from "../rightside/RightsideComponent";
 
