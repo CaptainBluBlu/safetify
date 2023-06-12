@@ -2,6 +2,7 @@ import Seo from '@/shared/layout-components/seo/seo';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import PageHeader from '../../../shared/layout-components/pageheader/PageHeader';
+
 const Widget = dynamic(() => import("@/shared/data/App/widget"), {ssr: false,});
 
 
