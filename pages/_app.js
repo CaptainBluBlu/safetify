@@ -4,7 +4,6 @@ import Landingpagelayout from '../shared/layout-components/layout/landingpage-la
 import Switcherlayout from '../shared/layout-components/layout/switcher-layout'
 import Authenticationlayout from '../shared/layout-components/layout/authentication-layout'
 import { useEffect } from 'react'
-import JournalPage from './JournalPage';
 
 const layouts = {
   Contentlayout: Contentlayout,
