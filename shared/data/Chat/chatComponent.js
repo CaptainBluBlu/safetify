@@ -14,8 +14,7 @@ import {
 import ChatBubble from "./ChatBubble.js";
 
 // import chatdata
-import { chatdata } from "./chatdata";
-``
+
 
 // const ChatPage = () => {
 // 	// ...
