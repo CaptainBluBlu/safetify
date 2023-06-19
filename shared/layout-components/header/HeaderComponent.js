@@ -579,7 +579,7 @@ const Header = ({ local_varaiable,AddToCart }) => {
                         <Dropdown.Item className="dropdown-item" href={`/components/authentication/lockscreen/`}>
                           <i className="dropdown-icon fe fe-lock"></i> Lockscreen
                         </Dropdown.Item>
-                        <Dropdown.Item className="dropdown-item" href={`/`}>
+                        <Dropdown.Item className="dropdown-item" href={`/components/pages/login/`}>
                           <i className="dropdown-icon fe fe-alert-circle"></i> Sign out
                         </Dropdown.Item>
                       </Dropdown.Menu>

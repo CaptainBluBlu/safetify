@@ -89,8 +89,8 @@ export default function Home() {
                       </div>
                       
                       <div className="text-center pt-3">
-                            <p className="text-dark mb-0">Not a member? <Link href={`/components/authentication/register/`}>
-                            Sign UP
+                            <p className="text-dark mb-0">Not a member? <Link href={`/components/pages/register/`}>
+                            Sign Up
                         </Link></p>
                           </div>
                       <div className="text-center pt-3">
