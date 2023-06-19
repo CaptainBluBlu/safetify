@@ -5,7 +5,7 @@ import Seo from '@/shared/layout-components/seo/seo';
 
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), {ssr: false,});
 
-const LegalAssistance = () => {
+const LegalAssistanceCom = () => {
     return (
         <div>
             <Seo title="Legal Assistance"/>
@@ -14,4 +14,6 @@ const LegalAssistance = () => {
     )
 }
 
-LegalAssistance.layout = "Contentlayout"
+LegalAssistanceCom.layout = "Contentlayout"
+
+export default LegalAssistanceCom
