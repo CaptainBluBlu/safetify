@@ -1,7 +1,6 @@
 // create blogpost page based on the other template files
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import Seo from '@/shared/layout-components/seo/seo';
 import axios from 'axios';
 
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
@@ -57,7 +56,15 @@ function BlogPost() {
       )}
 
       <div className="pagination">
-        {/* Pagination component goes here */}
+        {pageRange.map((page) => (
+          <button
+            key={page}
+            className={currentPage === page ? 'active' : ''}
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </button>
+        ))}
       </div>
 
       {/* Other components for post creation, responsive design, SEO optimization, etc. */}
