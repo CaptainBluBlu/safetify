@@ -1,41 +1,68 @@
 // create blogpost page based on the other template files
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Seo from '@/shared/layout-components/seo/seo';
+import axios from 'axios';
 
-const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), {ssr: false,});
+const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
 
-const BlogPost = () => {
-  const [entries, setEntries] = useState([]);
+function BlogPost() {
+  const [posts, setPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
-  const addEntry = () => {
-    const newEntry = {
-      title: 'New Entry',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      date: new Date().toLocaleDateString(),
-    };
-    setEntries([...entries, newEntry]);
+  useEffect(() => {
+    // Fetching posts from an API
+    axios.get('/api/posts')
+      .then(response => {
+        setPosts(response.data);
+        setFilteredPosts(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching posts:', error);
+      });
+  }, []);
+
+  const handleSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = posts.filter(post =>
+      post.title.toLowerCase().includes(query) ||
+      post.content.toLowerCase().includes(query)
+    );
+    setFilteredPosts(filtered);
   };
 
   return (
     <div>
       <h1>My Journal</h1>
-      <button onClick={addEntry}>Add Entry</button>
-      {entries.length > 0 ? (
+
+      <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearch} />
+
+      {filteredPosts.length === 0 ? (
+        <p>No posts found.</p>
+      ) : (
         <ul>
-          {entries.map((entry, index) => (
-            <li key={index}>
-              <h2>{entry.title}</h2>
-              <p>{entry.content}</p>
-              <p>{entry.date}</p>
+          {filteredPosts.map(post => (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.content}</p>
+              <div>Categories: {post.categories.join(', ')}</div>
+              <div>Tags: {post.tags.join(', ')}</div>
+              <hr />
             </li>
           ))}
         </ul>
-      ) : (
-        <p>No entries yet.</p>
       )}
+
+      <div className="pagination">
+        {/* Pagination component goes here */}
+      </div>
+
+      {/* Other components for post creation, responsive design, SEO optimization, etc. */}
     </div>
   );
-};
+}
 
 export default BlogPost;
