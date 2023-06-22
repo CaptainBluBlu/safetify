@@ -1,4 +1,3 @@
-import Seo from '@/shared/layout-components/seo/seo';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
@@ -8,37 +7,31 @@ function SettingsCom() {
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
   const [Country, setCountry] = useState('');
-  // ... other profile fields
 
   // Notification Settings state
-  const [NotificationTypes, setNotificationTypes] = useState([]);
-  const [SoundSettings, setSoundSettings] = useState(false);
-  // ... other notification settings fields
+  const [WeeklyReports, setWeeklyReports] = useState(false);
+  const [News, setNews] = useState([]);
+  const [Notification, setNotification] = useState([]);
 
   // Permissions Settings state
   const [PoliceDataSharing, setPoliceDataSharing] = useState(false);
   const [EmergencyContactsDataSharing, setEmergencyContactsDataSharing] = useState([]);
   const [WAODataSharing, setWAODataSharing] = useState([]);
-  // ... other permissions settings fields
 
   // Emergency Contact Information state
-  const [EmergencyContacts, setEmergencyContacts] = useState([]);
-  const [MedicalInformation, setMedicalInformation] = useState('');
+  const [ProfilePicture, setProfilePicture] = useState('');
+  const [PhoneNumber, setPhoneNumber] = useState('');
   const [AddContact, setAddContact] = useState('');
-  // ... other emergency contact fields
 
   // Verification Settings state
   const [IDNumber, setIDNumber] = useState('');
-  const [DateofBirth, setDateofBirth] = useState(false);
-  // ... other verification settings fields
+  const [DateofBirth, setDateofBirth] = useState('');
 
   // Account Settings state
-  const [LogOut, setLogOut] = useState('');
-  const [DeleteAccount, setDeleteAccount] = useState(false);
-  // ... other account settings fields
+  const [isLoggedOut, setLoggedOut] = useState(false);
+  const [isDeleteConfirmed, setDeleteConfirmed] = useState(false);
 
   // Event handlers for updating the state fields
-
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
@@ -51,38 +44,128 @@ function SettingsCom() {
     setCountry(event.target.value);
   };
 
-  // ... implement event handlers for other fields
+  const handleLogout = () => {
+    // Perform logout logic here
+    setLoggedOut(true);
+  };
+
+  const handleDeleteAccount = () => {
+    if (isDeleteConfirmed) {
+      // Perform account deletion logic here
+      // Redirect to login or home page
+      console.log('Account deleted!');
+    } else {
+      // Show confirmation message and ask for confirmation
+      setDeleteConfirmed(true);
+    }
+  };
 
   return (
     <div>
-      <h1>Settings Page</h1>
+      <h1>Settings</h1>
 
       {/* Personal Info */}
+      <h1>Personal Info</h1>
       <label>First Name:</label>
-      <input type="text" value={firstname} onChange={handleFirstNameChange} />
+      <input type="text" value={FirstName} onChange={handleFirstNameChange} />
 
       <label>Last Name:</label>
-      <input type="text" value={username} onChange={handleLastNameChange} />
+      <input type="text" value={LastName} onChange={handleLastNameChange} />
 
       <label>Country:</label>
       <input type="text" value={Country} onChange={handleCountryChange} />
 
-      {/* Implement other profile fields here */}
-
       {/* Notification Settings */}
-      {/* Implement notification settings fields here */}
+      <h1>Notifications</h1>
+
+      <h3>Weekly Reports</h3>
+      <label WeeklyReports htmlFor="toggleSwitch">
+        <input
+          id="toggleSwitch"
+          type="toggleSwitch"
+          checked={isNotificationsEnabled}
+          onChange={handleToggle}
+        />
+        {isNotificationsEnabled ? 'Enabled' : 'Disabled'}
+      </label>
+
+      <h3>News</h3>
+      <label News htmlFor="toggleSwitch">
+        <input
+          id="toggleSwitch"
+          type="toggleSwitch"
+          checked={isNotificationsEnabled}
+          onChange={handleToggle}
+        />
+        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
+      </label>
+
+      <h3>Notifications</h3>
+      <label Notifications htmlFor="toggleSwitch">
+        <input
+          id="toggleSwitch"
+          type="toggleSwitch"
+          checked={isNotificationsEnabled}
+          onChange={handleToggle}
+        />
+      </label>
 
       {/* Permissions Settings */}
-      {/* Implement permissions settings fields here */}
+      <h1>Permissions Settings</h1>
+      <label>
+        Allow to send to police
+        <input
+          type="toggleSwitch"
+          checked={notificationsEnabled}
+          onChange={handleToggleNotifications}
+        />
+      </label>
+
+      <label>
+        Allow to send to emergency contacts
+        <input
+          type="toggleSwitch"
+          checked={notificationsEnabled}
+          onChange={handleToggleNotifications}
+        />
+      </label>
+
+      <label>
+        Allow to send to Women Aid's Organization
+        <input
+          type="toggleSwitch"
+          checked={notificationsEnabled}
+          onChange={handleToggleNotifications}
+        />
+      </label>
+
 
       {/* Emergency Contact Information */}
-      {/* Implement emergency contact fields here */}
+      <h1>Emergency Contact Information</h1>
+      <input type="text" value={PhoneNumber} onChange={handlePhoneNumber} />
 
       {/* Verification Settings */}
-      {/* Implement verification settings fields here */}
+      <h1>Verification</h1>
+      <h2>Identification Card</h2>
+      <input type="text" value={IDNumber} onChange={handleIDNumber} />
+      <input type="text" value={DateofBirth} onChange={handleDateofBirth} />
 
       {/* Account Settings */}
-      {/* Implement account settings fields here */}
+      {isLoggedOut ? (
+        <h2>You have been logged out.</h2>
+      ) : (
+        <>
+          {isDeleteConfirmed ? (
+            <h2>Are you sure you want to delete your account?</h2>
+          ) : (
+            <>
+              <h2>Account Settings</h2>
+              <button onClick={handleLogout}>Log Out</button>
+              <button onClick={handleDeleteAccount}>Delete Account</button>
+            </>
+          )}
+        </>
+      )}
 
     </div>
   );
