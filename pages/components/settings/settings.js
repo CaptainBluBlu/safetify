@@ -1,3 +1,4 @@
+import Seo from '@/shared/layout-components/seo/seo';
 import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
