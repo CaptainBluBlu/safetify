@@ -1,57 +1,85 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
+  schemas  = ["public", "auth"]
 }
 
-model Post {
-  id        String  @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  String?
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
-enum Role {
+enum UserRole {
   USER
   ADMIN
-  VOLUNTEER
+  LAWYER
+  THERAPIST
+
+  @@schema("public")
 }
 
 model User {
   id               String             @id @default(cuid()) @map(name: "UserId")
-  name             String?
-  email            String?            @unique
+  name             String
+  email            String             @unique
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
-  posts            Post[]
   lastLogin        DateTime?
   phoneNumber      String?
   emergencyContact EmergencyContact[]
   journalPost      Journal[]          @relation("author")
-  userTypes        Role
+
+  userTypes   UserRole      @default(USER)
+  PanicButton PanicButton[]
+
+  lawyerId String? @unique
+  Lawyer   User?   @relation("lawyer", fields: [lawyerId], references: [id], onDelete: SetNull)
+
+  therapistId String? @unique
+  Therapist   User?   @relation("therapist", fields: [therapistId], references: [id], onDelete: SetNull)
+
+  ChatRooms   ChatRooms[]
+  chatRoomsId String?
+
+  clientLawyer    User[] @relation("lawyer")
+  clientTherapist User[] @relation("therapist")
+
+  supportPost SupportPost[]
+  Message     Message[]
 
   @@index([email])
+  @@schema("public")
+}
+
+model SupportPost {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@schema("public")
 }
 
 model EmergencyContact {
-  id              String @id @default(cuid())
-  name            String
-  phone           String
-  position        String
-  emergencyPerson User   @relation(fields: [userId], references: [id])
-  userId          String @map("emergency_person_id")
+  id                String @id @default(cuid())
+  name              String
+  phone             String
+  position          String
+  emergencyPerson   User   @relation(fields: [emergencyPersonId], references: [id])
+  emergencyPersonId String @map("emergency_person_id")
 
   //foreign key to user id
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@schema("public")
 }
 
 model EmergencyHousing {
@@ -67,10 +95,12 @@ model EmergencyHousing {
   capacity         Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+
+  @@schema("public")
 }
 
 model LegalReport {
-  id            String   @id @default(cuid())
+  caseId        String   @id @default(cuid())
   title         String
   statement     String
   address       String
@@ -85,6 +115,8 @@ model LegalReport {
   dateRequested DateTime
   status        String
   comments      String
+
+  @@schema("public")
 }
 
 model Evidence {
@@ -97,6 +129,8 @@ model Evidence {
   title     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@schema("public")
 }
 
 model Journal {
@@ -113,4 +147,54 @@ model Journal {
   //repliedBy   User?     @relation("repliedBy", fields: [repliedById], references: [id])
   repliedById String?   @map("replied_by_id")
   repliedAt   DateTime?
+  private     Boolean   @default(true)
+
+  @@schema("public")
+}
+
+model PanicButton {
+  id         String            @id @default(cuid())
+  userId     String            @map("user_id")
+  user       User              @relation(fields: [userId], references: [id])
+  status     PanicButtonStatus
+  longtitude Float
+  latitude   Float
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@schema("public")
+}
+
+enum PanicButtonStatus {
+  SAFE
+  DANGER
+  RESOLVED
+
+  @@schema("public")
+}
+
+model ChatRooms {
+  id            String    @id @default(cuid())
+  chatRoomName  String
+  description   String
+  participantId String[]
+  participants  User[]
+  memeberCount  Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  Message       Message[]
+
+  @@schema("public")
+}
+
+model Message {
+  id             String     @id @default(uuid())
+  text           String
+  createdAt      DateTime   @default(now())
+  senderId       String
+  sender         User       @relation(fields: [senderId], references: [id])
+  Conversation   ChatRooms? @relation(fields: [conversationId], references: [id])
+  conversationId String?
+
+  @@schema("public")
 }
