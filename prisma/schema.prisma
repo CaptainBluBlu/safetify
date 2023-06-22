@@ -100,8 +100,51 @@ model EmergencyHousing {
   @@schema("public")
 }
 
+enum Relationship {
+  FAMILY
+  FRIEND
+  PARTNER
+  OTHER
+
+  @@schema("public")
+}
+
+enum AbuseType {
+  PHYSICAL
+  EMOTIONAL
+  FINANCIAL
+  SEXUAL
+  OTHER
+
+  @@schema("public")
+}
+
+enum Ethnicity {
+  MALAY
+  CHINESE
+  INDIAN
+  OTHER
+
+  @@schema("public")
+}
+
+model AbuseReport {
+  id                          String       @id @default(cuid())
+  name                        String
+  age                         Int
+  relationshipWithPrepetrator Relationship
+  typeOfAbuse                 AbuseType
+  ethnicity                   Ethnicity
+  isChildren                  Boolean
+  needTranslator              Boolean
+  lastDateOfAbuse             DateTime
+  LegalReport                 LegalReport?
+
+  @@schema("public")
+}
+
 model LegalReport {
-  caseId        String   @id @default(cuid())
+  id            String       @id @default(cuid())
   title         String
   statement     String
   address       String
@@ -116,6 +159,8 @@ model LegalReport {
   dateRequested DateTime
   status        String
   comments      String
+  abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
+  abuseReportID String       @unique
 
   @@schema("public")
 }

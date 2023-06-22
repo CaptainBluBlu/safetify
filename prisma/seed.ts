@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { Prisma, PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 
@@ -22,6 +22,7 @@ async function main() {
     where: { email: 'bob@prisma.io' },
     update: {},
     create: {
+      id: '0d361dd4-111f-11ee-be56-0242ac120002',
       email: 'bob@prisma.io',
       name: 'Bob',
       supportPost: {
@@ -36,9 +37,44 @@ async function main() {
           },
         ],
       },
+      ChatRooms: {
+        create: {
+          chatRoomName: 'Girl1 & Guy1',
+          description: 'Girl1 & Guy1',
+          memeberCount: 2,
+          Creator: {
+            connect: {
+              id: '0d361dd4-111f-11ee-be56-0242ac120002'
+            }
+          }
+        }
+        
+      }
+    
     },
   })
+
+  
+
+
+  let chatRoom : Prisma.ChatRoomsCreateInput[] 
+
+  chatRoom = [{
+    chatRoomName: 'Girl1 & Guy1',
+    description: 'Girl1 & Guy1',
+    memeberCount: 2,
+    Creator: {
+      connect: {
+        id: '0d361dd4-111f-11ee-be56-0242ac120002'
+      }
+    }
+  }]
+
+
+
+
   console.log({ alice, bob })
+
 }
 
 main()
