@@ -66,8 +66,6 @@ function BlogPost() {
           </button>
         ))}
       </div>
-
-      {/* Other components for post creation, responsive design, SEO optimization, etc. */}
     </div>
   );
 }

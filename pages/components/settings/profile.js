@@ -12,8 +12,8 @@ const ProfilePage = () => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSave = () => {
-    // Perform save operation here
+  const handleUpdate = () => {
+    // Perform Update operation here
     // You can access the form data from the state variables
     // profilePicture, phoneNumber, fullName, district, age, address, email
     // e.g., console.log('Saving:', profilePicture, phoneNumber, fullName, district, age, address, email);
@@ -53,7 +53,7 @@ const ProfilePage = () => {
           <option value="District 1">District 1</option>
           <option value="District 2">District 2</option>
           <option value="District 3">District 3</option>
-          {/* Add more districts as needed */}
+          {/* Add more districts as needed (since it's a drop down menu) */}
         </select>
       </div>
       <div>
@@ -80,7 +80,7 @@ const ProfilePage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={handleUpdate}>Update</button>
     </div>
   );
 };

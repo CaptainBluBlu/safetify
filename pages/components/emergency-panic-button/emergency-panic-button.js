@@ -16,7 +16,7 @@ function EmergencyPanicButton() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        location: { latitude: 123, longitude: 456 }, // Replace with actual location data
+        location: { latitude: 123, longitude: 456 }, // Replace with actual location data (from the backend)
       }),
     })
       .then((response) => response.json())
@@ -37,7 +37,7 @@ function EmergencyPanicButton() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: 'John Doe', // Replace with actual contact details
+        name: 'John Doe', // Replace with actual contact details (from backend)
         phoneNumber: '1234567890',
       }),
     })
