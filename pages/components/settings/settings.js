@@ -10,8 +10,8 @@ function SettingsCom() {
   // ... other profile fields
 
   // Notification Settings state
-  const [notificationTypes, setNotificationTypes] = useState([]);
-  const [soundSettings, setSoundSettings] = useState(false);
+  const [NotificationTypes, setNotificationTypes] = useState([]);
+  const [SoundSettings, setSoundSettings] = useState(false);
   // ... other notification settings fields
 
   // Permissions Settings state
@@ -21,8 +21,8 @@ function SettingsCom() {
   // ... other permissions settings fields
 
   // Emergency Contact Information state
-  const [emergencyContacts, setEmergencyContacts] = useState([]);
-  const [medicalInformation, setMedicalInformation] = useState('');
+  const [EmergencyContacts, setEmergencyContacts] = useState([]);
+  const [MedicalInformation, setMedicalInformation] = useState('');
   const [AddContact, setAddContact] = useState('');
   // ... other emergency contact fields
 

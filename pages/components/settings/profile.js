@@ -3,72 +3,86 @@ import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
 
-function Profile() {
-  // Help and Support state
-  const [customerSupportContact, setCustomerSupportContact] = useState('');
-  // ... other help and support fields
+const ProfilePage = () => {
+  const [profilePicture, setProfilePicture] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [district, setDistrict] = useState('');
+  const [age, setAge] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
 
-  // Event handlers for updating the state fields
-
-  const handleFullNameChange = (event) => {
-    setFullName(event.target.value);
+  const handleSave = () => {
+    // Perform save operation here
+    // You can access the form data from the state variables
+    // profilePicture, phoneNumber, fullName, district, age, address, email
+    // e.g., console.log('Saving:', profilePicture, phoneNumber, fullName, district, age, address, email);
   };
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handleProfilePictureChange = (event) => {
-    setProfilePicture(event.target.value);
-  };
-
-  // ... implement event handlers for other fields
 
   return (
     <div>
-      <h1>Settings Page</h1>
-
-      {/* Profile Information */}
-      <label>Full Name:</label>
-      <input type="text" value={fullName} onChange={handleFullNameChange} />
-
-      <label>Username:</label>
-      <input type="text" value={username} onChange={handleUsernameChange} />
-
-      <label>Profile Picture:</label>
-      <input type="text" value={profilePicture} onChange={handleProfilePictureChange} />
-
-      {/* Implement other profile fields here */}
-
-      {/* Account Settings */}
-      {/* Implement account settings fields here */}
-
-      {/* Security Settings */}
-      {/* Implement security settings fields here */}
-
-      {/* Privacy Settings */}
-      {/* Implement privacy settings fields here */}
-
-      {/* Notification Settings */}
-      {/* Implement notification settings fields here */}
-
-      {/* Emergency Contact Information */}
-      {/* Implement emergency contact fields here */}
-
-      {/* Connected Accounts */}
-      {/* Implement connected accounts fields here */}
-
-      {/* Preferences and Customization */}
-      {/* Implement preferences and customization fields here */}
-
-      {/* Data Management */}
-      {/* Implement data management fields here */}
-
-      {/* Help and Support */}
-      {/* Implement help and support fields here */}
+      <h1>Profile Page</h1>
+      <div>
+        <label>Profile Picture:</label>
+        <input
+          type="text"
+          value={profilePicture}
+          onChange={(e) => setProfilePicture(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Phone Number:</label>
+        <input
+          type="text"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Full Name:</label>
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Select District:</label>
+        <select value={district} onChange={(e) => setDistrict(e.target.value)}>
+          <option value="">Select</option>
+          <option value="District 1">District 1</option>
+          <option value="District 2">District 2</option>
+          <option value="District 3">District 3</option>
+          {/* Add more districts as needed */}
+        </select>
+      </div>
+      <div>
+        <label>Age:</label>
+        <input
+          type="text"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Address:</label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Email Address:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <button onClick={handleSave}>Save</button>
     </div>
   );
-}
+};
 
-Profile.layout = "Contentlayout"
-export default Profile;
+export default ProfilePage;
