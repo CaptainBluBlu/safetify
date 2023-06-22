@@ -8,10 +8,11 @@ import {
 	ListGroup,
 	Form,
 	InputGroup,
+	Modal,
 } from "react-bootstrap";
 
-const SocialPage = ({ supportPost }) => {
-	console.log(supportPost);
+const SocialPage = ({ supportPost, groupChat }) => {
+	console.log(groupChat);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -21,6 +22,11 @@ const SocialPage = ({ supportPost }) => {
 	let buttonStyling = {
 		fontSize: "1.5rem",
 	};
+
+	let listGroupStyling = "w-30 p-0";
+
+	let buttonSizing = "lg";
+
 	const [isMobile, setIsMobile] = useState(false);
 
 	const [text, setText] = useState("");
@@ -48,20 +54,9 @@ const SocialPage = ({ supportPost }) => {
 
 	if (window.innerWidth <= 767) {
 		buttonStyling.fontSize = "10px";
-
-		//document.getElementById("list-group").className = "w-50 p-0";
+		listGroupStyling = "w-40 p-0";
+		buttonSizing = "sm";
 	}
-
-	const userThoughts = [
-		{
-			id: 1,
-			author: "John Doe",
-			content:
-				"Just had a breakthrough in my healing journey! Feeling empowered.",
-			timestamp: "June 1, 2023",
-		},
-		// Add more user thoughts here
-	];
 
 	const publicGroups = [
 		{
@@ -121,14 +116,19 @@ const SocialPage = ({ supportPost }) => {
 
 	return (
 		<Container>
+			{/* THE PUBLIC GROUPS ROW */}
 			<Row style={{ paddingTop: "2em" }} md={12}>
 				<h2>Public Groups</h2>
-				<Col xs={1} className="d-flex align-items-center">
+				<Col
+					xs={1}
+					className="d-flex align-items-center justify-content-center"
+				>
 					<div style={{ display: "flex", alignItems: "center" }}>
 						<Button
 							className="m-2"
 							disabled={currentPage === 1}
 							onClick={() => handlePagination("prev")}
+							size={buttonSizing}
 						>
 							<i className="bi bi-arrow-left"></i>
 						</Button>
@@ -151,7 +151,7 @@ const SocialPage = ({ supportPost }) => {
 									borderRadius: "15px",
 								}}
 								md={4}
-								className="w-25 p-0"
+								className={listGroupStyling}
 								id="list-group"
 							>
 								<Card.Body md={1} className="p-3">
@@ -162,25 +162,57 @@ const SocialPage = ({ supportPost }) => {
 									<Card.Text id="members" style={buttonStyling}>
 										{group.members} members
 									</Card.Text>
-									<Button className="btn-sm" variant="primary">
-										Join
-									</Button>
+									<div style={{ textAlign: "center" }}>
+										<Button className="btn-sm" variant="primary">
+											Join
+										</Button>
+									</div>
 								</Card.Body>
 							</ListGroup.Item>
 						))}
 					</div>
 				</Col>
-				<Col xs={1} className="d-flex align-items-center">
+				<Col xs={1} className="d-flex align-items-left justify-content-center">
 					<div style={{ display: "flex", alignItems: "center" }}>
 						<Button
 							disabled={endIndex >= publicGroups.length}
 							onClick={() => handlePagination("next")}
+							size={buttonSizing}
 						>
 							<i className="bi bi-arrow-right"></i>
 						</Button>
 					</div>
 				</Col>
-				<Col md={12}>
+				<div style={{ textAlign: "center", paddingTop: "2em" }}>
+					<Button className="btn-lg" variant="primary">
+						Create
+					</Button>
+				</div>
+				{/* Model for pop up for the create new group form */}
+				<Modal show={showModal} onHide={handleModalClose} centered>
+					<Modal.Header closeButton>
+						<Modal.Title>Modal Title</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Form onSubmit={handleSubmit}>
+							{/* Add your form fields here */}
+							<Form.Group controlId="exampleForm.ControlInput1">
+								<Form.Label>Email address</Form.Label>
+								<Form.Control type="email" placeholder="name@example.com" />
+							</Form.Group>
+							<Form.Group controlId="exampleForm.ControlTextarea1">
+								<Form.Label>Example textarea</Form.Label>
+								<Form.Control as="textarea" rows={3} />
+							</Form.Group>
+							<Button variant="primary" type="submit">
+								Submit
+							</Button>
+						</Form>
+					</Modal.Body>
+				</Modal>
+
+				{/* THE PUBLIC POST ROW */}
+				<Col md={12} className="mt-5">
 					<h2>Public Post</h2>
 					<Card className="mb-3">
 						<Card.Body>
@@ -193,7 +225,6 @@ const SocialPage = ({ supportPost }) => {
 										style={{ height: "auto", resize: "none" }}
 										placeholder="What's happening?"
 									/>
-
 									<Button variant="primary" type="submit">
 										Post
 									</Button>
@@ -201,7 +232,7 @@ const SocialPage = ({ supportPost }) => {
 							</Form>
 						</Card.Body>
 					</Card>
-
+					{/* For each support post, render the below */}
 					{supportPost.map((post) => (
 						<Card key={post.id} className="mb-3">
 							<Card.Body>
