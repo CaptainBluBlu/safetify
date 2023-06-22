@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const JusticeBoardPage = ({justicePost}) => {
-  const {thumbnail, title, author, uploadDate, content, likes, dislikes, comments} = justicePost.fields;
+  const {thumbnail, title, author, uploadDate, content} = justicePost.fields;
 
   return (
     <div>
@@ -22,20 +23,7 @@ const JusticeBoardPage = ({justicePost}) => {
         </Row>
         <Row className="mt-5">
           <Col>
-            <p>This is the content of the blog post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </Col>
-        </Row>
-        <Row className="mt-5">
-          <Col>
-            <h2>Comments</h2>
-            <div className="comment">
-              <p>Comment 1</p>
-            </div>
-            <div className="comment">
-              <p>Comment 2</p>
-            </div>
-            {/* Add more comments here */}
+            {documentToReactComponents(content)}
           </Col>
         </Row>
       </Container>

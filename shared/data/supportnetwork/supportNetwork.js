@@ -9,14 +9,24 @@ import {
 	Form,
 	InputGroup,
 	Modal,
+	showModal,
 } from "react-bootstrap";
 
 const SocialPage = ({ supportPost, groupChat }) => {
 	console.log(groupChat);
+	const [showModal, setShowModal] = useState(false);
+
+	const handleModalOpen = () => {
+		setShowModal(true);
+	};
+
+	const handleModalClose = () => {
+		setShowModal(false);
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// Perform form submission logic here
+		// Process form data here
 	};
 
 	let buttonStyling = {

@@ -31,7 +31,6 @@ export async function getStaticProps() {
 }
 
 const JusticeBoardCom = ({ blogPost }) => {
-	console.log(blogPost);
 	return (
 		<div>
 			<Seo title="Justice Board - Safetify" />
