@@ -1,21 +1,22 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
-const JusticeBoardPage = () => {
+const JusticeBoardPage = ({justicePost}) => {
+  const {thumbnail, title, author, uploadDate, content, likes, dislikes, comments} = justicePost.fields;
+
   return (
-    <div style={{ minHeight: '100vh', background: 'url(background-photo.jpg)', backgroundSize: 'cover' }}>
-      <Container className="py-5">
+    <div>
+      
+      <Container className="py-3">
+     
         <Row>
           <Col>
-            <h1>Blog Post Title</h1>
-            <p>Posted by <span className="text-muted">Author Name</span> on <span className="text-muted">June 11, 2023</span></p>
+            <h1>{title}</h1>
+            <div>
+        <Image src={thumbnail.fields.file.url}  className="mx-auto my-2" style={{ height: "30%", width: "100%" }} />
+      </div>
+            <p>Posted by <span className="text-muted">{author}</span> on <span className="text-muted">{new Date(uploadDate).toLocaleDateString('en-US')}</span></p>
             <div className="d-flex align-items-center">
-              <Button variant="link" className="text-muted">
-                <i className="bi bi-hand-thumbs-up"></i> Likes
-              </Button>
-              <Button variant="link" className="text-muted">
-                <i className="bi bi-hand-thumbs-down"></i> Dislikes
-              </Button>
             </div>
           </Col>
         </Row>

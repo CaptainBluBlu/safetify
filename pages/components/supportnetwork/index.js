@@ -6,6 +6,7 @@ import { prisma } from "@/db";
 
 export async function getServerSideProps() {
 	const groupChat = await prisma.chatRooms.findMany();
+
 	const supportPost = await prisma.supportPost.findMany({
 		include: {
 			author: {
@@ -26,12 +27,12 @@ const SupportNetwork = dynamic(
 	{ ssr: false }
 );
 
-const SupportNetworkCom = ({ supportPost }) => {
+const SupportNetworkCom = ({ groupChat, supportPost }) => {
 	return (
 		<div>
 			<Seo title="Dashboard" />
 
-			<SupportNetwork supportPost={supportPost} />
+			<SupportNetwork supportPost={supportPost} groupChat={groupChat} />
 		</div>
 	);
 };
