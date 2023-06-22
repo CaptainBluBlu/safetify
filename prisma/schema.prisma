@@ -42,14 +42,15 @@ model User {
   therapistId String? @unique
   Therapist   User?   @relation("therapist", fields: [therapistId], references: [id], onDelete: SetNull)
 
-  ChatRooms   ChatRooms[]
+  ChatRooms   ChatRooms[] @relation("ChatRoomParticipants")
   chatRoomsId String?
 
   clientLawyer    User[] @relation("lawyer")
   clientTherapist User[] @relation("therapist")
 
-  supportPost SupportPost[]
-  Message     Message[]
+  supportPost   SupportPost[]
+  Message       Message[]
+  ChatRoomOwner ChatRooms[]   @relation("ChatRoomOwner")
 
   @@index([email])
   @@schema("public")
@@ -178,8 +179,10 @@ model ChatRooms {
   chatRoomName  String
   description   String
   participantId String[]
-  participants  User[]
+  participants  User[]    @relation("ChatRoomParticipants")
   memeberCount  Int
+  creatorId     String
+  Creator       User      @relation("ChatRoomOwner", fields: [creatorId], references: [id])
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   Message       Message[]
