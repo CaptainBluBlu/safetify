@@ -49,9 +49,9 @@ const JusticeBoardPageCom = ({justicePost}) => {
 
 	return (
 		<div>
-			<Seo title="Dashboard" justicePost={justicePost} />
+			<Seo title="Dashboard" />
 
-			<JusticeBoardPage />
+			<JusticeBoardPage justicePost={justicePost} />
 		</div>
 	);
 };

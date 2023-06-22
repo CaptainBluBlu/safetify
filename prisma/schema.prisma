@@ -160,7 +160,7 @@ model LegalReport {
   status        String
   comments      String
   abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
-  abuseReportID String       @unique
+  abuseReportID String?      @unique
 
   @@schema("public")
 }
