@@ -48,9 +48,7 @@ async function main() {
             }
           }
         }
-        
       }
-    
     },
   })
 

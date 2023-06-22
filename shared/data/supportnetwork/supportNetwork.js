@@ -12,7 +12,9 @@ import {
 	showModal,
 } from "react-bootstrap";
 
-const SocialPage = ({ supportPost, groupChat }) => {
+const SocialPage = (props) => {
+	const { supportPost, groupChat } = props;
+
 	console.log(groupChat);
 	const [showModal, setShowModal] = useState(false);
 
@@ -27,6 +29,8 @@ const SocialPage = ({ supportPost, groupChat }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		// Process form data here
+
+		props.createNewRoom({ event });
 	};
 
 	let buttonStyling = {
@@ -194,7 +198,11 @@ const SocialPage = ({ supportPost, groupChat }) => {
 					</div>
 				</Col>
 				<div style={{ textAlign: "center", paddingTop: "2em" }}>
-					<Button className="btn-lg" variant="primary">
+					<Button
+						className="btn-lg"
+						variant="primary"
+						onClick={handleModalOpen}
+					>
 						Create
 					</Button>
 				</div>

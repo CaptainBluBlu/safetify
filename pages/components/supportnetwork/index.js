@@ -28,11 +28,21 @@ const SupportNetwork = dynamic(
 );
 
 const SupportNetworkCom = ({ groupChat, supportPost }) => {
+	// Function to update dataabase with new chat room
+	const handleChatRoomSubmit = async (event) => {
+		// event.preventDefault();
+		console.log(event);
+	};
+
 	return (
 		<div>
 			<Seo title="Dashboard" />
 
-			<SupportNetwork supportPost={supportPost} groupChat={groupChat} />
+			<SupportNetwork
+				supportPost={supportPost}
+				groupChat={groupChat}
+				createNewRoom={handleChatRoomSubmit}
+			/>
 		</div>
 	);
 };
