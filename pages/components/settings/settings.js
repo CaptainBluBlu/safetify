@@ -1,8 +1,15 @@
-import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
 
-function SettingsCom() {
+const countryOptions = [
+  'Malaysia',
+  'Singapore',
+  'Philippines',
+  'Vietnam',
+  'Indonesia',
+  'Thailand',
+];
+
+function SettingsPage() {
   // Personal Info state
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
@@ -10,13 +17,13 @@ function SettingsCom() {
 
   // Notification Settings state
   const [WeeklyReports, setWeeklyReports] = useState(false);
-  const [News, setNews] = useState([]);
-  const [Notification, setNotification] = useState([]);
+  const [News, setNews] = useState(false);
+  const [Notification, setNotification] = useState(false);
 
   // Permissions Settings state
   const [PoliceDataSharing, setPoliceDataSharing] = useState(false);
-  const [EmergencyContactsDataSharing, setEmergencyContactsDataSharing] = useState([]);
-  const [WAODataSharing, setWAODataSharing] = useState([]);
+  const [EmergencyContactsDataSharing, setEmergencyContactsDataSharing] = useState(false);
+  const [WAODataSharing, setWAODataSharing] = useState(false);
 
   // Emergency Contact Information state
   const [ProfilePicture, setProfilePicture] = useState('');
@@ -26,10 +33,6 @@ function SettingsCom() {
   // Verification Settings state
   const [IDNumber, setIDNumber] = useState('');
   const [DateofBirth, setDateofBirth] = useState('');
-
-  // Account Settings state
-  const [isLoggedOut, setLoggedOut] = useState(false);
-  const [isDeleteConfirmed, setDeleteConfirmed] = useState(false);
 
   // Event handlers for updating the state fields
   const handleFirstNameChange = (event) => {
@@ -44,20 +47,25 @@ function SettingsCom() {
     setCountry(event.target.value);
   };
 
-  const handleLogout = () => {
-    // Perform logout logic here
-    setLoggedOut(true);
+  const handleToggle = () => {
+    setWeeklyReports(!WeeklyReports);
+    setNews(!News);
+    setNotification(!Notification);
+    setPoliceDataSharing(!PoliceDataSharing);
+    setEmergencyContactsDataSharing(!EmergencyContactsDataSharing);
+    setWAODataSharing(!WAODataSharing);
   };
 
-  const handleDeleteAccount = () => {
-    if (isDeleteConfirmed) {
-      // Perform account deletion logic here
-      // Redirect to login or home page
-      console.log('Account deleted!');
-    } else {
-      // Show confirmation message and ask for confirmation
-      setDeleteConfirmed(true);
-    }
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const handleIDNumberChange = (event) => {
+    setIDNumber(event.target.value);
+  };
+
+  const handleDateofBirthChange = (event) => {
+    setDateofBirth(event.target.value);
   };
 
   return (
@@ -65,111 +73,143 @@ function SettingsCom() {
       <h1>Settings</h1>
 
       {/* Personal Info */}
-      <h1>Personal Info</h1>
-      <label>First Name:</label>
-      <input type="text" value={FirstName} onChange={handleFirstNameChange} />
+      <h2>Personal Info</h2>
 
-      <label>Last Name:</label>
-      <input type="text" value={LastName} onChange={handleLastNameChange} />
+      <label>First Name</label>
+      <input
+        type="text"
+        value={FirstName}
+        onChange={handleFirstNameChange}
+      />
 
-      <label>Country:</label>
-      <input type="text" value={Country} onChange={handleCountryChange} />
+      <label>Last Name</label>
+      <input
+        type="text"
+        value={LastName}
+        onChange={handleLastNameChange}
+      />
+
+      <form>
+        <label htmlFor="Country">Country</label>
+        <select
+          id="Country"
+          value={Country}
+          onChange={handleCountryChange}
+        >
+          <option value="">Country</option>
+          {countryOptions.map((Country) => (
+            <option
+              key={Country}
+              value={Country}>
+              {Country}
+            </option>
+          ))}
+        </select>
+      </form>
 
       {/* Notification Settings */}
-      <h1>Notifications</h1>
+      <h2>Notifications</h2>
 
       <h3>Weekly Reports</h3>
-      <label WeeklyReports htmlFor="toggleSwitch">
+      <label htmlFor="WeeklyReportsToggle">
         <input
-          id="toggleSwitch"
+          id="WeeklyReportsToggle"
           type="toggleSwitch"
-          checked={isNotificationsEnabled}
+          checked={WeeklyReports}
           onChange={handleToggle}
         />
-        {isNotificationsEnabled ? 'Enabled' : 'Disabled'}
+        {WeeklyReports ? 'Enabled' : 'Disabled'}
       </label>
 
       <h3>News</h3>
-      <label News htmlFor="toggleSwitch">
+      <label htmlFor="NewsToggle">
+        <input
+          id="NewsToggle"
+          type="toggleSwitch"
+          checked={News}
+          onChange={handleToggle}
+        />
+        {WeeklyReports ? 'Enabled' : 'Disabled'}
+      </label>
+
+      <h3>Notifications</h3>
+      <label htmlFor="NotificationsToggle">
+        <input
+          id="Notifications Toggle"
+          type="toggleSwitch"
+          checked={Notification}
+          onChange={handleToggle}
+        />
+        {Notification ? 'Enabled' : 'Disabled'}
+      </label>
+
+      {/* Permissions Settings */}
+      <h1>Permissions</h1>
+
+      <h3>Allow to send to police</h3>
+      <label PoliceDataSharing htmlFor="toggleSwitch">
         <input
           id="toggleSwitch"
           type="toggleSwitch"
-          checked={isNotificationsEnabled}
+          checked={PoliceDataSharing}
           onChange={handleToggle}
         />
         {isNotificationEnabled ? 'Enabled' : 'Disabled'}
       </label>
 
-      <h3>Notifications</h3>
-      <label Notifications htmlFor="toggleSwitch">
+      <h3>Allow to send to emergency contacts</h3>
+      <label EmergencyContactsDataSharing htmlFor="toggleSwitch">
         <input
           id="toggleSwitch"
           type="toggleSwitch"
-          checked={isNotificationsEnabled}
+          checked={EmergencyContactsDataSharing}
           onChange={handleToggle}
         />
+        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
       </label>
 
-      {/* Permissions Settings */}
-      <h1>Permissions Settings</h1>
-      <label>
-        Allow to send to police
+      <h3>Allow to send to Women's Aid Organization</h3>
+      <label WAODataSharing htmlFor="toggleSwitch">
         <input
+          id="toggleSwitch"
           type="toggleSwitch"
-          checked={notificationsEnabled}
-          onChange={handleToggleNotifications}
+          checked={WAODataSharing}
+          onChange={handleToggle}
         />
-      </label>
-
-      <label>
-        Allow to send to emergency contacts
-        <input
-          type="toggleSwitch"
-          checked={notificationsEnabled}
-          onChange={handleToggleNotifications}
-        />
-      </label>
-
-      <label>
-        Allow to send to Women Aid's Organization
-        <input
-          type="toggleSwitch"
-          checked={notificationsEnabled}
-          onChange={handleToggleNotifications}
-        />
+        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
       </label>
 
 
       {/* Emergency Contact Information */}
-      <h1>Emergency Contact Information</h1>
-      <input type="text" value={PhoneNumber} onChange={handlePhoneNumber} />
+      <h2>Emergency Contact Information</h2>
+      <input
+        type="text"
+        value={PhoneNumber}
+        onChange={handlePhoneNumberChange}
+      />
 
       {/* Verification Settings */}
-      <h1>Verification</h1>
-      <h2>Identification Card</h2>
-      <input type="text" value={IDNumber} onChange={handleIDNumber} />
-      <input type="text" value={DateofBirth} onChange={handleDateofBirth} />
+      <h2>Verification</h2>
 
-      {/* Account Settings */}
-      {isLoggedOut ? (
-        <h2>You have been logged out.</h2>
-      ) : (
-        <>
-          {isDeleteConfirmed ? (
-            <h2>Are you sure you want to delete your account?</h2>
-          ) : (
-            <>
-              <h2>Account Settings</h2>
-              <button onClick={handleLogout}>Log Out</button>
-              <button onClick={handleDeleteAccount}>Delete Account</button>
-            </>
-          )}
-        </>
-      )}
+      <h3>Identification Card</h3>
+
+      <h3>ID Number</h3>
+      <input
+        type="text"
+        value={IDNumber}
+        onChange={handleIDNumberChange}
+      />
+
+      <h3>Date of Birth</h3>
+      <input
+        type="text"
+        value={DateofBirth}
+        onChange={handleDateofBirthChange}
+      />
 
     </div>
   );
-}
+};
 
-SettingsCom.layout = "Contentlayout"
-export default SettingsCom;
+SettingsPage.layout = "Contentlayout";
+export default SettingsPage;
