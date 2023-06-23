@@ -280,6 +280,8 @@ const Rightside = () => {
                       </div>
                     </div>
                   </Tab.Pane>
+
+                  {/* Chat Notifications */}
                   <Tab.Pane eventKey="Chat">
                     <div className="tab-pane" id="side2">
                       <ListGroup className="list-group-flush">
@@ -297,7 +299,7 @@ const Rightside = () => {
                             />
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -326,7 +328,7 @@ const Rightside = () => {
                             <span className="avatar-status bg-success"></span>
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -354,7 +356,7 @@ const Rightside = () => {
                             />
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -382,7 +384,7 @@ const Rightside = () => {
                             />
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -411,7 +413,7 @@ const Rightside = () => {
                             <span className="avatar-status bg-success"></span>
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -439,7 +441,7 @@ const Rightside = () => {
                             />
                           </div>
                           <div className="">
-                            <Link href={`/components/apps/chat/`}>
+                            <Link href={`/components/chat`}>
                               <div
                                 className="fw-semibold text-dark"
                                 data-bs-toggle="modal"
@@ -450,230 +452,6 @@ const Rightside = () => {
                               <p className="mb-0 fs-12 text-muted">
                                 {" "}
                                 Hi we can explain our new project......
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-4"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/4.jpg`}
-                            />
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Cherry Blossom
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                {" "}
-                                Hey! there {`I' `}am available....
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <div className="pt-3 fw-semibold ps-5">Yesterday</div>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-7"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/7.jpg`}
-                            />
-                            <span className="avatar-status bg-success"></span>
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Simon Sais
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                Schedule Realease......{" "}
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-9"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/9.jpg`}
-                            />
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Laura Biding
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                {" "}
-                                Hi we can explain our new project......
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-2"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/2.jpg`}
-                            />
-                            <span className="avatar-status bg-success"></span>
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Addie Minstra
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                Contact me for details....
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-9"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/9.jpg`}
-                            />
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Ivan Notheridiya
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                {" "}
-                                Hi we can explain our new project......
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-14"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/14.jpg`}
-                            />
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Dulcie Veeta
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                {" "}
-                                Okay...I will be waiting for you{" "}
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-11"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/11.jpg`}
-                            />
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Florinda Carasco
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                New product Launching...
-                              </p>
-                            </Link>
-                          </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item className="d-flex align-items-center">
-                          <div className="me-2">
-                            <img
-                              className="avatar avatar-md brround cover-image"
-                              alt="user-11"
-                              src={`${
-                                process.env.NODE_ENV === "production"
-                                  ? basePath
-                                  : ""
-                              }/assets/images/users/4.jpg`}
-                            />
-                            <span className="avatar-status bg-success"></span>
-                          </div>
-                          <div className="">
-                            <Link href={`/components/apps/chat/`}>
-                              <div
-                                className="fw-semibold text-dark"
-                                data-bs-toggle="modal"
-                                data-target="#chatmodel"
-                              >
-                                Cherry Blossom
-                              </div>
-                              <p className="mb-0 fs-12 text-muted">
-                                cherryblossom@gmail.com
                               </p>
                             </Link>
                           </div>
