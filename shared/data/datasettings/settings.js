@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import Seo from '@/shared/layout-components/seo/seo';
-
-const Settings = dynamic(() => import("../../../shared/data/datasettings/settings"), { ssr: false, });
 
 const countryOptions = [
   'Malaysia',
@@ -73,8 +69,8 @@ const SettingsCom = () => {
   };
 
   return (
+
     <div>
-      <Seo title="Settings" />
 
       {/* Personal Info */}
       <h2>Personal Info</h2>
@@ -210,10 +206,10 @@ const SettingsCom = () => {
         value={DateofBirth}
         onChange={handleDateofBirthChange}
       />
-      <Settings />
+
     </div>
+
   );
 };
 
-SettingsCom.layout = "Contentlayout";
 export default SettingsCom;
