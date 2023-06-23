@@ -204,10 +204,10 @@ const Sidebar = () => {
         <PerfectScrollbar options={{ suppressScrollX: true, useBothWheelAxes: false }}>
           <div className="side-header">
             <Link className="header-brand1" href={`/components/dashboard/dashboard/`}>
-              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/logo-white.png`} className="header-brand-img desktop-logo" alt="logo1" />
-              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/icon-white.png`} className="header-brand-img toggle-logo" alt="logo-2" />
-              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/icon-dark.png`} className="header-brand-img light-logo" alt="logo-3" />
-              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/logo-dark.png`} className="header-brand-img light-logo1" alt="logo-4" />
+              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/safetify-white.png`} className="header-brand-img desktop-logo" alt="logo1" height={50} width={50} />
+              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/safetify-white.png`} className="header-brand-img toggle-logo" alt="logo-2" height={50} width={50}/>
+              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/safetify-black.png`} className="header-brand-img light-logo" alt="logo-3" height={50} width={50}/>
+              <img src={`${process.env.NODE_ENV === 'production'? basePath : ''}/assets/images/brand/safetify-black.png`} className="header-brand-img light-logo1" alt="logo-4" height={50} width={50}/>
             </Link>
           </div>
           <div className="main-sidemenu">
