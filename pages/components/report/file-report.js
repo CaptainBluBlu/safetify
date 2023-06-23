@@ -9,7 +9,7 @@ const ReportingCasePage = () => {
   const [state, setState] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [statement, setStatement] = useState('');
-  //const [evidence, setEvidence] = useState(null);
+  const [Evidence, setEvidence] = useState('');
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -40,8 +40,7 @@ const ReportingCasePage = () => {
   };
 
   const handleEvidenceUpload = (event) => {
-    const file = event.target.files[0];
-    setEvidence(file);
+    setEvidence(event.target.value);
   };
 
   return (
@@ -100,6 +99,11 @@ const ReportingCasePage = () => {
       />
 
       <h2>Upload Evidence</h2>
+      <input
+        type="text"
+        value={Evidence}
+        onChange={handleEvidenceUpload}
+      />
 
     </div>
   );
