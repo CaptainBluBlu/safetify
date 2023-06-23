@@ -154,7 +154,7 @@ const SettingsCom = () => {
           checked={PoliceDataSharing}
           onChange={handleToggle}
         />
-        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
+        {PoliceDataSharing ? 'Enabled' : 'Disabled'}
       </label>
 
       <h3>Allow to send to emergency contacts</h3>
@@ -165,7 +165,7 @@ const SettingsCom = () => {
           checked={EmergencyContactsDataSharing}
           onChange={handleToggle}
         />
-        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
+        {EmergencyContactsDataSharing ? 'Enabled' : 'Disabled'}
       </label>
 
       <h3>Allow to send to Women's Aid Organization</h3>
@@ -176,7 +176,7 @@ const SettingsCom = () => {
           checked={WAODataSharing}
           onChange={handleToggle}
         />
-        {isNotificationEnabled ? 'Enabled' : 'Disabled'}
+        {WAODataSharing ? 'Enabled' : 'Disabled'}
       </label>
 
 

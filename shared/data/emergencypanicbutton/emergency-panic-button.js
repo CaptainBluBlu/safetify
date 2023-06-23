@@ -62,16 +62,16 @@ const EmergencyPanicButtonCom = () => {
 
   return (
     <div className="EmergencyPanicButton">
-      <button onClick={handlePanicButton}>Panic Button</button>
-      <button onClick={handleAddContact}>Add Emergency Contact</button>
-      <button onClick={handleGetContacts}>Get Emergency Contacts</button>
-      <ul>
+      <Button onClick={handlePanicButton}>Panic Button</Button>
+      <Button onClick={handleAddContact}>Add Emergency Contact</Button>
+      <Button onClick={handleGetContacts}>Get Emergency Contacts</Button>
+      <ListGroup>
         {emergencyContacts.map((contact) => (
-          <li key={contact.phoneNumber}>
+          <ListGroup.Item key={contact.phoneNumber}>
             {contact.name}: {contact.phoneNumber}
-          </li>
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 }
