@@ -3942,17 +3942,28 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     display: flex;
     align-items: flex-start;
     margin-bottom: 10px;
+    position: relative;
   
     &.sender {
       justify-content: flex-end;
   
       .content {
-        background-color: #dcf8c6;
+
         color: #333;
         padding: 10px;
         border-radius: 10px;
-        float: right;
         clear: both;
+        text-align: right;
+        margin-left: auto;
+      }
+
+      .sender{
+        float: right;
+      }
+
+      .timestamp {
+        text-align: right;
+    
       }
     }
   
