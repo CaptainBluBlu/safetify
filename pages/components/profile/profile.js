@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Seo from '@/shared/layout-components/seo/seo';
 
-const Profile = dynamic(() => import("../../../shared/data/datasettings/profile"), { ssr: false, });
+const Profile = dynamic(() => import("../../../shared/data/dataprofile/profile"), { ssr: false, });
 
 const ProfileCom = () => {
 
