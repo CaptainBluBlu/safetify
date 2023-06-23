@@ -5,7 +5,7 @@ import Seo from '@/shared/layout-components/seo/seo';
 const ReportingCase = dynamic(() => import("../../../shared/data/datareport/file-report"), { ssr: false, });
 
 // ReportingCase component
-const ReportingCaseCom = () => {
+function ReportingCaseCom() {
   const [name, setName] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');

@@ -4,7 +4,7 @@ import Seo from '@/shared/layout-components/seo/seo';
 
 const BlogPost = dynamic(() => import("../../../shared/data/datablog/blogpost"), { ssr: false, });
 
-const BlogPostCom = () => {
+function BlogPostCom() {
   const entries = [
     {
       id: 1,
