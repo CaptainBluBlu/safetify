@@ -75,7 +75,6 @@ const Register = () => {
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Col>
               </div>
-
               <div className="form-row">
               <Col xl={6} className="mb-3">
                   <Form.Label>Gender</Form.Label>
