@@ -2,15 +2,15 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  // directUrl = env("DIRECT_URL")
-  schemas  = ["public", "auth"]
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  // schemas   = ["public", "auth"]
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["multiSchema"]
+  provider = "prisma-client-js"
+  // previewFeatures = ["multiSchema"]
 }
 
 enum UserRole {
@@ -19,11 +19,12 @@ enum UserRole {
   LAWYER
   THERAPIST
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model User {
   id               String             @id @default(cuid()) @map(name: "UserId")
+  authUserId       String?            @unique
   name             String
   email            String             @unique
   createdAt        DateTime           @default(now())
@@ -51,9 +52,9 @@ model User {
   supportPost   SupportPost[]
   Message       Message[]
   ChatRoomOwner ChatRooms[]   @relation("ChatRoomOwner")
+  //@@schema("publi")
 
   @@index([email])
-  @@schema("public")
 }
 
 model SupportPost {
@@ -65,7 +66,7 @@ model SupportPost {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model EmergencyContact {
@@ -80,7 +81,7 @@ model EmergencyContact {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model EmergencyHousing {
@@ -97,7 +98,7 @@ model EmergencyHousing {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 enum Relationship {
@@ -106,7 +107,7 @@ enum Relationship {
   PARTNER
   OTHER
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 enum AbuseType {
@@ -116,7 +117,7 @@ enum AbuseType {
   SEXUAL
   OTHER
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 enum Ethnicity {
@@ -125,7 +126,7 @@ enum Ethnicity {
   INDIAN
   OTHER
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model AbuseReport {
@@ -140,7 +141,7 @@ model AbuseReport {
   lastDateOfAbuse             DateTime
   LegalReport                 LegalReport?
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model LegalReport {
@@ -162,7 +163,7 @@ model LegalReport {
   abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
   abuseReportID String?      @unique
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model Evidence {
@@ -176,7 +177,7 @@ model Evidence {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model Journal {
@@ -195,7 +196,7 @@ model Journal {
   repliedAt   DateTime?
   private     Boolean   @default(true)
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model PanicButton {
@@ -208,7 +209,7 @@ model PanicButton {
   createdAt  DateTime          @default(now())
   updatedAt  DateTime          @updatedAt
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 enum PanicButtonStatus {
@@ -216,7 +217,7 @@ enum PanicButtonStatus {
   DANGER
   RESOLVED
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model ChatRooms {
@@ -232,7 +233,7 @@ model ChatRooms {
   updatedAt     DateTime  @updatedAt
   Message       Message[]
 
-  @@schema("public")
+  // @@schema("public")
 }
 
 model Message {
@@ -244,5 +245,5 @@ model Message {
   Conversation   ChatRooms? @relation(fields: [conversationId], references: [id])
   conversationId String?
 
-  @@schema("public")
+  // @@schema("public")
 }
