@@ -8,13 +8,66 @@ function BlogPostCom() {
   const entries = [
     {
       id: 1,
-      date: "June 1, 2023",
+      time: "1d",
+      image: "entry1.jpg",
+      header: "Darreni Lig",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
+
+    {
+      id: 2,
+      time: "1w",
+      image: "entry1.jpg",
+      header: "Darreni Lig",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
+
+    {
+      id: 3,
+      time: "5w",
+      image: "entry1.jpg",
+      header: "Darreni Lig",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
+
+    {
+      id: 4,
+      time: "14w",
       image: "entry1.jpg",
       header: "Entry 1",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
     },
-    // Add more entries here...
+
+    {
+      id: 5,
+      time: "1yr",
+      image: "entry1.jpg",
+      header: "Entry 1",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
+
+    {
+      id: 6,
+      time: "2yr",
+      image: "entry1.jpg",
+      header: "Entry 1",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
+
+    {
+      id: 7,
+      time: "2yr",
+      image: "entry1.jpg",
+      header: "Entry 1",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat vitae quam eleifend commodo. Mauris ut fermentum nibh. Quisque sem diam, hendrerit sed ipsum ac, finibus dignissim dolor.",
+    },
   ];
 
   return (
@@ -30,7 +83,7 @@ function BlogPostCom() {
             <p>{entry.text}</p>
           </div>
           <div className="entry-timeline">
-            <span>{entry.date}</span>
+            <span>{entry.time}</span>
           </div>
         </div>
       ))}
