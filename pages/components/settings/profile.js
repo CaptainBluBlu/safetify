@@ -1,7 +1,10 @@
-import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import Seo from '@/shared/layout-components/seo/seo';
 
-function ProfilePage() {
+const Profile = dynamic(() => import("../../../shared/data/datasettings/profile"), { ssr: false, });
+
+function ProfileCom() {
     const [profilePicture, setProfilePicture] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [fullName, setFullName] = useState('');
@@ -10,40 +13,62 @@ function ProfilePage() {
     const [address, setAddress] = useState('');
     const [email, setEmail] = useState('');
 
-    const handleUpdate = () => {
-        // Perform Update operation here
-        // You can access the form data from the state variables
-        // profilePicture, phoneNumber, fullName, district, age, address, email
-        // e.g., console.log('Saving:', profilePicture, phoneNumber, fullName, district, age, address, email);
+    const handleProfilePictureChange = (event) => {
+        setProfilePicture(event.target.value);
     };
+
+    const handlePhoneNumberChange = (event) => {
+        setPhoneNumber(event.target.value);
+    };
+
+    const handleFullNameChange = (event) => {
+        setFullName(event.target.value);
+    };
+
+    const handleDistrictChange = (event) => {
+        setDistrict(event.target.value);
+    };
+
+    const handleAgeChange = (event) => {
+        setAge(event.target.value);
+    };
+
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    };
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
 
     return (
         <div>
-            <h1>Profile Page</h1>
+            <Seo title="Profile Page" />
             <div>
                 <label>Edit your profile picture</label>
                 <input
                     type="text"
                     value={profilePicture}
-                    onChange={(e) => setProfilePicture(e.target.value)} />
+                    onChange={handleProfilePictureChange} />
             </div>
             <div>
                 <label>Enter your phone no.</label>
                 <input
                     type="text"
                     value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)} />
+                    onChange={handlePhoneNumberChange} />
             </div>
             <div>
                 <label>Full Name</label>
                 <input
                     type="text"
                     value={fullName}
-                    onChange={(e) => setFullName(e.target.value)} />
+                    onChange={handleFullNameChange} />
             </div>
             <div>
                 <label>Select District:</label>
-                <select value={district} onChange={(e) => setDistrict(e.target.value)}>
+                <select value={district} onChange={handleDistrictChange}>
                     <option value="">Select</option>
                     <option value="District 1">District 1</option>
                     <option value="District 2">District 2</option>
@@ -56,25 +81,27 @@ function ProfilePage() {
                 <input
                     type="text"
                     value={age}
-                    onChange={(e) => setAge(e.target.value)} />
+                    onChange={handleAgeChange} />
             </div>
             <div>
                 <label>Address</label>
                 <input
                     type="text"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)} />
+                    onChange={handleAddressChange} />
             </div>
             <div>
                 <label>Email Address</label>
                 <input
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    onChange={handleEmailChange} />
             </div>
             <button onClick={handleUpdate}>Update</button>
+            <Profile />
         </div>
     );
 }
 
-export default ProfilePage;
+ProfileCom.layout = "Contentlayout"
+export default ProfileCom;

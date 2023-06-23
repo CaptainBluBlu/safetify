@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import Seo from '@/shared/layout-components/seo/seo';
+
+const Settings = dynamic(() => import("../../../shared/data/datasettings/settings"), { ssr: false, });
 
 const countryOptions = [
   'Malaysia',
@@ -9,7 +13,7 @@ const countryOptions = [
   'Thailand',
 ];
 
-function SettingsPage() {
+function SettingsCom() {
   // Personal Info state
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
@@ -70,7 +74,7 @@ function SettingsPage() {
 
   return (
     <div>
-      <h1>Settings</h1>
+      <Seo title="Settings" />
 
       {/* Personal Info */}
       <h2>Personal Info</h2>
@@ -206,10 +210,10 @@ function SettingsPage() {
         value={DateofBirth}
         onChange={handleDateofBirthChange}
       />
-
+      <Settings />
     </div>
   );
 };
 
-SettingsPage.layout = "Contentlayout";
-export default SettingsPage;
+SettingsCom.layout = "Contentlayout";
+export default SettingsCom;

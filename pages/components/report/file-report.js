@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import Seo from '@/shared/layout-components/seo/seo';
 
-// ReportingCasePage component
-const ReportingCasePage = () => {
+const ReportingCase = dynamic(() => import("../../../shared/data/datareport/file-report"), { ssr: false, });
+
+// ReportingCase component
+const ReportingCaseCom = () => {
   const [name, setName] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');
@@ -45,7 +49,7 @@ const ReportingCasePage = () => {
 
   return (
     <div>
-      <h1>Reporting</h1>
+      <Seo title="Reporting" />
 
       <h2>Report Details</h2>
 
@@ -105,8 +109,10 @@ const ReportingCasePage = () => {
         onChange={handleEvidenceUpload}
       />
 
+      <ReportingCase />
     </div>
   );
 };
 
-export default ReportingCasePage;
+ReportingCaseCom.layout = "Contentlayout"
+export default ReportingCaseCom;

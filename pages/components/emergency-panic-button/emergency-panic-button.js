@@ -1,10 +1,10 @@
-//create emeergency housing page based on the other template files
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Seo from '@/shared/layout-components/seo/seo';
-const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), { ssr: false, });
 
-function EmergencyPanicButton() {
+const EmergencyPanicButton = dynamic(() => import("../../../shared/data/dataemergency-panic-button/emergency-panic-button"), { ssr: false, });
+
+function EmergencyPanicButtonCom() {
   const [emergencyContacts, setEmergencyContacts] = useState([]);
 
   const handlePanicButton = () => {
@@ -65,7 +65,7 @@ function EmergencyPanicButton() {
 
   return (
     <div className="EmergencyPanicButton">
-      <h1>Emergency Panic Button</h1>
+      <Seo title="Emergency Panic Button" />
       <button onClick={handlePanicButton}>Panic Button</button>
       <button onClick={handleAddContact}>Add Emergency Contact</button>
       <button onClick={handleGetContacts}>Get Emergency Contacts</button>
@@ -76,9 +76,10 @@ function EmergencyPanicButton() {
           </li>
         ))}
       </ul>
+      <EmergencyPanicButton />
     </div>
   );
 }
 
-EmergencyPanicButton.layout = "Contentlayout"
-export default EmergencyPanicButton;
+EmergencyPanicButtonCom.layout = "Contentlayout"
+export default EmergencyPanicButtonCom;
