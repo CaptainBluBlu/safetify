@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 // ReportingCase component
 const ReportingCaseCom = () => {
@@ -9,7 +10,7 @@ const ReportingCaseCom = () => {
   const [state, setState] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [statement, setStatement] = useState('');
-  const [Evidence, setEvidence] = useState('');
+  const [evidence, setEvidence] = useState('');
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -44,67 +45,90 @@ const ReportingCaseCom = () => {
   };
 
   return (
-    <div>
 
+    <div>
       <h2>Report Details</h2>
 
-      <label>Enter Name</label>
-      <input
-        type="text"
-        value={name}
-        onChange={handleNameChange}
-      />
+      <Form>
+        <Form.Group controlId="name">
+          <Form.Label>Enter Name</Form.Label>
+          <Form.Control
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </Form.Group>
 
-      <label>Enter Phone no.</label>
-      <input
-        type="text"
-        value={phoneNo}
-        onChange={handlePhoneNoChange}
-      />
+        <Form.Group controlId="phoneNo">
+          <Form.Label>Enter Phone no.</Form.Label>
+          <Form.Control
+            type="text"
+            value={phoneNo}
+            onChange={handlePhoneNoChange}
+          />
+        </Form.Group>
 
-      <label>Enter Address</label>
-      <input
-        type="text"
-        value={address}
-        onChange={handleAddressChange}
-      />
+        <Form.Group controlId="address">
+          <Form.Label>Enter Address</Form.Label>
+          <Form.Control
+            type="text"
+            value={address}
+            onChange={handleAddressChange}
+          />
+        </Form.Group>
 
-      <label>City</label>
-      <input
-        type="text"
-        value={city}
-        onChange={handleCityChange}
-      />
+        <Form.Group controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            value={city}
+            onChange={handleCityChange}
+          />
+        </Form.Group>
 
-      <label>State</label>
-      <input
-        type="text"
-        value={state}
-        onChange={handleStateChange}
-      />
+        <Form.Group controlId="state">
+          <Form.Label>State</Form.Label>
+          <Form.Control
+            type="text"
+            value={state}
+            onChange={handleStateChange}
+          />
+        </Form.Group>
 
-      <label>Postal Code</label>
-      <input
-        type="text"
-        value={postalCode}
-        onChange={handlePostalCodeChange}
-      />
+        <Form.Group controlId="postalCode">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            type="text"
+            value={postalCode}
+            onChange={handlePostalCodeChange}
+          />
+        </Form.Group>
 
-      <label>Statement</label>
-      <input
-        type="text"
-        value={statement}
-        onChange={handleStatementChange}
-      />
+        <Form.Group controlId="statement">
+          <Form.Label>Statement</Form.Label>
+          <Form.Control
+            type="text"
+            value={statement}
+            onChange={handleStatementChange}
+          />
+        </Form.Group>
+      </Form>
 
       <h2>Upload Evidence</h2>
-      <input
-        type="text"
-        value={Evidence}
-        onChange={handleEvidenceUpload}
-      />
+      <Form>
+        <Form.Group controlId="evidence">
+          <Form.Label>Upload Evidence</Form.Label>
+          <Form.Control
+            type="text"
+            value={evidence}
+            onChange={handleEvidenceUpload}
+          />
+        </Form.Group>
+
+      </Form>
 
     </div>
+
   );
 };
 
