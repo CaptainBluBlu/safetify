@@ -8,12 +8,12 @@ const ProfileCom = () => {
 
     return (
         <div>
-            <Seo title="Profile Page" />
+            <Seo title="Profile" />
 
             <Profile />
         </div>
     );
-}
+};
 
-ProfileCom.layout = "Contentlayout"
+ProfileCom.layout = "Contentlayout";
 export default ProfileCom;

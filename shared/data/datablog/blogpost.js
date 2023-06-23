@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 
 const BlogPostCom = () => {
 
@@ -68,23 +69,24 @@ const BlogPostCom = () => {
   ];
 
   return (
-    <div className="blog-post">
+    <Container className="blog-post">
       {entries.map((entry) => (
-        <div key={entry.id} className="entry">
-          <div className="entry-image">
-            <img src={entry.image} alt="Entry" />
-          </div>
-          <div className="entry-content">
+        <Row key={entry.id} className="entry">
+          <Col xs={12} md={4} className="entry-image">
+            <Image src={entry.image} alt="Entry" fluid />
+          </Col>
+          <Col xs={12} md={8} className="entry-content">
             <h2>{entry.header}</h2>
             <p>{entry.text}</p>
-          </div>
-          <div className="entry-timeline">
+          </Col>
+          <Col xs={12} className="entry-timeline">
             <span>{entry.time}</span>
-          </div>
-        </div>
+          </Col>
+        </Row>
       ))}
-    </div>
+    </Container>
   );
+  ;
 };
 
 export default BlogPostCom;
