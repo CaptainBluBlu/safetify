@@ -94,7 +94,6 @@ const ProfileCom = () => {
                     value={email}
                     onChange={handleEmailChange} />
             </div>
-            <button onClick={handleUpdate}>Update</button>
 
         </div>
     );
