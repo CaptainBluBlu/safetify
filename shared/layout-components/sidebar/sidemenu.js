@@ -25,7 +25,7 @@ export const MENUITEMS = [
         type: "link",
         active: false,
         selected: false,
-        title: "Blog Post",
+        title: "Journaling",
       },
       // create for emergency housing with home icon
       {
@@ -43,7 +43,7 @@ export const MENUITEMS = [
         type: "link",
         active: false,
         selected: false,
-        title: "File Report",
+        title: "Legal Report",
       },
       //create for chat with chat icon
       {

@@ -13,7 +13,7 @@ const BulletinBoard = ({ blogPost }) => {
           />
           <Card.Body>
             <Card.Title>{article.fields.title}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Subtitle className="mb-2 text-muted mt-2">
               {article.fields.author} |{" "}
               {new Date(article.fields.uploadDate).toLocaleDateString("en-US")}
             </Card.Subtitle>
