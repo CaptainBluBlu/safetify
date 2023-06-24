@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 
 const ProfileCom = () => {
     const [profilePicture, setProfilePicture] = useState('');
@@ -39,63 +40,75 @@ const ProfileCom = () => {
 
 
     return (
-
         <div>
             <h1>My Account</h1>
 
-            <div>
-                <label>Edit your profile picture</label>
-                <input
-                    type="text"
-                    value={profilePicture}
-                    onChange={handleProfilePictureChange} />
-            </div>
-            <div>
-                <label>Enter your phone no.</label>
-                <input
-                    type="text"
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange} />
-            </div>
-            <div>
-                <label>Full Name</label>
-                <input
-                    type="text"
-                    value={fullName}
-                    onChange={handleFullNameChange} />
-            </div>
-            <div>
-                <label>Select District:</label>
-                <select value={district} onChange={handleDistrictChange}>
-                    <option value="">Select</option>
-                    <option value="District 1">District 1</option>
-                    <option value="District 2">District 2</option>
-                    <option value="District 3">District 3</option>
-                    {/* Add more districts as needed (since it's a drop down menu) */}
-                </select>
-            </div>
-            <div>
-                <label>Age</label>
-                <input
-                    type="text"
-                    value={age}
-                    onChange={handleAgeChange} />
-            </div>
-            <div>
-                <label>Address</label>
-                <input
-                    type="text"
-                    value={address}
-                    onChange={handleAddressChange} />
-            </div>
-            <div>
-                <label>Email Address</label>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={handleEmailChange} />
-            </div>
+            <Form>
+                <FormGroup>
+                    <FormLabel>Edit your profile picture</FormLabel>
+                    <FormControl
+                        type="text"
+                        value={profilePicture}
+                        onChange={handleProfilePictureChange}
+                    />
+                </FormGroup>
 
+                <FormGroup>
+                    <FormLabel>Enter your phone no.</FormLabel>
+                    <FormControl
+                        type="text"
+                        value={phoneNumber}
+                        onChange={handlePhoneNumberChange}
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl
+                        type="text"
+                        value={fullName}
+                        onChange={handleFullNameChange}
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <FormLabel>Select District:</FormLabel>
+                    <Form.Control as="select" value={district} onChange={handleDistrictChange}>
+                        <option value="">Select</option>
+                        <option value="District 1">District 1</option>
+                        <option value="District 2">District 2</option>
+                        <option value="District 3">District 3</option>
+                        {/* Add more districts as needed (since it's a drop down menu) */}
+                    </Form.Control>
+                </FormGroup>
+
+                <FormGroup>
+                    <FormLabel>Age</FormLabel>
+                    <FormControl
+                        type="text"
+                        value={age}
+                        onChange={handleAgeChange}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <FormLabel>Address</FormLabel>
+                    <FormControl
+                        type="text"
+                        value={address}
+                        onChange={handleAddressChange}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <FormLabel>Email Address</FormLabel>
+                    <FormControl
+                        type="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                </FormGroup>
+
+                <Button type="submit">Update</Button>
+            </Form>
         </div>
     );
 }
