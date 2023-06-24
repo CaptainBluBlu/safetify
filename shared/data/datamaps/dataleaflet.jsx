@@ -21,7 +21,7 @@ export function Basic() {
 
 export function Circledata() {
   const redOptions = { color: "red" };
-  const center = [51.51, -0.12];
+  const center = [3.07166638, 101.587997648];
   return (
     <div>
     <MapContainer center={center} zoom={13} scrollWheelZoom={false} className="ht-300" id="leaflet2" style={{ height: "300px" }}>
@@ -30,12 +30,12 @@ export function Circledata() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <CircleMarker
-        center={[51.51, -0.12]}
+        center={[3.07166638, 101.587997648]}
         pathOptions={redOptions}
         radius={20}
       >
 
-        <Popup >Popup in CircleMarker</Popup>
+        <Popup >Your Current Location</Popup>
      
       </CircleMarker>
     </MapContainer>

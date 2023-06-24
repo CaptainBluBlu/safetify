@@ -2,12 +2,15 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Seo from '@/shared/layout-components/seo/seo';
-const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), {ssr: false,});
+
+
+const Lefletmap = dynamic(() => import("@/shared/data/datamaps/lefletmap"), {ssr: false,});
+
 const EmergencyHousing = () => {
     return (
         <div>
             <Seo title="Emergency Housing"/>
-            <Dashboard/>
+            <Lefletmap/>
         </div>
     )
     }
