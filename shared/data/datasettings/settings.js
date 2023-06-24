@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 const countryOptions = [
   'Malaysia',
@@ -69,124 +70,99 @@ const SettingsCom = () => {
   };
 
   return (
+    <Form>
+      {/* Personal Information */}
+      <h2>Personal Information</h2>
+      <Form.Group controlId="firstName">
+        <Form.Label>First Name</Form.Label>
+        <Form.Control type="text" placeholder="First Name" />
+      </Form.Group>
 
-    <div>
+      <Form.Group controlId="lastName">
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control type="text" placeholder="Last Name" />
+      </Form.Group>
 
-      {/* Personal Info */}
-      <h2>Personal Info</h2>
-
-      <label>First Name</label>
-      <input
-        type="text"
-        value={FirstName}
-        onChange={handleFirstNameChange}
-      />
-
-      <label>Last Name</label>
-      <input
-        type="text"
-        value={LastName}
-        onChange={handleLastNameChange}
-      />
-
-      <form>
-        <label htmlFor="Country">Country</label>
-        <select
-          id="Country"
-          value={Country}
-          onChange={handleCountryChange}
-        >
+      <Form.Group controlId="country">
+        <Form.Label>Country</Form.Label>
+        <Form.Control as="select" defaultValue="">
           <option value="">Country</option>
-          {countryOptions.map((Country) => (
-            <option
-              key={Country}
-              value={Country}>
-              {Country}
-            </option>
-          ))}
-        </select>
-      </form>
+          {/* Add your country options here */}
+        </Form.Control>
+      </Form.Group>
 
       {/* Notification Settings */}
       <h2>Notifications</h2>
 
       <h3>Weekly Reports</h3>
-      <label htmlFor="WeeklyReportsToggle">
-        <input
-          id="WeeklyReportsToggle"
-          type="toggleSwitch"
-          checked={WeeklyReports}
-          onChange={handleToggle}
-        />
-        {WeeklyReports ? 'Enabled' : 'Disabled'}
-      </label>
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       <h3>News</h3>
-      <label htmlFor="NewsToggle">
-        <input
-          id="NewsToggle"
-          type="toggleSwitch"
-          checked={News}
-          onChange={handleToggle}
-        />
-        {WeeklyReports ? 'Enabled' : 'Disabled'}
-      </label>
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       <h3>Notifications</h3>
-      <label htmlFor="NotificationsToggle">
-        <input
-          id="Notifications Toggle"
-          type="toggleSwitch"
-          checked={Notification}
-          onChange={handleToggle}
-        />
-        {Notification ? 'Enabled' : 'Disabled'}
-      </label>
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       {/* Permissions Settings */}
-      <h1>Permissions</h1>
+      <h2>Permissions</h2>
 
       <h3>Allow to send to police</h3>
-      <label PoliceDataSharing htmlFor="toggleSwitch">
-        <input
-          id="toggleSwitch"
-          type="toggleSwitch"
-          checked={PoliceDataSharing}
-          onChange={handleToggle}
-        />
-        {PoliceDataSharing ? 'Enabled' : 'Disabled'}
-      </label>
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       <h3>Allow to send to emergency contacts</h3>
-      <label EmergencyContactsDataSharing htmlFor="toggleSwitch">
-        <input
-          id="toggleSwitch"
-          type="toggleSwitch"
-          checked={EmergencyContactsDataSharing}
-          onChange={handleToggle}
-        />
-        {EmergencyContactsDataSharing ? 'Enabled' : 'Disabled'}
-      </label>
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       <h3>Allow to send to Women's Aid Organization</h3>
-      <label WAODataSharing htmlFor="toggleSwitch">
-        <input
-          id="toggleSwitch"
-          type="toggleSwitch"
-          checked={WAODataSharing}
-          onChange={handleToggle}
-        />
-        {WAODataSharing ? 'Enabled' : 'Disabled'}
-      </label>
-
+      <ToggleButtonGroup type="checkbox" defaultValue={false}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
 
       {/* Emergency Contact Information */}
       <h2>Emergency Contact Information</h2>
-      <input
-        type="text"
-        value={PhoneNumber}
-        onChange={handlePhoneNumberChange}
-      />
+      <Form.Group controlId="phoneNumber">
+        <Form.Label>Phone Number</Form.Label>
+        <Form.Control type="text" placeholder="Phone Number" />
+      </Form.Group>
 
       {/* Verification Settings */}
       <h2>Verification</h2>
@@ -194,22 +170,16 @@ const SettingsCom = () => {
       <h3>Identification Card</h3>
 
       <h3>ID Number</h3>
-      <input
-        type="text"
-        value={IDNumber}
-        onChange={handleIDNumberChange}
-      />
+      <Form.Group controlId="idNumber">
+        <Form.Control type="text" placeholder="ID Number" />
+      </Form.Group>
 
       <h3>Date of Birth</h3>
-      <input
-        type="text"
-        value={DateofBirth}
-        onChange={handleDateofBirthChange}
-      />
-
-    </div>
-
+      <Form.Group controlId="dateOfBirth">
+        <Form.Control type="text" placeholder="Date of Birth" />
+      </Form.Group>
+    </Form>
   );
-};
+}
 
 export default SettingsCom;
