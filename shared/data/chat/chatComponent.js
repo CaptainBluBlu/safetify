@@ -10,6 +10,7 @@ import {
   Form,
   Button,
   Container,
+  ListGroup,
 } from "react-bootstrap";
 import ChatBubble from "./ChatBubble.js";
 
@@ -39,32 +40,97 @@ const ChatPage = () => {
     },
   ];
 
+  const chats = [
+    {
+      id: 1,
+      name: "John the Therapist",
+      lastMessage: "Hello, how are you?",
+      timestamp: "10:00 AM",
+    },
+    {
+      id: 2,
+      name: "Jane the Lawyer",
+      lastMessage: "I'm good, thanks! How about you?",
+      timestamp: "10:01 AM",
+    },
+    {
+      id: 3,
+      name: "Bob the builder",
+      lastMessage: "I'm doing great!",
+      timestamp: "10:02 AM",
+    },
+    {
+      id: 4,
+      name: "Joe the biddet",
+      lastMessage: "I'm doing great!",
+      timestamp: "10:02 AM",
+    },
+    {
+      id: 5,
+      name: "Jack the jill",
+      lastMessage: "I'm doing great!",
+      timestamp: "10:02 AM",
+    },
+    {
+      id: 6,
+      name: "Jill the pill",
+      lastMessage: "I'm doing great!",
+      timestamp: "10:02 AM",
+    },
+    {
+      id: 7,
+      name: "Jim the gym bro",
+      lastMessage: "I'm doing great!",
+      timestamp: "10:02 AM",
+    },
+  ];
+
   return (
     <div>
       <PageHeader titles="Chat" active="Chat" items={["Home"]} />
       {/* The Chat */}
       {/* If its mobile view it needs to be different */}
-
       <Row>
         <Col sm={12} md={4} className="chat-sidebar">
           <Card>
-            <Card.Header>
-              <Card.Title as="h4">Chats</Card.Title>
-            </Card.Header>
             <Card.Body>
-              <ul className="member-list">
-                <li>John</li>
-                <li>Jane</li>
-                <li>Bob</li>
-                <li>Joe</li>
-                <li>Jack</li>
-                <li>Jill</li>
-                <li>Jim</li>
-              </ul>
+              <ListGroup>
+                {chats.map((chat) => (
+                  <ListGroup.Item key={chat.id}>
+                    <Row>
+                      <Col xs={2} className="text-center">
+                        <img
+                          src="https://via.placeholder.com/50"
+                          className="rounded-circle"
+                          alt="..."
+                        />
+                      </Col>
+                      <Col xs={10}>
+                        <Row>
+                          <Col xs={8}>
+                            <h5 className="mb-0">{chat.name}</h5>
+                            <p className="mb-0">{chat.lastMessage}</p>
+                          </Col>
+                          <Col xs={4} className="text-right">
+                            <p className="mb-0">{chat.timestamp}</p>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
             </Card.Body>
           </Card>
         </Col>
-        <Col sm={12} md={8}>
+        <Col
+          sm={12}
+          md={8}
+          style={{
+            height: "70vh",
+            position: "relative",
+          }}
+        >
           <div className="chat-container">
             <div className="chat-messages">
               {messages.map((message) => (
@@ -77,7 +143,10 @@ const ChatPage = () => {
                 />
               ))}
             </div>
-            <Form className="chat-input">
+            <Form
+              className="chat-input"
+              style={{ position: "absolute", bottom: "10", width: "100%" }}
+            >
               <Form.Group controlId="messageForm" className="mb-0">
                 <Row className="align-items-center">
                   <Col xs={10}>
