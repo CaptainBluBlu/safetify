@@ -303,6 +303,22 @@ const Header = ({ local_varaiable, AddToCart }) => {
                       </Dropdown.Menu>
                     </Dropdown>
 
+                    {/* Dark Mode */}
+
+                    <div className="dropdown">
+                      <Nav.Link
+                        className="nav-link icon theme-layout nav-link-bg layout-setting"
+                        onClick={() => DarkMode()}
+                      >
+                        <span className="dark-layout">
+                          <i className="fe fe-moon"></i>
+                        </span>
+                        <span className="light-layout">
+                          <i className="fe fe-sun"></i>
+                        </span>
+                      </Nav.Link>
+                    </div>
+
                     {/* FullScreen button */}
 
                     <div className="dropdown">
