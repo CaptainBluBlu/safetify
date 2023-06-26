@@ -17,13 +17,18 @@ export async function middleware(req) {
   }
 
   // if user is not signed in and the current path is not / redirect the user to /
-  if (!user && req.nextUrl.pathname !== "/") {
-    return NextResponse.redirect(new URL("/", req.url));
+  if (!user && req.nextUrl.pathname !== "/components/authentication/login/") {
+    return NextResponse.redirect(
+      new URL("/components/authentication/login/", req.url)
+    );
   }
 
   return res;
 }
 
 export const config = {
-  matcher: ["/", "/components/dashboard/dashboard"],
+  matcher: [
+    "/components/authentication/login/",
+    "/components/dashboard/dashboard",
+  ],
 };
