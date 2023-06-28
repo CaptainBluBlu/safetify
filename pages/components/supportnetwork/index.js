@@ -4,26 +4,26 @@ import React from "react";
 
 import { prisma } from "@/db";
 
-export async function getServerSideProps() {
-  const groupChat = await prisma.chatRooms.findMany();
+// export async function getServerSideProps() {
+//   const groupChat = await prisma.chatRooms.findMany();
 
-  const supportPost = await prisma.supportPost.findMany({
-    include: {
-      author: {
-        select: {
-          name: true,
-        },
-      },
-    },
-  });
+//   const supportPost = await prisma.supportPost.findMany({
+//     include: {
+//       author: {
+//         select: {
+//           name: true,
+//         },
+//       },
+//     },
+//   });
 
-  return {
-    props: {
-      groupChat: JSON.parse(JSON.stringify(groupChat)),
-      supportPost: JSON.parse(JSON.stringify(supportPost)),
-    },
-  };
-}
+//   return {
+//     props: {
+//       groupChat: JSON.parse(JSON.stringify(groupChat)),
+//       supportPost: JSON.parse(JSON.stringify(supportPost)),
+//     },
+//   };
+// }
 
 const SupportNetwork = dynamic(
   () => import("../../../shared/data/supportnetwork/supportNetwork.js"),

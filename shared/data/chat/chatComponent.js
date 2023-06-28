@@ -1,17 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import PageHeader from "../../layout-components/pageheader/PageHeader";
-import {
-  Card,
-  Col,
-  OverlayTrigger,
-  ProgressBar,
-  Row,
-  Form,
-  Button,
-  Container,
-  ListGroup,
-} from "react-bootstrap";
+import { Card, Col, Row, Form, Button, ListGroup } from "react-bootstrap";
 import ChatBubble from "./ChatBubble.js";
 
 const ChatPage = () => {
@@ -90,42 +80,11 @@ const ChatPage = () => {
       <PageHeader titles="Chat" active="Chat" items={["Home"]} />
       {/* The Chat */}
       {/* If its mobile view it needs to be different */}
+      <h2 style={{ textAlign: "center" }}>Community Service Officer</h2>
       <Row>
-        <Col sm={12} md={4} className="chat-sidebar">
-          <Card>
-            <Card.Body>
-              <ListGroup>
-                {chats.map((chat) => (
-                  <ListGroup.Item key={chat.id}>
-                    <Row>
-                      <Col xs={2} className="text-center">
-                        <img
-                          src="https://via.placeholder.com/50"
-                          className="rounded-circle"
-                          alt="..."
-                        />
-                      </Col>
-                      <Col xs={10}>
-                        <Row>
-                          <Col xs={8}>
-                            <h5 className="mb-0">{chat.name}</h5>
-                            <p className="mb-0">{chat.lastMessage}</p>
-                          </Col>
-                          <Col xs={4} className="text-right">
-                            <p className="mb-0">{chat.timestamp}</p>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
         <Col
           sm={12}
-          md={8}
+          md={12}
           style={{
             height: "70vh",
             position: "relative",

@@ -18,24 +18,11 @@ export const MENUITEMS = [
         selected: false,
         title: "Settings",
       },
-      // create for emergency panic button with alert icon
-      {
-        path: `/components/emergency-panic-button/emergency-panic-button`,
-        icon: "fe fe-alert-triangle",
-        type: "link",
-        active: false,
-        selected: false,
-        title: "Panic Button",
-      },
-      //create for blog postwith document icon
-      {
-        path: `/components/blog/blogpost`,
-        icon: "fe fe-list",
-        type: "link",
-        active: false,
-        selected: false,
-        title: "Journaling",
-      },
+      // Features for WAO
+      // 1. Chat
+      // 2. Add One Stop Crisis Center data
+      // 3. Add Blog post
+      // 4. View panic button data
       // create for emergency housing with home icon
       {
         path: `/components/housing/emergency-housing`,
@@ -52,16 +39,7 @@ export const MENUITEMS = [
         type: "link",
         active: false,
         selected: false,
-        title: "Legal Report",
-      },
-      //create for police report with document icon
-      {
-        path: `/components/report/police-report`,
-        icon: "fe fe-list",
-        type: "link",
-        active: false,
-        selected: false,
-        title: "Police Report",
+        title: "View Legal Report",
       },
       //create for chat with chat icon
       {
@@ -70,7 +48,7 @@ export const MENUITEMS = [
         type: "link",
         active: false,
         selected: false,
-        title: "Chat",
+        title: "View Chats",
       },
       //create for justice board with justice icon
       {
@@ -92,27 +70,4 @@ export const MENUITEMS = [
       },
     ],
   },
-  //   {
-  //     menutitle: "UI KIT",
-  //     Items: [
-  //       {
-  //         title: "Apps",
-  //         icon: "fe fe-slack",
-  //         type: "sub",
-  //         Name: "",
-  //         Names: "",
-  //         active: false,
-  //         selected: false,
-  //         children: [
-  //           {
-  //             path: `/components/apps/widgets`,
-  //             type: "link",
-  //             active: false,
-  //             selected: false,
-  //             title: "Widgets",
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
 ];

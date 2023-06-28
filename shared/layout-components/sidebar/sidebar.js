@@ -113,7 +113,6 @@ const Sidebar = () => {
             if (items.children) {
               items.children.map((submenu) => {
                 submenu.active = false;
-                // console.log(submenu.active = false);
                 submenu.selected = false;
                 if (location.pathname === submenu.path) {
                   items.active = true;
@@ -267,7 +266,6 @@ const Sidebar = () => {
                   <li className="sub-category">
                     <h3>{Item.menutitle}</h3>
                   </li>
-                  {console.log(Item.Items)}
                   {Item.Items.map((menuItem, i) => (
                     <li
                       className={`slide ${

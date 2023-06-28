@@ -4,18 +4,16 @@ import { Col, Tabs, Form, Tab } from "react-bootstrap";
 import { Password } from "../../../shared/data/Authenticatepage/DataAuthentication";
 import Seo from "@/shared/layout-components/seo/seo";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 const Login = () => {
   const supabaseClient = useSupabaseClient(); // initialising supabase client
 
-  const Log = () => {
-    let Rightside = document.querySelector(".mobile-num");
-    Rightside.style.display = "none";
-    let Rightsides = document.querySelector(".login-otp");
-    Rightsides.style.display = "flex";
-  };
+  // const Log = () => {
+  //   let Rightside = document.querySelector(".mobile-num");
+  //   Rightside.style.display = "none";
+  //   let Rightsides = document.querySelector(".login-otp");
+  //   Rightsides.style.display = "flex";
+  // };
 
   // Defining the functions to set the data and to return any error message
   const [err, setError] = useState("");
@@ -24,25 +22,23 @@ const Login = () => {
     password: "1234567890",
   });
 
-  const { email, password } = data;
   const changeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
     setError("");
+
+    console.log(data);
   };
 
-  const Login = (e) => {
-    console.log(data);
-    if (
-      data.email == "adminnextjs@gmail.com" &&
-      data.password == "1234567890"
-    ) {
-      routeChange();
+  const Login = async (e) => {
+    const { user, error } = await supabaseClient.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (error) {
+      setError(error.message);
     } else {
-      setError("The Auction details did not Match");
-      setData({
-        email: "adminnextjs@gmail.com",
-        password: "1234567890",
-      });
+      console.log(user);
     }
   };
 
@@ -53,12 +49,9 @@ const Login = () => {
     async function loadData() {
       const { data } = await supabaseClient.from("test").select("*");
       setData(data);
-
-      // const { data, error } = await supabase.auth.signInWithPassword({
-      //   email: "example@email.com",
-      //   password: "example-password",
-      // });
     }
+
+    loadData();
     // Only run query once user is logged in.
     //if (user) loadData();
   }, []);
@@ -81,7 +74,7 @@ const Login = () => {
       <div className="container-login100">
         <div className="wrap-login100 p-6">
           <form className="login100-form validate-form">
-            <span className="login100-form-title pb-5"> Login</span>
+            <span className="login100-form-title pb-5">Login</span>
 
             <div className="panel panel-primary">
               <div className="tab-menu-heading border-0">
@@ -110,9 +103,11 @@ const Login = () => {
                           className="input100 border-start-0 form-control ms-0"
                           type="email"
                           placeholder="Email"
+                          name="email"
+                          onChange={changeHandler}
                         />
                       </div>
-                      <Password />
+                      <Password onChange={changeHandler} />
                       <div className="text-center pt-4">
                         <p className="mb-0 fs-13">
                           <Link
@@ -127,6 +122,7 @@ const Login = () => {
                         <Link
                           href={`/components/dashboard/dashboard/`}
                           className="login100-form-btn btn-primary"
+                          onClick={Login}
                         >
                           Login
                         </Link>

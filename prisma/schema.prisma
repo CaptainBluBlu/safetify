@@ -162,7 +162,7 @@ model LegalReport {
   comments      String
   abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
   abuseReportID String?      @unique
-
+  isCoverReport Boolean      @default(false)
   // @@schema("public")
 }
 
