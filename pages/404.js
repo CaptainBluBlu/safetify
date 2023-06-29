@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 const NotFoundPage = () => {
   const handleRedirect = () => {
     // Perform any necessary logic to redirect the user to the homepage
-    window.location.href = "/components/dashboard/dashboard/";
+    window.location.href = "/";
   };
 
   return (

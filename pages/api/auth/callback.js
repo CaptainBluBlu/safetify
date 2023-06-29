@@ -9,5 +9,7 @@ const handler = async (req, res) => {
     await supabase.auth.exchangeCodeForSession(String(code));
   }
 
-  res.redirect("/components/dashboard/dashboard");
+  res.redirect("/components/dashboard");
 };
+
+export default handler;

@@ -18,6 +18,8 @@ import { connect } from "react-redux";
 import { shopingData } from "../../data/data-ecommerce/datashoppingcart";
 import { AddToCart } from "../../Redux/action";
 import { useRouter } from "next/router";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 
 //leftsidemenu
 const SideMenuIcon = () => {
@@ -79,6 +81,8 @@ const RightSideBar = () => {
 };
 
 const Header = ({ local_varaiable, AddToCart }) => {
+  const supabase = createClientComponentClient();
+
   let { basePath } = useRouter();
 
   // For CountrySelector Modal
@@ -187,6 +191,13 @@ const Header = ({ local_varaiable, AddToCart }) => {
     }
   });
 
+  const handleSignOut = async () => {
+    "use server";
+    const supabase = createServerActionClient({ cookies });
+    await supabase.auth.signOut();
+    revalidatePath("/");
+  };
+
   return (
     <div>
       <div className="header sticky app-header header1">
@@ -199,10 +210,7 @@ const Header = ({ local_varaiable, AddToCart }) => {
               href="#"
               onClick={() => SideMenuIcon()}
             />
-            <Link
-              className="logo-horizontal "
-              href={`/components/dashboard/dashboard/`}
-            >
+            <Link className="logo-horizontal " href={`/components/dashboard/`}>
               <img
                 src={`${
                   process.env.NODE_ENV === "production" ? basePath : ""
@@ -523,7 +531,10 @@ const Header = ({ local_varaiable, AddToCart }) => {
                           Lockscreen
                         </Dropdown.Item>
                         <Dropdown.Item className="dropdown-item" href={`/`}>
-                          <i className="dropdown-icon fe fe-alert-circle"></i>{" "}
+                          <i
+                            className="dropdown-icon fe fe-alert-circle"
+                            onClick={handleSignOut}
+                          ></i>{" "}
                           Sign out
                         </Dropdown.Item>
                       </Dropdown.Menu>

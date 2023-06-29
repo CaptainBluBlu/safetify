@@ -14,6 +14,8 @@ import {
 } from "react-bootstrap";
 import { MENUITEMS } from "../sidebar/sidemenu";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import { supabase } from "@supabase/auth-ui-shared";
+import { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 const SideMenuIcon = () => {
   //leftsidemenu
@@ -156,6 +158,10 @@ const Header = () => {
       seturl(window.location.origin);
     }
   });
+
+  // defining supabase client
+  const supabaseClient = useSupabaseClient();
+
   return (
     <div>
       <div className="header sticky app-header header1">
@@ -168,10 +174,7 @@ const Header = () => {
               href="#"
               onClick={() => SideMenuIcon()}
             />
-            <Link
-              className="logo-horizontal "
-              href={`/components/dashboard/dashboard/`}
-            >
+            <Link className="logo-horizontal " href={`/components/dashboard/`}>
               <img
                 src={`${
                   process.env.NODE_ENV === "production" ? basePath : ""
@@ -716,7 +719,10 @@ const Header = () => {
                             routeChange();
                           }}
                         >
-                          <i className="dropdown-icon fe fe-alert-circle"></i>{" "}
+                          <i
+                            className="dropdown-icon fe fe-alert-circle"
+                            onClick={handleSignOut}
+                          ></i>{" "}
                           Sign out
                         </Dropdown.Item>
                       </Dropdown.Menu>
