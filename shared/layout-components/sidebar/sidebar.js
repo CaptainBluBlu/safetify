@@ -205,10 +205,7 @@ const Sidebar = () => {
           options={{ suppressScrollX: true, useBothWheelAxes: false }}
         >
           <div className="side-header">
-            <Link
-              className="header-brand1"
-              href={`/components/dashboard/dashboard/`}
-            >
+            <Link className="header-brand1" href={`/components/dashboard/`}>
               <img
                 src={`${
                   process.env.NODE_ENV === "production" ? basePath : ""
