@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ListGroup } from 'react-bootstrap';
+import { Container, Button, ListGroup } from 'react-bootstrap';
 
 const EmergencyPanicButtonCom = () => {
 
@@ -28,15 +28,23 @@ const EmergencyPanicButtonCom = () => {
 
   return (
     <div className="EmergencyPanicButton">
-      <Button onClick={handlePanicButton}>Panic Button</Button>
-      <h2>Your Emergency contacts and nearby police station will receive your information and location.</h2>
-      <ListGroup>
-        {emergencyContacts.map((contact) => (
-          <ListGroup.Item key={contact.phoneNumber}>
-            {contact.name}: {contact.phoneNumber}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <Container style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+
+        <Button onClick={handlePanicButton}>Panic Button</Button>
+        <h2>Your Emergency contacts and nearby police station will receive your information and location.</h2>
+        <ListGroup>
+          {emergencyContacts.map((contact) => (
+            <ListGroup.Item key={contact.phoneNumber}>
+              {contact.name}: {contact.phoneNumber}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Container>
     </div>
   );
 }

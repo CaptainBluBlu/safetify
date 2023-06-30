@@ -99,7 +99,7 @@ const ReportingCaseCom = () => {
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type="text"
-            value={state}
+            value={postalCode}
             onChange={handlePostalCodeChange}
           />
         </Form.Group>

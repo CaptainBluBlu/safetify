@@ -69,19 +69,21 @@ const BlogPostCom = () => {
 
         <Row key={entry.id} className="entry">
 
-          <Col xs={12} className="entry-timeline">
+          <Col xs={12} md={8} className="entry-timeline">
 
-            <h2>{entry.header}  {entry.time}</h2>
+            <h2><img src="../../../assets/images/png/1.png" className="img-fluid" alt="img" />{entry.header}  {entry.time}</h2>
 
-          </Col>
+          </ Col>
+
 
           <Col xs={12} md={8} className="entry-content">
 
             <p>{entry.text}</p>
 
-          </Col>
+          </ Col>
 
-        </Row>
+
+        </ Row>
 
       ))}
 

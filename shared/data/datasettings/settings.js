@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Card, Form, Table, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 const countryOptions = [
   'Malaysia',
@@ -72,24 +72,27 @@ const SettingsCom = () => {
   return (
     <Form>
       {/* Personal Information */}
-      <h2>Personal Information</h2>
-      <Form.Group controlId="firstName">
-        <Form.Label>First Name</Form.Label>
-        <Form.Control type="text" placeholder="First Name" />
-      </Form.Group>
+      <h2 className="">Personal Information</h2>
+      <Card.Body>
 
-      <Form.Group controlId="lastName">
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control type="text" placeholder="Last Name" />
-      </Form.Group>
+        <Form.Group controlId="firstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control type="text" placeholder="First Name" />
+        </Form.Group>
 
-      <Form.Group controlId="country">
-        <Form.Label>Country</Form.Label>
-        <Form.Control as="select" defaultValue="">
-          <option value="">Country</option>
-          {/* Add your country options here */}
-        </Form.Control>
-      </Form.Group>
+        <Form.Group controlId="lastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control type="text" placeholder="Last Name" />
+        </Form.Group>
+
+        <Form.Group controlId="country">
+          <Form.Label>Country</Form.Label>
+          <Form.Control as="select" defaultValue="">
+            <option value="">Country</option>
+          </Form.Control>
+        </Form.Group>
+
+      </Card.Body>
 
       {/* Notification Settings */}
       <h2>Notifications</h2>
@@ -178,7 +181,7 @@ const SettingsCom = () => {
       <Form.Group controlId="dateOfBirth">
         <Form.Control type="text" placeholder="Date of Birth" />
       </Form.Group>
-    </Form>
+    </Form >
   );
 }
 
