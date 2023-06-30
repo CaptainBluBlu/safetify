@@ -22,39 +22,41 @@ enum UserRole {
   // @@schema("public")
 }
 
+enum Gender {
+  MALE
+  FEMALE
+}
+
 model User {
-  id               String             @id @default(cuid()) @map(name: "UserId")
-  authUserId       String?            @unique
-  name             String
-  email            String             @unique
+  id         String @id @default(cuid()) @map(name: "UserId")
+  authUserId String @unique
+  name       String
+  username   String
+  gender     Gender
+  icNumber   String
+  email      String @unique
+
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   lastLogin        DateTime?
   phoneNumber      String?
   emergencyContact EmergencyContact[]
   journalPost      Journal[]          @relation("author")
+  userTypes        UserRole           @default(USER)
+  PanicButton      PanicButton[]
+  lawyerId         String?            @unique
+  Lawyer           User?              @relation("lawyer", fields: [lawyerId], references: [id], onDelete: SetNull)
+  therapistId      String?            @unique
+  Therapist        User?              @relation("therapist", fields: [therapistId], references: [id], onDelete: SetNull)
+  ChatRooms        ChatRooms[]        @relation("ChatRoomParticipants")
+  chatRoomsId      String?
+  clientLawyer     User[]             @relation("lawyer")
+  clientTherapist  User[]             @relation("therapist")
+  supportPost      SupportPost[]
+  Message          Message[]
+  ChatRoomOwner    ChatRooms[]        @relation("ChatRoomOwner")
 
-  userTypes   UserRole      @default(USER)
-  PanicButton PanicButton[]
-
-  lawyerId String? @unique
-  Lawyer   User?   @relation("lawyer", fields: [lawyerId], references: [id], onDelete: SetNull)
-
-  therapistId String? @unique
-  Therapist   User?   @relation("therapist", fields: [therapistId], references: [id], onDelete: SetNull)
-
-  ChatRooms   ChatRooms[] @relation("ChatRoomParticipants")
-  chatRoomsId String?
-
-  clientLawyer    User[] @relation("lawyer")
-  clientTherapist User[] @relation("therapist")
-
-  supportPost   SupportPost[]
-  Message       Message[]
-  ChatRoomOwner ChatRooms[]   @relation("ChatRoomOwner")
-  //@@schema("publi")
-
-  @@index([email])
+  @@index([email, username])
 }
 
 model SupportPost {
