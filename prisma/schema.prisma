@@ -52,9 +52,10 @@ model User {
   chatRoomsId      String?
   clientLawyer     User[]             @relation("lawyer")
   clientTherapist  User[]             @relation("therapist")
-  supportPost      SupportPost[]
+  SupportPost      SupportPost[]
   Message          Message[]
   ChatRoomOwner    ChatRooms[]        @relation("ChatRoomOwner")
+  AbuseReport      AbuseReport[]
 
   @@index([email, username])
 }
@@ -67,8 +68,6 @@ model SupportPost {
   author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  // @@schema("public")
 }
 
 model EmergencyContact {
@@ -82,8 +81,6 @@ model EmergencyContact {
   //foreign key to user id
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  // @@schema("public")
 }
 
 model EmergencyHousing {
@@ -99,8 +96,6 @@ model EmergencyHousing {
   capacity         Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-
-  // @@schema("public")
 }
 
 enum Relationship {
@@ -108,8 +103,6 @@ enum Relationship {
   FRIEND
   PARTNER
   OTHER
-
-  // @@schema("public")
 }
 
 enum AbuseType {
@@ -118,8 +111,6 @@ enum AbuseType {
   FINANCIAL
   SEXUAL
   OTHER
-
-  // @@schema("public")
 }
 
 enum Ethnicity {
@@ -127,13 +118,13 @@ enum Ethnicity {
   CHINESE
   INDIAN
   OTHER
-
-  // @@schema("public")
 }
 
 model AbuseReport {
   id                          String       @id @default(cuid())
   name                        String
+  reportedUserId              String
+  reportedUser                User         @relation(fields: [reportedUserId], references: [id])
   age                         Int
   relationshipWithPrepetrator Relationship
   typeOfAbuse                 AbuseType
@@ -142,21 +133,18 @@ model AbuseReport {
   needTranslator              Boolean
   lastDateOfAbuse             DateTime
   LegalReport                 LegalReport?
-
-  // @@schema("public")
 }
 
 model LegalReport {
-  id            String       @id @default(cuid())
-  title         String
-  statement     String
-  address       String
-  city          String
-  state         String
-  zipCode       String
-  mobileNumber  String
-  //evidence   Evidence? @relation("", fields: [evidenceID], references: [id])
-  //evidenceID  String @unique
+  id           String @id @default(cuid())
+  title        String
+  statement    String
+  address      String
+  city         String
+  state        String
+  zipCode      String
+  mobileNumber String
+
   hasWitness    Boolean
   reportingFor  String?
   dateRequested DateTime
@@ -165,21 +153,16 @@ model LegalReport {
   abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
   abuseReportID String?      @unique
   isCoverReport Boolean      @default(false)
-  // @@schema("public")
+  evidences     Evidence[]
 }
 
 model Evidence {
-  id        String   @id @default(cuid())
-  //legalReport LegalReport? @relation("", fields: [legalReportID], references: [id])
-  //legalReportID String @unique
-  //evidenceType EvidenceType? @relation("", fields: [evidenceTypeID], references: [id])
-  //evidenceTypeID String @unique
-  files     Json
-  title     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // @@schema("public")
+  id            String      @id @default(cuid())
+  fileURL       String[]
+  legalReport   LegalReport @relation(fields: [legalReportID], references: [id])
+  legalReportID String      @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 model Journal {
@@ -191,9 +174,6 @@ model Journal {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   comments    String
-  //repliedById String? 
-  // create a new attributed called "replied by" which links to the user table, figure out how to do this later
-  //repliedBy   User?     @relation("repliedBy", fields: [repliedById], references: [id])
   repliedById String?   @map("replied_by_id")
   repliedAt   DateTime?
   private     Boolean   @default(true)
