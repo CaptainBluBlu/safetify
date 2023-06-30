@@ -19,7 +19,7 @@ console.log(tempUser);
       name: tempUser.fullName,
       username: tempUser.username,
       icNumber: tempUser.ic,
-      gender: tempUser.gender == "0" ? Gender.MALE : Gender.FEMALE,
+      gender: tempUser.gender == "0" ? "MALE" : "FEMALE",
       userTypes: UserRole.USER,
       // TODO: Add Adresss
     },
