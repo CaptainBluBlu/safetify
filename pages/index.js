@@ -11,8 +11,8 @@ const Login = () => {
   // Defining the functions to set the data and to return any error message
   const [err, setError] = useState("");
   const [data, setData] = useState({
-    email: "adminnextjs@gmail.com",
-    password: "1234567890",
+    email: "",
+    password: "",
   });
 
   const changeHandler = (e) => {
@@ -21,6 +21,11 @@ const Login = () => {
   };
 
   const Login = async (e) => {
+    if (data.email == null || data.password == null) {
+      alert("Something went wrong please refresh the page and try again");
+      return;
+    }
+
     const { user, error } = await supabaseClient.auth.signInWithPassword({
       email: data.email,
       password: data.password,
@@ -28,6 +33,7 @@ const Login = () => {
 
     if (error) {
       setError(error.message);
+      alert(error.message);
     }
   };
 
@@ -127,7 +133,7 @@ const Login = () => {
                         <p className="text-dark mb-0 fs-13 mx-3">
                           Not a member?
                           <Link
-                            href={`/components/pages/register`}
+                            href={`/register`}
                             className="text-primary ms-1"
                           >
                             Sign Up
