@@ -1,5 +1,6 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+import { Gender, Prisma, PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
+
 
 
 async function main() {
@@ -9,6 +10,10 @@ async function main() {
     create: {
       email: 'alice@prisma.io',
       name: 'Alice',
+      gender: Gender.FEMALE,
+      icNumber: '123456789012',
+      authUserId: 'f2b51319-a7b5-48e6-8c36-34458a3e08f6',
+      username: 'alice',
       supportPost: {
         create: {
           title: 'Check out Prisma with Next.js',
@@ -16,6 +21,7 @@ async function main() {
         },
       },
     },
+    
   })
 
   const bob = await prisma.user.upsert({
@@ -25,6 +31,10 @@ async function main() {
       id: '0d361dd4-111f-11ee-be56-0242ac120002',
       email: 'bob@prisma.io',
       name: 'Bob',
+      gender: Gender.MALE,
+      icNumber: '123456789012',
+      authUserId: '8474a2cd-603b-4f44-ac69-2d1950a65a61',
+      username: 'bob',
       supportPost: {
         create: [
           {
