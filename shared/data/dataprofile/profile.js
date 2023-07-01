@@ -110,6 +110,8 @@ const ProfileCom = () => {
                     />
                 </FormGroup>
 
+                <h2></h2>
+
                 <Container style={{
                     flex: 1,
                     flexDirection: 'row',

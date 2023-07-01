@@ -36,7 +36,8 @@ const EmergencyPanicButtonCom = () => {
       }}>
 
         <Button onClick={handlePanicButton}>Panic Button</Button>
-        <h2>Your Emergency contacts and nearby police station will receive your information and location.</h2>
+        <h2></h2>
+        <h6>Your Emergency contacts and nearby police station will receive your information and location.</h6>
         <ListGroup>
           {emergencyContacts.map((contact) => (
             <ListGroup.Item key={contact.phoneNumber}>

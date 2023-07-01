@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Form, Table, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Button, Container, Form, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 const countryOptions = [
   'Malaysia',
@@ -35,6 +35,10 @@ const SettingsCom = () => {
   const [IDNumber, setIDNumber] = useState('');
   const [DateofBirth, setDateofBirth] = useState('');
 
+  // Verification Settings state
+  const [LogOut, setLogOut] = useState([]);
+  const [DeleteAccount, setDeleteAccount] = useState([]);
+
   // Event handlers for updating the state fields
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -69,35 +73,112 @@ const SettingsCom = () => {
     setDateofBirth(event.target.value);
   };
 
+  const handleSave = () => {
+    fetch('/save', {
+      method: 'SAVE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        location: { latitude: 123, longitude: 456 }, // Replace with actual location data (from the backend)
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message); // Response from the server
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+  const handleLogOut = () => {
+    fetch('/log', {
+      method: 'LOG',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        location: { latitude: 123, longitude: 456 }, // Replace with actual location data (from the backend)
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message); // Response from the server
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+  const handleDeleteAccount = () => {
+    fetch('/acc', {
+      method: 'ACC',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        location: { latitude: 123, longitude: 456 }, // Replace with actual location data (from the backend)
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message); // Response from the server
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+
   return (
     <Form>
+      <h2></h2>
+
       {/* Personal Information */}
-      <h2 className="">Personal Information</h2>
-      <Card.Body>
+      <h2>Personal Information</h2>
 
-        <Form.Group controlId="firstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="First Name" />
-        </Form.Group>
+      <h2></h2>
 
-        <Form.Group controlId="lastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Last Name" />
-        </Form.Group>
+      <Form.Group controlId="firstName">
+        <h6>First Name</h6>
+        <Form.Control type="text" placeholder="First Name" />
+      </Form.Group>
 
-        <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
-          <Form.Control as="select" defaultValue="">
-            <option value="">Country</option>
-          </Form.Control>
-        </Form.Group>
+      <h2></h2>
 
-      </Card.Body>
+      <Form.Group controlId="lastName">
+        <h6>Last Name</h6>
+        <Form.Control type="text" placeholder="Last Name" />
+      </Form.Group>
+
+      <h2></h2>
+
+      <Form.Group controlId="country">
+        <h6>Country</h6>
+        <Form.Control as="select" defaultValue="">
+          <option value="">Country</option>
+        </Form.Control>
+      </Form.Group>
+
+      <h2></h2>
 
       {/* Notification Settings */}
       <h2>Notifications</h2>
 
-      <h3>Weekly Reports</h3>
+      <h6>Weekly Reports</h6>
+      <ToggleButtonGroup type="checkbox" defaultValue={true}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
+
+      <h2></h2>
+
+      <h6>News</h6>
       <ToggleButtonGroup type="checkbox" defaultValue={false}>
         <ToggleButton variant="outline-primary" value={true}>
           Enabled
@@ -107,7 +188,9 @@ const SettingsCom = () => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <h3>News</h3>
+      <h2></h2>
+
+      <h6>Notifications</h6>
       <ToggleButtonGroup type="checkbox" defaultValue={false}>
         <ToggleButton variant="outline-primary" value={true}>
           Enabled
@@ -117,20 +200,24 @@ const SettingsCom = () => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <h3>Notifications</h3>
-      <ToggleButtonGroup type="checkbox" defaultValue={false}>
-        <ToggleButton variant="outline-primary" value={true}>
-          Enabled
-        </ToggleButton>
-        <ToggleButton variant="outline-primary" value={false}>
-          Disabled
-        </ToggleButton>
-      </ToggleButtonGroup>
+      <h2></h2>
 
       {/* Permissions Settings */}
       <h2>Permissions</h2>
 
-      <h3>Allow to send to police</h3>
+      <h6>Allow to send to police</h6>
+      <ToggleButtonGroup type="checkbox" defaultValue={true}>
+        <ToggleButton variant="outline-primary" value={true}>
+          Enabled
+        </ToggleButton>
+        <ToggleButton variant="outline-primary" value={false}>
+          Disabled
+        </ToggleButton>
+      </ToggleButtonGroup>
+
+      <h2></h2>
+
+      <h6>Allow to send to emergency contacts</h6>
       <ToggleButtonGroup type="checkbox" defaultValue={false}>
         <ToggleButton variant="outline-primary" value={true}>
           Enabled
@@ -140,7 +227,9 @@ const SettingsCom = () => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <h3>Allow to send to emergency contacts</h3>
+      <h2></h2>
+
+      <h6>Allow to send to Women's Aid Organization</h6>
       <ToggleButtonGroup type="checkbox" defaultValue={false}>
         <ToggleButton variant="outline-primary" value={true}>
           Enabled
@@ -150,15 +239,7 @@ const SettingsCom = () => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <h3>Allow to send to Women's Aid Organization</h3>
-      <ToggleButtonGroup type="checkbox" defaultValue={false}>
-        <ToggleButton variant="outline-primary" value={true}>
-          Enabled
-        </ToggleButton>
-        <ToggleButton variant="outline-primary" value={false}>
-          Disabled
-        </ToggleButton>
-      </ToggleButtonGroup>
+      <h2></h2>
 
       {/* Emergency Contact Information */}
       <h2>Emergency Contact Information</h2>
@@ -167,20 +248,48 @@ const SettingsCom = () => {
         <Form.Control type="text" placeholder="Phone Number" />
       </Form.Group>
 
+      <h2></h2>
+
       {/* Verification Settings */}
       <h2>Verification</h2>
 
-      <h3>Identification Card</h3>
+      <h2></h2>
 
-      <h3>ID Number</h3>
+      <h4>Identification Card</h4>
+
+      <h2></h2>
+
+      <h6>ID Number</h6>
       <Form.Group controlId="idNumber">
         <Form.Control type="text" placeholder="ID Number" />
       </Form.Group>
 
-      <h3>Date of Birth</h3>
+      <h2></h2>
+
+      <h6>Date of Birth</h6>
       <Form.Group controlId="dateOfBirth">
         <Form.Control type="text" placeholder="Date of Birth" />
       </Form.Group>
+
+      <h2></h2>
+
+      <Container style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <Button onClick={handleSave}>Save</Button>
+
+        <h2></h2>
+
+        <Button onClick={handleLogOut}>Log Out</Button>
+
+        <h2></h2>
+
+        <Button onClick={handleDeleteAccount}>Delete Account</Button>
+
+      </Container>
     </Form >
   );
 }

@@ -113,6 +113,7 @@ const ReportingCaseCom = () => {
           />
         </Form.Group>
 
+        <h2></h2>
 
         <h2>Upload Evidence</h2>
         <Form.Group controlId="evidence">
