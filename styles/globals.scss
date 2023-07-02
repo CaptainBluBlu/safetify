@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=block');
 @import "../public/assets/css/style.css";
 // custom css
@@ -41,6 +40,15 @@
 
 
 
+.circle-button {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .splitbtn-pill {
     padding-top: 0;
@@ -138,7 +146,7 @@
 }
 
 .MuiDropzoneArea-icon {
-    color: $primary-1  !important;
+    color: $primary-1 !important;
 }
 
 .MuiDropzoneArea-textContainer .MuiTypography-h5 {
@@ -199,7 +207,7 @@
 }
 
 .rmsc.multi-select .MuiDropzoneArea-textContainer {
-    border: 1px solid $border  !important;
+    border: 1px solid $border !important;
 }
 
 ol.progtrckr li.progtrckr-doing {
@@ -220,7 +228,7 @@ ol.progtrckr li.progtrckr-doing {
 
 .multi-step {
     ol.progtrckr li.progtrckr-todo {
-        border-color: $border  !important;
+        border-color: $border !important;
     }
 
     ol.progtrckr li.progtrckr-todo:before {
@@ -296,7 +304,7 @@ ol.progtrckr li.progtrckr-doing {
 }
 
 .item2-gl-menu .nav-item .active {
-    color: $primary-1  !important;
+    color: $primary-1 !important;
 }
 
 .item2-gl-menu .nav-item a {
@@ -397,7 +405,7 @@ ol.progtrckr li.progtrckr-doing {
 
 .nav-link:focus,
 .nav-link:hover {
-    color: $primary-1  !important;
+    color: $primary-1 !important;
 }
 
 .collapse:not(.show) {
@@ -467,8 +475,8 @@ ol.progtrckr li.progtrckr-doing {
 
 .right_side {
     .nav-item .nav-link.active {
-        background-color: $primary-1  !important;
-        color: $white  !important;
+        background-color: $primary-1 !important;
+        color: $white !important;
     }
 }
 
@@ -522,7 +530,7 @@ ol.progtrckr li.progtrckr-doing {
     #react-select-2-listbox,
     #react-select-3-listbox,
     #react-select-5-listbox {
-        background: $dark-theme-1  !important;
+        background: $dark-theme-1 !important;
         color: $white;
     }
 
@@ -578,7 +586,7 @@ ol.progtrckr li.progtrckr-doing {
 
     .MuiDropzoneArea-root {
         background-color: $dark-theme-1;
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 
     .basicsteps {
@@ -598,7 +606,7 @@ ol.progtrckr li.progtrckr-doing {
     }
 
     .MuiStepLabel-label {
-        color: $text-color  !important;
+        color: $text-color !important;
     }
 
     tbody,
@@ -622,7 +630,7 @@ ol.progtrckr li.progtrckr-doing {
     .table-border {
         background-color: $dark-theme-1;
         color: $white;
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 
     .nav-tabs .nav-link {
@@ -661,7 +669,7 @@ ol.progtrckr li.progtrckr-doing {
 
 .accordionjs .acc_section>.acc_head {
     .accordion-button:not(.collapsed) {
-        background: $primary-1  !important;
+        background: $primary-1 !important;
         color: #fff !important;
     }
 
@@ -669,8 +677,8 @@ ol.progtrckr li.progtrckr-doing {
 }
 
 .panel-title1 button {
-    background: $primary-1  !important;
-    color: $white  !important;
+    background: $primary-1 !important;
+    color: $white !important;
 }
 
 .accordionjs .acc_section .acc_head h3:before {
@@ -852,7 +860,7 @@ ol.progtrckr li.progtrckr-doing {
     #react-select-2-listbox,
     #react-select-3-listbox,
     #react-select-5-listbox {
-        background: $transparent-body  !important;
+        background: $transparent-body !important;
         color: $white;
     }
 
@@ -948,8 +956,8 @@ ol.progtrckr li.progtrckr-doing {
     }
 
     .btn-group.file-attach .btn-close.btn-outline-primary {
-        border-color: $white-6  !important;
-        color: $white-6  !important;
+        border-color: $white-6 !important;
+        color: $white-6 !important;
     }
 
     .panel-default .accordion-header {
@@ -961,7 +969,7 @@ ol.progtrckr li.progtrckr-doing {
     ol.progtrckr li.progtrckr-doing,
     .MuiStepLabel-label,
     .Select__single-value {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .Select2__single-value {
@@ -1082,7 +1090,7 @@ svg g text {
 }
 
 .Step2 {
-    background-color: $primary-03  !important;
+    background-color: $primary-03 !important;
     color: #fff;
 }
 
@@ -1103,11 +1111,11 @@ svg g text {
 }
 
 .border-right {
-    border-right: 1px solid $border  !important;
+    border-right: 1px solid $border !important;
 }
 
 .borders {
-    border: 1px solid $border  !important;
+    border: 1px solid $border !important;
 }
 
 //end
@@ -1127,6 +1135,7 @@ svg g text {
             background: #fff;
         }
     }
+
     .responsive-navbar .navbar-collapse {
         display: inherit !important;
     }
@@ -1202,21 +1211,21 @@ svg g text {
 
 .fc .fc-button-primary:not(:disabled):active,
 .fc .fc-button-primary:not(:disabled).fc-button-active {
-    background-color: $primary-1  !important;
-    border-color: $primary-1  !important;
+    background-color: $primary-1 !important;
+    border-color: $primary-1 !important;
     opacity: 0.9;
 }
 
 .fc.fc-media-screen .fc-button-primary:disabled {
-    background-color: $primary-1  !important;
-    border-color: $primary-1  !important;
+    background-color: $primary-1 !important;
+    border-color: $primary-1 !important;
     opacity: 0.5;
 }
 
 .fc-theme-standard td,
 .fc-theme-standard th,
 .fc-theme-standard .fc-scrollgrid {
-    border-color: $border  !important;
+    border-color: $border !important;
 }
 
 .custom-switch.form-check.form-switch .form-check-input {
@@ -1267,14 +1276,14 @@ svg g text {
 }
 
 .table-border {
-    border: 1px solid $border  !important;
+    border: 1px solid $border !important;
     padding: 0.45rem;
     vertical-align: top;
     border-radius: 5px;
 }
 
 .alert span .icon-dimiss {
-    float: $float-right  !important;
+    float: $float-right !important;
 }
 
 .navbar-light .navbar-toggler {
@@ -1285,7 +1294,7 @@ svg g text {
     #navbarSupportedContent-4 .nav-link.icon.no-caret.btn.btn-primary {
         background: transparent !important;
         border: 0px;
-        color: $primary-1  !important;
+        color: $primary-1 !important;
     }
 }
 
@@ -1354,19 +1363,19 @@ tr {
 
 .popover-primary.bs-popover-top .popover-arrow::after,
 .popover-primary.bs-popover-auto[data-popper-placement^="top"] .popover-arrow::after {
-    border-top-color: $primary-1  !important;
+    border-top-color: $primary-1 !important;
 }
 
 .popover-secondary.bs-popover-bottom .popover-arrow::after,
 .popover-secondary.bs-popover-auto[data-popper-placement^="bottom"] .popover-arrow::after {
-    border-bottom-color: $secondary  !important;
+    border-bottom-color: $secondary !important;
 }
 
 .bg-secondary.bs-popover-bottom>.popover-arrow::before,
 .bs-popover-auto[data-popper-placement^=bottom]>.popover-arrow::before,
 .bg-secondary.bs-popover-bottom>.popover-arrow::after,
 .bs-popover-auto[data-popper-placement^=bottom]>.popover-arrow::after {
-    border-bottom-color: $secondary  !important;
+    border-bottom-color: $secondary !important;
 }
 
 .rdw-embedded-modal {
@@ -1493,39 +1502,39 @@ tr {
 }
 
 .panel-tabs.panel-secondary.nav .nav-item .nav-link.active {
-    background-color: $secondary  !important;
+    background-color: $secondary !important;
     color: #fff !important;
 }
 
 .panel-tabs.panel-secondary.nav .nav-item .nav-link {
-    color: $secondary  !important;
+    color: $secondary !important;
 }
 
 .panel-tabs.panel-danger.nav .nav-item .nav-link.active {
-    background-color: $danger  !important;
+    background-color: $danger !important;
     color: #fff !important;
 }
 
 .panel-tabs.panel-danger.nav .nav-item .nav-link {
-    color: $danger  !important;
+    color: $danger !important;
 }
 
 .panel-tabs.panel-success.nav .nav-item .nav-link.active {
-    background-color: $success  !important;
+    background-color: $success !important;
     color: #fff !important;
 }
 
 .panel-tabs.panel-success.nav .nav-item .nav-link {
-    color: $success  !important;
+    color: $success !important;
 }
 
 .panel-tabs.panel-info.nav .nav-item .nav-link.active {
-    background-color: $info  !important;
+    background-color: $info !important;
     color: #fff !important;
 }
 
 .panel-tabs.panel-info.nav .nav-item .nav-link {
-    color: $info  !important;
+    color: $info !important;
 }
 
 .panel .nav-tabs .nav-link {
@@ -1577,7 +1586,7 @@ tr {
 }
 
 .nav-price.nav .nav-item a.active:hover {
-    color: $white  !important;
+    color: $white !important;
 }
 
 .nav.nav-pricing {
@@ -1613,11 +1622,11 @@ tr {
 .nav-pricing.nav .nav-item .nav-link.active {
     color: $white;
     transition: all 0.3s ease;
-    background: $primary-1  !important;
+    background: $primary-1 !important;
 }
 
 .nav-pricing.nav .nav-item a.active:hover {
-    color: $white  !important;
+    color: $white !important;
 }
 
 .landing-page #faqs .accordion-header {
@@ -1634,23 +1643,23 @@ tr {
 
 .landing-page #faqs {
     .bg-primary-transparent .accordion-header {
-        border-left: 5px solid $primary-1  !important;
+        border-left: 5px solid $primary-1 !important;
     }
 
     .bg-secondary-transparent .accordion-header {
-        border-left: 5px solid $secondary  !important;
+        border-left: 5px solid $secondary !important;
     }
 
     .bg-success-transparent .accordion-header {
-        border-left: 5px solid $success  !important;
+        border-left: 5px solid $success !important;
     }
 
     .bg-warning-transparent .accordion-header {
-        border-left: 5px solid $warning  !important;
+        border-left: 5px solid $warning !important;
     }
 
     .bg-danger-transparent .accordion-header {
-        border-left: 5px solid $danger  !important;
+        border-left: 5px solid $danger !important;
     }
 }
 
@@ -1736,7 +1745,7 @@ tr {
     .dropzone,
     .MuiOutlinedInput-notchedOutline,
     .rmdp-ep-arrow[direction=bottom] {
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 
     .Select__multi-value {
@@ -1750,7 +1759,7 @@ tr {
     }
 
     .w-color-compact {
-        background: $dark-body  !important;
+        background: $dark-body !important;
     }
 
     .MuiButtonBase-root,
@@ -1774,7 +1783,7 @@ tr {
     }
 
     .fc .fc-scrollgrid {
-        border-left-color: $border-dark  !important;
+        border-left-color: $border-dark !important;
     }
 
     .rdt_TableRow:hover {
@@ -1782,7 +1791,7 @@ tr {
     }
 
     .data-table-extensions>.data-table-extensions-filter {
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 
     .tablebutton {
@@ -1793,8 +1802,8 @@ tr {
     .rdt_Table,
     .rdt_TableHeadRow,
     .rdt_TableRow {
-        background: $dark-theme-1  !important;
-        color: $white  !important;
+        background: $dark-theme-1 !important;
+        color: $white !important;
     }
 
     .table thead th {
@@ -1802,7 +1811,7 @@ tr {
     }
 
     .rdt_Table {
-        border: 1px solid $border-dark  !important;
+        border: 1px solid $border-dark !important;
     }
 
     .rdt_Table {
@@ -1823,14 +1832,14 @@ tr {
     .rdt_TableRow,
     .rdt_TableHeadRow,
     .rdt_Pagination {
-        background: $dark-theme-1  !important;
-        color: $white  !important;
-        border-bottom-color: $border-dark  !important;
+        background: $dark-theme-1 !important;
+        color: $white !important;
+        border-bottom-color: $border-dark !important;
     }
 
     @media (max-width:480px) {
         .sidebar .tabs-menu .nav-pills .nav-item a {
-            border-color: $border-dark  !important;
+            border-color: $border-dark !important;
         }
     }
 }
@@ -1846,7 +1855,7 @@ tr {
     }
 
     .apexcharts-legend-text {
-        color: $text-color  !important;
+        color: $text-color !important;
     }
 
     .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
@@ -1961,7 +1970,7 @@ tr {
     .dropzone,
     .MuiOutlinedInput-notchedOutline,
     .rmdp-ep-arrow[direction=bottom] {
-        border-color: $transparent-border  !important;
+        border-color: $transparent-border !important;
     }
 
     .Select__multi-value {
@@ -1975,7 +1984,7 @@ tr {
     }
 
     .w-color-compact {
-        background: $transparent-body  !important;
+        background: $transparent-body !important;
     }
 
     .MuiButtonBase-root,
@@ -1999,7 +2008,7 @@ tr {
     }
 
     .fc .fc-scrollgrid {
-        border-left-color: $transparent-border  !important;
+        border-left-color: $transparent-border !important;
     }
 
     tbody,
@@ -2023,7 +2032,7 @@ tr {
     .table-border {
         background-color: $transparent-body;
         color: $white;
-        border-color: $transparent-border  !important;
+        border-color: $transparent-border !important;
     }
 
     .MuiTreeItem-label {
@@ -2035,7 +2044,7 @@ tr {
     .rdt_TableHeadRow,
     .rdt_TableRow {
         background: transparent !important;
-        color: $white  !important;
+        color: $white !important;
     }
 
     .table thead th {
@@ -2043,7 +2052,7 @@ tr {
     }
 
     .rdt_Table {
-        border: 1px solid $transparent-border  !important;
+        border: 1px solid $transparent-border !important;
     }
 
     .rdt_TableHeader,
@@ -2051,23 +2060,23 @@ tr {
     .rdt_TableHeadRow,
     .rdt_Pagination {
         background: transparent !important;
-        color: $white  !important;
-        border-bottom-color: $transparent-border  !important;
+        color: $white !important;
+        border-bottom-color: $transparent-border !important;
     }
 
     @media (max-width:480px) {
         .sidebar .tabs-menu .nav-pills .nav-item a {
-            border-color: $transparent-border  !important;
+            border-color: $transparent-border !important;
         }
     }
 
     .Select-sm__menu {
         .Select-sm__option:hover {
-            background-color: $primary-1  !important;
+            background-color: $primary-1 !important;
         }
 
         .Select-sm__option {
-            background-color: $transparent-body  !important;
+            background-color: $transparent-body !important;
         }
     }
 
@@ -2086,12 +2095,12 @@ tr {
 }
 
 .rdt_Table {
-    border: 1px solid $border  !important;
+    border: 1px solid $border !important;
 }
 
 .data-table-extensions>.data-table-extensions-filter {
-    float: $float-right  !important;
-    border: 1px solid $border  !important;
+    float: $float-right !important;
+    border: 1px solid $border !important;
     border-radius: 5px !important;
 
     .icon {
@@ -2153,7 +2162,7 @@ tr {
 
 .dark-mode {
     .btn-default {
-        color: $text-color  !important;
+        color: $text-color !important;
     }
 
     .sun-editor .se-resizing-bar,
@@ -2205,9 +2214,9 @@ tr {
     }
 
     .apexcharts-tooltip {
-        background-color: $dark-theme-1  !important;
-        color: $white  !important;
-        border: 1px solid $border-dark  !important;
+        background-color: $dark-theme-1 !important;
+        color: $white !important;
+        border: 1px solid $border-dark !important;
     }
 
     .tab_wrapper.right_side>.nav-item a {
@@ -2238,11 +2247,11 @@ tr {
 }
 
 .transparent-mode .rdl-control-container .rdl-control {
-    background: $transparent-theme  !important;
+    background: $transparent-theme !important;
 }
 
 .transparent-mode .rdl-actions .rdl-move {
-    background: $transparent-theme  !important;
+    background: $transparent-theme !important;
 }
 
 .transparent-mode .dropzone {
@@ -2431,7 +2440,7 @@ tr {
 }
 
 .transparent-mode .item2-gl-menu.nav.nav-pills .nav-item .nav-link.active {
-    color: $white  !important;
+    color: $white !important;
     background-color: transparent !important;
 }
 
@@ -2442,13 +2451,13 @@ tr {
 
     .nav.nav-pills .nav-item .nav-link.active {
         background-color: transparent !important;
-        color: $primary-1  !important;
+        color: $primary-1 !important;
     }
 }
 
 .dark-mode {
     .apexcharts-legend-text {
-        color: $text-color  !important;
+        color: $text-color !important;
     }
 
     .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
@@ -2464,7 +2473,7 @@ tr {
 
     .shadow-none {
         .bg-white {
-            background-color: $dark-theme-1  !important;
+            background-color: $dark-theme-1 !important;
         }
 
         .nav.nav-pills .nav-item .nav-link {
@@ -2472,7 +2481,7 @@ tr {
         }
 
         .nav.nav-pills .nav-item .nav-link.active {
-            color: $primary-1  !important;
+            color: $primary-1 !important;
         }
     }
 }
@@ -2562,7 +2571,7 @@ ol.progtrckr li.progtrckr-done:before {
 }
 
 .Select-sm__option.selected {
-    background-color: $primary-1  !important;
+    background-color: $primary-1 !important;
     color: #000 !important;
 }
 
@@ -2570,7 +2579,7 @@ ol.progtrckr li.progtrckr-done:before {
 .bs-popover-auto[data-popper-placement^="top"]>.popover-arrow::before,
 .bg-primary.bs-popover-top>.popover-arrow::after,
 .bs-popover-auto[data-popper-placement^="top"]>.popover-arrow::after {
-    border-top-color: $primary-1  !important;
+    border-top-color: $primary-1 !important;
 }
 
 @media (max-width: 767px) {
@@ -2634,13 +2643,13 @@ ol.progtrckr li.progtrckr-done:before {
 }
 
 .dark-mode svg g text {
-    fill: $white  !important;
+    fill: $white !important;
 
     z-index: 9;
 }
 
 .transparent-mode svg g text {
-    fill: $white  !important;
+    fill: $white !important;
 
     z-index: 9;
 }
@@ -2662,8 +2671,8 @@ ol.progtrckr li.progtrckr-done:before {
 }
 
 .border-style {
-    border-left: 1px solid $border  !important;
-    border-right: 1px solid $border  !important;
+    border-left: 1px solid $border !important;
+    border-right: 1px solid $border !important;
 }
 
 @media (max-width: 480px) {
@@ -2711,7 +2720,7 @@ select:focus-visible {
 }
 
 ol.progtrckr li.progtrckr-doing:hover:before {
-    color: $white  !important;
+    color: $white !important;
 }
 
 .react-tel-input .country-list .country {
@@ -2865,7 +2874,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .swal2-styled.swal2-confirm {
-    background: $primary-1  !important;
+    background: $primary-1 !important;
 }
 
 .swal2-styled.swal2-confirm:focus {
@@ -2878,27 +2887,27 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 .dark-mode {
     .data-table-extensions>.data-table-extensions-filter>.filter-text {
-        color: $white  !important;
+        color: $white !important;
     }
 }
 
 .transparent-mode {
     .apexcharts-tooltip {
-        background-color: $transparent-theme  !important;
-        color: $white  !important;
-        border: 1px solid $transparent-border  !important;
+        background-color: $transparent-theme !important;
+        color: $white !important;
+        border: 1px solid $transparent-border !important;
     }
 
     .data-table-extensions>.data-table-extensions-filter>.filter-text {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .slide.is-expanded .slide-item.active {
-        color: $primary-1  !important
+        color: $primary-1 !important
     }
 
     .side-menu__item.active {
-        color: $primary-1  !important;
+        color: $primary-1 !important;
     }
 
     .side-menu__item.active {
@@ -2925,7 +2934,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 .dark-mode {
     .stateh {
         svg g text {
-            fill: $white  !important;
+            fill: $white !important;
             font-size: larger !important;
         }
 
@@ -2935,29 +2944,29 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .rmdp-input {
-        background-color: $dark-theme-1  !important;
-        color: $white  !important;
-        border: 1px solid $border-dark  !important;
+        background-color: $dark-theme-1 !important;
+        color: $white !important;
+        border: 1px solid $border-dark !important;
     }
 
     .rmdp-day,
     .rmdp-header-values {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .Select__control {
-        background-color: $dark-theme-1  !important;
-        color: $white  !important;
-        border: 1px solid $border-dark  !important;
+        background-color: $dark-theme-1 !important;
+        color: $white !important;
+        border: 1px solid $border-dark !important;
     }
 
     .Select__control.Select__control--is-disabled {
-        background-color: $white-2  !important;
+        background-color: $white-2 !important;
     }
 
     .Select__menu {
-        background-color: $dark-theme-1  !important;
-        color: $white  !important;
+        background-color: $dark-theme-1 !important;
+        color: $white !important;
     }
 
     .Select__single-value {
@@ -2969,7 +2978,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 .transparent-mode {
     .stateh {
         svg g text {
-            fill: $white  !important;
+            fill: $white !important;
             font-size: larger !important;
         }
 
@@ -2979,17 +2988,17 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .Select__control {
-        background-color: $transparent-body  !important;
-        color: $white  !important;
-        border: 1px solid $transparent-border  !important;
+        background-color: $transparent-body !important;
+        color: $white !important;
+        border: 1px solid $transparent-border !important;
     }
 
     .Select__menu {
-        background-color: $transparent-body  !important;
+        background-color: $transparent-body !important;
     }
 
     .Select__control.Select__control--is-disabled {
-        background-color: $white-2  !important;
+        background-color: $white-2 !important;
     }
 }
 
@@ -3060,7 +3069,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .MuiSlider-valueLabelLabel {
-        color: $white  !important;
+        color: $white !important;
     }
 }
 
@@ -3074,8 +3083,8 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .MuiSlider-track {
-    background-color: $primary-1  !important;
-    border-color: $primary-1  !important;
+    background-color: $primary-1 !important;
+    border-color: $primary-1 !important;
 }
 
 .MuiSlider-rail {
@@ -3084,22 +3093,22 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 .dark-mode {
     .Select__indicator-separator {
-        background-color: $border-dark  !important;
+        background-color: $border-dark !important;
     }
 
     .MuiSlider-valueLabelLabel {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .Select-sm__menu {
         background-color: $dark-theme-1;
 
         .Select-sm__option:hover {
-            background-color: $primary-1  !important;
+            background-color: $primary-1 !important;
         }
 
         .Select-sm__option {
-            background-color: $dark-theme-1  !important;
+            background-color: $dark-theme-1 !important;
         }
     }
 
@@ -3116,7 +3125,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .Select__control {
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 }
 
@@ -3126,7 +3135,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .header .main-header-center .btn {
-        background-color: $primary-1  !important;
+        background-color: $primary-1 !important;
     }
 
     .Mui-completed {
@@ -3139,15 +3148,15 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .ril__toolbar {
-    background-color: $primary-1  !important;
+    background-color: $primary-1 !important;
 }
 
 .dark-mode .accordion-item {
-    color: $white  !important;
+    color: $white !important;
 }
 
 .transparent-mode .accordion-item {
-    color: $white  !important;
+    color: $white !important;
 }
 
 .header .btn-check:checked+.btn,
@@ -3181,7 +3190,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 .Fgnmg {
     background-color: transparent !important;
-    color: $white  !important;
+    color: $white !important;
 }
 
 .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
@@ -3189,7 +3198,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .dark-mode .kRUjhs:hover {
-    background-color: $white-1  !important;
+    background-color: $white-1 !important;
 }
 
 .task-list h6 {
@@ -3216,7 +3225,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 .css-1s2u09g-control,
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border-color: $border  !important;
+    border-color: $border !important;
 }
 
 .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
@@ -3225,7 +3234,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 .css-1s2u09g-control,
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border-color: $border  !important;
+    border-color: $border !important;
 }
 
 .country.highlight {
@@ -3368,10 +3377,11 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .rtl {
+
     // #back-to-top {
     //     bottom: 55px;
     // }
-    #tidio-chat-iframe{
+    #tidio-chat-iframe {
         inset: auto auto 0px 0px !important;
     }
 }
@@ -3396,12 +3406,12 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .uploader .btn--primary {
-    background-color: $primary-1  !important;
+    background-color: $primary-1 !important;
 }
 
 .uploader__widget-base__children {
     .text-secondary {
-        color: $dark  !important;
+        color: $dark !important;
     }
 }
 
@@ -3419,15 +3429,15 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .dropdown-content {
-        background-color: $dark-body  !important;
+        background-color: $dark-body !important;
     }
 
     .Select2__indicator-separator {
-        background-color: $border-dark  !important;
+        background-color: $border-dark !important;
     }
 
     .Select2__control:hover {
-        border-color: $border-dark  !important;
+        border-color: $border-dark !important;
     }
 
     .rmdp-week-day {
@@ -3439,7 +3449,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .rmdp-day.rmdp-selected span:not(.highlight) {
-        background-color: $primary-1  !important;
+        background-color: $primary-1 !important;
     }
 
     .ep-arrow.rmdp-ep-arrow {
@@ -3452,13 +3462,13 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .uploader .btn--primary:hover:not(:disabled):not(.disabled) {
-        background-color: $primary-01  !important;
-        border: $primary-01  !important;
+        background-color: $primary-01 !important;
+        border: $primary-01 !important;
     }
 
     .uploader__widget-base__children {
         .text-secondary {
-            color: $white  !important;
+            color: $white !important;
         }
     }
 
@@ -3469,7 +3479,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
     .uploader__submitted-file__name,
     .uploader__submitted-file__error {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .uploader__widget-base__modal-bg {
@@ -3499,7 +3509,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .file_input {
-    border: 2px dashed $border  !important;
+    border: 2px dashed $border !important;
     height: 150px;
     font-weight: bolder;
     font-size: large;
@@ -3521,7 +3531,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
             color: $secondary;
 
             &.active:hover {
-                background-color: $secondary  !important;
+                background-color: $secondary !important;
                 color: $white;
             }
 
@@ -3539,7 +3549,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
             &.active,
             &.active:hover {
-                background-color: $danger  !important;
+                background-color: $danger !important;
                 color: $white;
             }
 
@@ -3557,7 +3567,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
             &.active,
             &.active:hover {
-                background-color: $success  !important;
+                background-color: $success !important;
                 color: $white;
             }
 
@@ -3575,7 +3585,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
             &.active,
             &.active:hover {
-                background-color: $info  !important;
+                background-color: $info !important;
                 color: $white;
             }
 
@@ -3609,28 +3619,28 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
 //search
 .select__menu-list {
-    background: $primary-05  !important;
+    background: $primary-05 !important;
 }
 
 .Select__option:hover {
-    background: $primary-1  !important;
+    background: $primary-1 !important;
     color: $white;
 }
 
 .Select__option--is-selected,
 .Select__option--is-focused {
-    background: $primary-1  !important;
-    color: $white  !important;
+    background: $primary-1 !important;
+    color: $white !important;
 }
 
 .Select__control {
-    border: 1px solid $border  !important;
+    border: 1px solid $border !important;
     box-shadow: none !important;
 }
 
 .transparent-mode {
     .data-table-extensions-filter {
-        border: 1px solid $transparent-border  !important;
+        border: 1px solid $transparent-border !important;
     }
 
     .rdt_TableRow:hover {
@@ -3650,11 +3660,11 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .Select2__control:hover {
-        border-color: $transparent-border  !important;
+        border-color: $transparent-border !important;
     }
 
     .Select2__indicator-separator {
-        background-color: $transparent-border  !important;
+        background-color: $transparent-border !important;
     }
 
     .tab_wrapper.right_side>.nav-item a {
@@ -3663,12 +3673,12 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
     .rmdp-week-day,
     .rmdp-header-values {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .rmdp-day {
         .sd {
-            color: $white  !important;
+            color: $white !important;
         }
     }
 
@@ -3678,8 +3688,8 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
     .rmdp-input {
         background-color: transparent;
-        border: 1px solid $transparent-border  !important;
-        color: $white  !important;
+        border: 1px solid $transparent-border !important;
+        color: $white !important;
     }
 
     .ep-arrow.rmdp-ep-arrow {
@@ -3689,7 +3699,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     .Select__indicator-separator,
     .Select-lg__indicator-separator,
     .Select-sm__indicator-separator {
-        background-color: $transparent-body  !important;
+        background-color: $transparent-body !important;
     }
 
     .filepond--drop-label {
@@ -3712,13 +3722,13 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     }
 
     .uploader .btn--primary:hover:not(:disabled):not(.disabled) {
-        background-color: $primary-01  !important;
-        border: $primary-01  !important;
+        background-color: $primary-01 !important;
+        border: $primary-01 !important;
     }
 
     .uploader__widget-base__children {
         .text-secondary {
-            color: $white  !important;
+            color: $white !important;
         }
     }
 
@@ -3729,7 +3739,7 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 
     .uploader__submitted-file__name,
     .uploader__submitted-file__error {
-        color: $white  !important;
+        color: $white !important;
     }
 
     .uploader__widget-base__modal-bg {
@@ -3738,14 +3748,14 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 }
 
 .Select2__option:hover {
-    background: $primary-1  !important;
+    background: $primary-1 !important;
     color: $white;
 }
 
 .Select2__option--is-selected,
 .Select2__option--is-focused {
-    background: $primary-1  !important;
-    color: $white  !important;
+    background: $primary-1 !important;
+    color: $white !important;
 }
 
 .handle-counter .counter-minus {
@@ -3755,186 +3765,244 @@ ol.progtrckr li.progtrckr-doing:hover:before {
 .handle-counter .counter-plus {
     border-radius: 0 3px 3px 0 !important;
 }
+
 .card-link+.card-link {
     margin-inline-start: 1rem;
 }
 
-.login100-form{
+.login100-form {
     width: 300px;
 }
-.filepond--image-preview-overlay-failure{
+
+.filepond--image-preview-overlay-failure {
     background-color: $primary-1;
 }
 
-.rdl-btn{
+.rdl-btn {
     margin: 3px !important;
 }
-.tab-content .nav-item .nav-link i{
- color: $white;
+
+.tab-content .nav-item .nav-link i {
+    color: $white;
 }
-.css-1g86id8-MuiTreeItem-content .MuiTreeItem-label{
+
+.css-1g86id8-MuiTreeItem-content .MuiTreeItem-label {
     margin-inline-start: 0px !important;
 }
+
 // .filepond--root .filepond--drop-label,.css-4f0ona-MuiClock-clock{
 //     background-color:$background !important;
 // }
-.css-1wahiw3-MuiButtonBase-root-MuiIconButton-root-MuiClock-pmButton,.css-d0vs79-MuiClockPointer-root,
-.css-eg3pzz-MuiClockPointer-thumb{
-    background-color:$primary-1 !important;
+.css-1wahiw3-MuiButtonBase-root-MuiIconButton-root-MuiClock-pmButton,
+.css-d0vs79-MuiClockPointer-root,
+.css-eg3pzz-MuiClockPointer-thumb {
+    background-color: $primary-1 !important;
 }
-.css-eg3pzz-MuiClockPointer-thumb{
-    border-color:$primary-1 !important;
+
+.css-eg3pzz-MuiClockPointer-thumb {
+    border-color: $primary-1 !important;
 }
-.MuiTreeItem-label, .MuiTypography-root{
+
+.MuiTreeItem-label,
+.MuiTypography-root {
     color: $white;
 }
-.css-u791bf-MuiPickersArrowSwitcher-root-MuiClockPicker-arrowSwitcher{
+
+.css-u791bf-MuiPickersArrowSwitcher-root-MuiClockPicker-arrowSwitcher {
     top: 5px !important;
 }
-.form-floating > label {
+
+.form-floating>label {
     inset-block-start: -5px !important;
 }
-.kNUuTe{
+
+.kNUuTe {
     width: 50% !important;
 }
-.header-right-icons{
-    .nav-link.icon,.profile-1 .nav-link{
+
+.header-right-icons {
+
+    .nav-link.icon,
+    .profile-1 .nav-link {
         background-color: transparent;
     }
-} 
-.dark-mode{
-    .borders,.border-right{
-        border-color:$border-dark !important;
+}
+
+.dark-mode {
+
+    .borders,
+    .border-right {
+        border-color: $border-dark !important;
     }
+
     .rdw-dropdown-wrapper:hover {
         background-color: $primary-1;
     }
-    .w-color-editable-input input{
+
+    .w-color-editable-input input {
         color: $white;
     }
-    .react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus{
+
+    .react-tel-input .selected-flag:hover,
+    .react-tel-input .selected-flag:focus {
         background-color: $white-1;
     }
-    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-focused, .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected, 
-    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected.Mui-focused{
-        background-color: $white-1; 
+
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-focused,
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected,
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected.Mui-focused {
+        background-color: $white-1;
     }
-    .swal2-popup{
+
+    .swal2-popup {
         background-color: $dark-body;
         color: $white;
     }
-    .tabs-menu .nav.nav-pills{
+
+    .tabs-menu .nav.nav-pills {
         border-bottom-color: $white-1;
     }
-    .nav.nav-pricing{
+
+    .nav.nav-pricing {
         background-color: $dark-theme;
-        border-color:$white-1 ;
+        border-color: $white-1 ;
     }
 }
-.transparent-mode{
-    .react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus{
+
+.transparent-mode {
+
+    .react-tel-input .selected-flag:hover,
+    .react-tel-input .selected-flag:focus {
         background-color: $white-1;
     }
-    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-focused, .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected, 
-    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected.Mui-focused{
-        background-color: $white-1; 
+
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-focused,
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected,
+    .css-b6vn12-MuiTreeItem-root .MuiTreeItem-content.Mui-selected.Mui-focused {
+        background-color: $white-1;
     }
-    .swal2-popup{
+
+    .swal2-popup {
         background-color: $transparent-body;
         color: $white;
     }
-    .tabs-menu .nav.nav-pills{
+
+    .tabs-menu .nav.nav-pills {
         border-bottom-color: $white-1;
     }
-    .nav.nav-pricing{
+
+    .nav.nav-pricing {
         background-color: $dark-theme;
-        border-color:$white-1 ;
+        border-color: $white-1 ;
     }
 }
-.rtl{
-    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+
+.rtl {
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
         right: 0;
         left: auto;
     }
+
     .public-DraftStyleDefault-ltr {
         direction: rtl;
         text-align: right;
     }
+
     .rdt_TableCell:not(:last-child) {
         border-left: 1px solid $white-1;
         border-right: 0px solid$white-1;
     }
-    .fc-direction-ltr .fc-list-day-text, .fc-direction-rtl .fc-list-day-side-text{
+
+    .fc-direction-ltr .fc-list-day-text,
+    .fc-direction-rtl .fc-list-day-side-text {
         float: right;
     }
-    .fc-direction-ltr .fc-list-day-side-text, .fc-direction-rtl .fc-list-day-text{
+
+    .fc-direction-ltr .fc-list-day-side-text,
+    .fc-direction-rtl .fc-list-day-text {
         float: left;
     }
-    .css-1g2vz50-MuiRating-root,.css-jue3ft-MuiRating-root,.css-1c8ej3f-MuiRating-root{
+
+    .css-1g2vz50-MuiRating-root,
+    .css-jue3ft-MuiRating-root,
+    .css-1c8ej3f-MuiRating-root {
         direction: ltr;
     }
-    .css-jqkull-MuiSvgIcon-root{
+
+    .css-jqkull-MuiSvgIcon-root {
         margin-left: 8px;
         margin-right: inherit;
     }
-    .css-1g86id8-MuiTreeItem-content .MuiTreeItem-label{
+
+    .css-1g86id8-MuiTreeItem-content .MuiTreeItem-label {
         padding-right: 4px;
         padding-left: inherit;
     }
+
     [dir=rtl] .slick-prev {
         right: 20px;
         left: auto;
     }
-    
+
     [dir=rtl] .slick-next {
         left: 20px;
         left: auto;
     }
+
     .react-tel-input .selected-flag {
         padding: 0 8px 0 0;
     }
+
     .react-tel-input .form-control {
         padding-right: 48px;
         padding-left: inherit;
         margin-right: 0;
         margin-left: inherit;
     }
-    .CountrySelector .react-tel-input{
-        margin-left:10px;
+
+    .CountrySelector .react-tel-input {
+        margin-left: 10px;
         margin-right: inherit;
     }
-    .react-tel-input .selected-flag .arrow{
+
+    .react-tel-input .selected-flag .arrow {
         right: 20px;
         left: auto;
     }
-    .c3-legend-item-tile{
-       transform: translate(22px, 0px);
+
+    .c3-legend-item-tile {
+        transform: translate(22px, 0px);
     }
-    .css-vnkopk-MuiStepLabel-iconContainer{
+
+    .css-vnkopk-MuiStepLabel-iconContainer {
         padding-left: 8px;
         padding-right: inherit;
     }
-    .css-14sza3e-MuiStepLabel-root{
+
+    .css-14sza3e-MuiStepLabel-root {
         text-align: right;
     }
+
     .css-14yr603-MuiStepContent-root {
         margin-right: 12px;
         margin-left: inherit;
         padding-left: 20px;
         padding-right: 8px;
         border-right: 1px solid #bdbdbd;
-        border-left:  0px;
+        border-left: 0px;
     }
-} 
-.buynow .btn-close{
+}
+
+.buynow .btn-close {
     width: 50px;
 }
 
-.MuiTreeItem-label, .MuiTypography-root{
+.MuiTreeItem-label,
+.MuiTypography-root {
     color: #000;
 }
 
-#ReactSimpleImageViewer{
+#ReactSimpleImageViewer {
     z-index: 99;
 }
 
@@ -3942,49 +4010,48 @@ ol.progtrckr li.progtrckr-doing:hover:before {
     display: flex;
     align-items: flex-start;
     margin-bottom: 10px;
-  
+
     &.sender {
-      justify-content: flex-end;
-  
-      .content {
-        background-color: #dcf8c6;
+        justify-content: flex-end;
+
+        .content {
+            background-color: #dcf8c6;
+            color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            float: right;
+            clear: both;
+        }
+    }
+
+    &.receiver .content {
+        background-color: #f2f2f2;
         color: #333;
         padding: 10px;
         border-radius: 10px;
-        float: right;
-        clear: both;
-      }
     }
-  
-    &.receiver .content {
-      background-color: #f2f2f2;
-      color: #333;
-      padding: 10px;
-      border-radius: 10px;
-    }
-  
+
     .sender-info {
-      text-align: right;
+        text-align: right;
     }
-  
+
     .timestamp {
-      font-size: 12px;
-      color: #888;
-      margin-top: 5px;
+        font-size: 12px;
+        color: #888;
+        margin-top: 5px;
     }
-  }
-  
-  .member-list {
+}
+
+.member-list {
     margin-top: 1.5rem;
     padding-left: 0;
-  }
+}
 
-  
-  .resize-vertical {
+
+.resize-vertical {
     resize: vertical;
-  
+
     min-height: 3.5rem; // Adjust the minimum height as needed
     max-height: 8.75rem; // Adjust the maximum height as needed
     overflow: auto;
-  }
-  
+}
