@@ -27,27 +27,36 @@ const EmergencyPanicButtonCom = () => {
   };
 
   return (
-    <div className="EmergencyPanicButton">
-      <Container style={{
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <div className="center-container">
 
-        <Button onClick={handlePanicButton}>Panic Button</Button>
+      <div className="EmergencyPanicButton">
+
+        <Button onClick={handlePanicButton} className="circle-button">
+
+          <h4>Panic Button</h4>
+
+        </Button>
+
         <h2></h2>
-        <h6>Your Emergency contacts and nearby police station will receive your information and location.</h6>
+
+        <p>Your Emergency contacts and nearby police station
+          will receive your information and location.</p>
+
         <ListGroup>
           {emergencyContacts.map((contact) => (
             <ListGroup.Item key={contact.phoneNumber}>
               {contact.name}: {contact.phoneNumber}
             </ListGroup.Item>
           ))}
+
         </ListGroup>
-      </Container>
-    </div>
+
+      </ div>
+
+    </ div >
+
   );
+
 }
 
 export default EmergencyPanicButtonCom;
