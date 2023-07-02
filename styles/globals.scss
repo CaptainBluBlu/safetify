@@ -39,10 +39,10 @@
 
 .circle-button {
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 150px;
+    height: 150px;
     padding: 0;
-    display: flex;
+    display: center;
     justify-content: center;
     align-items: center;
 }
@@ -52,7 +52,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Adjust as needed */
 }
 
 .splitbtn-pill {
