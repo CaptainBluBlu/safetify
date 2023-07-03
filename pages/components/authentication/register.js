@@ -12,12 +12,12 @@ const Register = () => {
   // Basic Form validation
 
   const [validated, setValidated] = useState(false);
+  const [isFormDirty, setIsFormDirty] = useState(false);
   const state = [{ value: ".....", label: "....." }];
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
+    if (isFormDirty && form.checkValidity() === false) {
       event.stopPropagation();
     }
 
@@ -77,6 +77,7 @@ const Register = () => {
     // Validate phone number using regular expression
     const phoneNumberRegex = /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/;
     setIsPhoneNumberValid(phoneNumberRegex.test(value));
+    setIsFormDirty(true);
   };
 
   return (

@@ -106,61 +106,46 @@ const ChatPage = ({ userId }) => {
   ];
 
   return (
-    <div>
-      <PageHeader titles="Chat" active="Chat" items={["Home"]} />
-      {/* The Chat */}
-      {/* If its mobile view it needs to be different */}
-      <h2 style={{ textAlign: "center" }}>Community Service Officer</h2>
-      <Row>
-        <Col
-          sm={12}
-          md={12}
-          style={{
-            height: "70vh",
-            position: "relative",
-          }}
-        >
-          <div className="chat-container">
-            <div className="chat-messages">
-              {messages.map((message) => (
-                <ChatBubble
-                  key={message.id}
-                  sender={message.sender}
-                  content={message.content}
-                  timestamp={message.timestamp}
-                  isSender={message.isSender}
+    <Col sm={12} md={12} lg={12} xxl={5}>
+      <Card>
+        <div className="main-content-app pt-0">
+          <div className="main-content-body main-content-body-chat h-100">
+            <div className="chat-container">
+              <h2>Chatbox</h2>
+              <div className="message-container">
+                {messages.map((message) => (
+                  <div className="message" key={message.id}>
+                    <strong>{message.sender}: </strong>
+                    <span>{message.content}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="input-container">
+                <input
+                  type="text"
+                  className="message-input"
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
                 />
-              ))}
+                <button className="send-button" onClick={handleSendMessage}>
+                  Send
+                </button>
+              </div>
             </div>
-            <Form
-              className="chat-input"
-              style={{ position: "absolute", bottom: "10", width: "100%" }}
-            >
-              <Form.Group controlId="messageForm" className="mb-0">
-                <Row className="align-items-center">
-                  <Col xs={10}>
-                    <Form.Control
-                      as="textarea"
-                      rows={1}
-                      className="resize-vertical"
-                      placeholder="Type your message..."
-                    />
-                  </Col>
-                  <Col xs={2} className="text-right">
-                    <Button variant="primary" type="submit">
-                      Send
-                    </Button>
-                  </Col>
-                </Row>
-              </Form.Group>
-            </Form>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </Card>
+    </Col>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="app-container">
+      <h1>My Chat App</h1>
+      <ChatBox />
     </div>
   );
 };
 
-export default ChatPage;
-
-//export default ChatUI;
+export default App;

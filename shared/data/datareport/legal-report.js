@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Alert, Row, Col } from "react-bootstrap";
+import { Form, Button, Alert, Row, Col, Col, Card } from "react-bootstrap";
 
 const LegalReport = () => {
   const [name, setName] = useState("");
@@ -108,8 +108,6 @@ const LegalReport = () => {
 
   return (
     <div>
-      <h2 className="mt-5">Legal Report</h2>
-
       <Alert
         show={showAlert}
         variant="success"
@@ -119,148 +117,157 @@ const LegalReport = () => {
         {message}
       </Alert>
 
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </Form.Group>
+      <Col lg={12} md={12}>
+        <Card>
+          <Card.Header>
+            <Card.Title as="h3">Legal Report</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group controlId="phoneNumber">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type="tel"
-            placeholder="Enter phone number"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-        </Form.Group>
+              <Form.Group controlId="phoneNumber">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control
+                  type="tel"
+                  placeholder="Enter phone number"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Address</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter address line 1"
-            value={addressLine1}
-            onChange={(e) => setAddressLine1(e.target.value)}
-            required
-          />
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter address line 1"
+                  value={addressLine1}
+                  onChange={(e) => setAddressLine1(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Control
-            type="text"
-            placeholder="Enter address line 2"
-            value={addressLine2}
-            onChange={(e) => setAddressLine2(e.target.value)}
-          />
-        </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter address line 2"
+                  value={addressLine2}
+                  onChange={(e) => setAddressLine2(e.target.value)}
+                />
+              </Form.Group>
 
-        <Row>
-          <Col md={6}>
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Enter city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                required
-              />
-            </Form.Group>
-          </Col>
-          <Col md={3}>
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Enter state"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                required
-              />
-            </Form.Group>
-          </Col>
-          <Col md={3}>
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Enter ZIP code"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+              <Row>
+                <Col md={6}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter city"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={3}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter state"
+                      value={state}
+                      onChange={(e) => setState(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={3}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter ZIP code"
+                      value={zipCode}
+                      onChange={(e) => setZipCode(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
 
-        <Form.Group controlId="phoneNumber">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter statement title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </Form.Group>
+              <Form.Group controlId="phoneNumber">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter statement title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group controlId="statement">
-          <Form.Label>Statement</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={5}
-            placeholder="Enter statement"
-            value={statement}
-            onChange={(e) => setStatement(e.target.value)}
-            required
-          />
-        </Form.Group>
+              <Form.Group controlId="statement">
+                <Form.Label>Statement</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  placeholder="Enter statement"
+                  value={statement}
+                  onChange={(e) => setStatement(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group controlId="evidence">
-          <Form.Label>Evidence</Form.Label>
-          <Form.Control
-            type="file"
-            onChange={(e) => {
-              setEvidenceFile(e.target.files[0]);
-            }}
-            required
-          />
-        </Form.Group>
+              <Form.Group controlId="evidence">
+                <Form.Label>Evidence</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(e) => {
+                    setEvidenceFile(e.target.files[0]);
+                  }}
+                  required
+                />
+              </Form.Group>
 
-        <Row style={{ textAlign: "right" }}>
-          <Col md={6}>
-            <Form.Group controlId="hasWitness">
-              <Form.Check
-                type="switch"
-                id="hasWitness"
-                label="Has Witness"
-                checked={hasWitness}
-                onChange={() => setHasWitness(!hasWitness)}
-              />
-            </Form.Group>
-          </Col>
-          <Col md={6}>
-            <Form.Group controlId="coverReport">
-              <Form.Check
-                type="switch"
-                id="coverReport"
-                label="Cover Report"
-                checked={coverReport}
-                onChange={() => setCoverReport(!coverReport)}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+              <Row style={{ textAlign: "right" }}>
+                <Col md={6}>
+                  <Form.Group controlId="hasWitness">
+                    <Form.Check
+                      type="switch"
+                      id="hasWitness"
+                      label="Has Witness"
+                      checked={hasWitness}
+                      onChange={() => setHasWitness(!hasWitness)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group controlId="coverReport">
+                    <Form.Check
+                      type="switch"
+                      id="coverReport"
+                      label="Cover Report"
+                      checked={coverReport}
+                      onChange={() => setCoverReport(!coverReport)}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
 
-        <Button className="mt-5" variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+              <Button className="mt-5" variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
     </div>
   );
 };
