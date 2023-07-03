@@ -2,9 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
   // schemas   = ["public", "auth"]
 }
 
@@ -56,6 +56,7 @@ model User {
   Message          Message[]
   ChatRoomOwner    ChatRooms[]        @relation("ChatRoomOwner")
   AbuseReport      AbuseReport[]
+  LegalReport      LegalReport[]
 
   @@index([email, username])
 }
@@ -136,24 +137,31 @@ model AbuseReport {
 }
 
 model LegalReport {
-  id           String @id @default(cuid())
-  title        String
-  statement    String
-  address      String
-  city         String
-  state        String
-  zipCode      String
-  mobileNumber String
-
+  id            String        @id @default(cuid())
+  title         String
+  statement     String
+  address       String
+  city          String
+  state         String
+  zipCode       String
+  mobileNumber  String
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
   hasWitness    Boolean
   reportingFor  String?
   dateRequested DateTime
-  status        String
-  comments      String
-  abuseReport   AbuseReport? @relation(fields: [abuseReportID], references: [id])
-  abuseReportID String?      @unique
-  isCoverReport Boolean      @default(false)
+  status        ReportStatus?
+  comments      String?
+  abuseReport   AbuseReport?  @relation(fields: [abuseReportID], references: [id])
+  abuseReportID String?       @unique
+  isCoverReport Boolean       @default(false)
   evidences     Evidence[]
+}
+
+enum ReportStatus {
+  PENDING
+  SETTLED
+  INCOURT
 }
 
 model Evidence {

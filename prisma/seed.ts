@@ -14,7 +14,7 @@ async function main() {
       icNumber: '123456789012',
       authUserId: 'f2b51319-a7b5-48e6-8c36-34458a3e08f6',
       username: 'alice',
-      supportPost: {
+      SupportPost: {
         create: {
           title: 'Check out Prisma with Next.js',
           content: 'https://www.prisma.io/nextjs',
@@ -35,17 +35,11 @@ async function main() {
       icNumber: '123456789012',
       authUserId: '8474a2cd-603b-4f44-ac69-2d1950a65a61',
       username: 'bob',
-      supportPost: {
-        create: [
-          {
-            title: 'Follow Prisma on Twitter',
-            content: 'https://twitter.com/prisma',
-          },
-          {
-            title: 'Follow Nexus on Twitter',
-            content: 'https://twitter.com/nexusgql',
-          },
-        ],
+      SupportPost: {
+        create: {
+          title: 'Follow Prisma on Twitter',
+          content: 'https://twitter.com/prisma',
+        },
       },
       ChatRooms: {
         create: {

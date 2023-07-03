@@ -19,7 +19,6 @@ import { shopingData } from "../../data/data-ecommerce/datashoppingcart";
 import { AddToCart } from "../../Redux/action";
 import { useRouter } from "next/router";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 
 //leftsidemenu
 const SideMenuIcon = () => {
@@ -192,10 +191,10 @@ const Header = ({ local_varaiable, AddToCart }) => {
   });
 
   const handleSignOut = async () => {
-    "use server";
-    const supabase = createServerActionClient({ cookies });
     await supabase.auth.signOut();
-    revalidatePath("/");
+
+    console.log("signout");
+    window.location.replace("/");
   };
 
   return (

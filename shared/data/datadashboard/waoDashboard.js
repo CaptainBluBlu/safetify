@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import PageHeader from "../../layout-components/pageheader/PageHeader";
 import { Card, Col, Row, Tab, Nav } from "react-bootstrap";
-import { AllProduct } from "./dashboarddata";
+import { PanicButtonTable } from "./panicButtonTable";
+import { AbuseReportTable } from "./abuseReportTable";
 
 const WaoDashboard = () => {
   return (
@@ -15,7 +16,7 @@ const WaoDashboard = () => {
           <Card>
             <Card.Header>
               <Card.Title as="h3" className="mb-0">
-                Reports
+                Panic Button Records
               </Card.Title>
             </Card.Header>
             <Card.Body className="pt-4">
@@ -29,19 +30,47 @@ const WaoDashboard = () => {
                             id="left-tabs-example table-bordered"
                             defaultActiveKey="AllProducts"
                           >
-                            <Nav variant="pills" className="product-sale">
-                              <Nav.Item>
-                                <Nav.Link
-                                  eventKey="AllProducts"
-                                  className="text-dark"
-                                >
-                                  All Products
-                                </Nav.Link>
-                              </Nav.Item>
-                            </Nav>
                             <Tab.Content>
                               <Tab.Pane eventKey="AllProducts">
-                                <AllProduct />
+                                <PanicButtonTable />
+                              </Tab.Pane>
+                            </Tab.Content>
+                          </Tab.Container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      {/* <!-- Panic Button Report Record End --> */}
+
+      {/* <!-- Abuse Report Record --> */}
+      <Row>
+        <Col sm={12}>
+          <Card>
+            <Card.Header>
+              <Card.Title as="h3" className="mb-0">
+                Abuse Report Record
+              </Card.Title>
+            </Card.Header>
+            <Card.Body className="pt-4">
+              <div className="">
+                <div className="panel panel-primary">
+                  <div className="tabs-menu-body pt-0">
+                    <div className="tab-content p-0">
+                      <div className="tab-pane active">
+                        <div className="table-responsive">
+                          <Tab.Container
+                            id="left-tabs-example table-bordered"
+                            defaultActiveKey="AllProducts"
+                          >
+                            <Tab.Content>
+                              <Tab.Pane eventKey="AllProducts">
+                                <AbuseReportTable />
                               </Tab.Pane>
                             </Tab.Content>
                           </Tab.Container>
@@ -61,17 +90,6 @@ const WaoDashboard = () => {
 };
 
 export default WaoDashboard;
-
-// model PanicButton {
-// 	id         String            @id @default(cuid())
-// 	userId     String            @map("user_id")
-// 	user       User              @relation(fields: [userId], references: [id])
-// 	status     PanicButtonStatus
-// 	longtitude Float
-// 	latitude   Float
-// 	createdAt  DateTime          @default(now())
-// 	updatedAt  DateTime          @updatedAt
-//   }
 
 const data = [
   {

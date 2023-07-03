@@ -31,8 +31,6 @@ const Register = () => {
 
   const changeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-
-    console.log(data);
   };
 
   const handleSubmit = (event) => {
@@ -72,7 +70,6 @@ const Register = () => {
       })
       .then((response) => {
         console.log("success");
-        console.log(response.data.error);
 
         if (response.error) {
           alert(response.error.message);
@@ -86,21 +83,14 @@ const Register = () => {
         data.authUserId = response.data.user.id;
       })
       .then(() => {
-        createNewUser().then((response) => {
-          if (response.error) {
-            alert(response.error.message);
-            new Error(response.error.message);
-            return;
-          }
-
-          alert("User created successfully!");
-        });
+        createNewUser();
       });
   };
 
   const createNewUser = async () => {
     if (data.authUserId === null) {
       new Error("authUserId is null");
+      alert("authUserId is null");
       return;
     }
 
@@ -111,9 +101,11 @@ const Register = () => {
 
     if (!response.ok) {
       new Error(response.statusText);
+      alert(response.statusText);
       return;
     }
 
+    alert("User created");
     return response.json();
   };
 

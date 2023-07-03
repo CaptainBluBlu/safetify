@@ -43,10 +43,16 @@ const Login = () => {
   useEffect(() => {
     async function loadData() {
       const { data } = await supabaseClient.from("test").select("*");
+      console.log(data);
+
       setData(data);
     }
 
     loadData();
+
+    // // If login is successful, set user data in the context
+    // const userData = { id: '123', name: 'John Doe' }; // Replace with actual user data
+    // setUserData(userData);
     // Only run query once user is logged in.
     //if (user) loadData();
   }, []);

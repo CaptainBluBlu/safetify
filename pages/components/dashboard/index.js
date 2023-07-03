@@ -1,16 +1,26 @@
 import Seo from "@/shared/layout-components/seo/seo";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
+
 // Import user type from prisma schema
 import { UserRole } from "@prisma/client";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
 // import prisma client
 import { prisma } from "@/db";
 
 const Dashboard = dynamic(
   () => import("../../../shared/data/datadashboard/authoritiesDashboard"),
+  { ssr: false }
+);
+
+const UserDashboard = dynamic(
+  () => import("../../../shared/data/datadashboard/userDashboard"),
+  { ssr: false }
+);
+
+const WAODashboard = dynamic(
+  () => import("../../../shared/data/datadashboard/waoDashboard"),
   { ssr: false }
 );
 
@@ -65,7 +75,11 @@ const DashboardCom = ({ usersData }) => {
 			 	volunteer dashboard
 			> */}
 
-      {userTypes === UserRole.USER ? <Dashboard /> : null}
+      {userTypes === UserRole.USER ? (
+        <UserDashboard />
+      ) : userTypes === UserRole.ADMIN ? (
+        <WAODashboard />
+      ) : null}
     </div>
   );
 };
