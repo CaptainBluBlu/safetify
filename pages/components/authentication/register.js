@@ -24,9 +24,9 @@ const Register = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
+  
     setValidated(true);
-
+  
     // Log form data
     console.log({
       fullName: form.elements.fullName.value,
@@ -38,6 +38,9 @@ const Register = () => {
       email: email,
       password: form.elements.password.value
     });
+  
+    // Reset form validation state
+    setValidated(false);
   };
 
 
