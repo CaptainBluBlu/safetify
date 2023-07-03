@@ -39,9 +39,9 @@ export const DATATABLE = [
           <OverlayTrigger placement="top" overlay={<Tooltip>View</Tooltip>}>
             <Button link href="/components/blog/blogpostdetails">View</Button>
           </OverlayTrigger>
-          <OverlayTrigger placement="top" overlay={<Tooltip>Delete</Tooltip>}>
-            <Button> 
-              <i className="fa fa-trash"></i>
+          <OverlayTrigger placement="top" overlay={<Tooltip>Add</Tooltip>}>
+            <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
             </Button>
           </OverlayTrigger>
         </ButtonGroup>
@@ -65,9 +65,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -83,9 +83,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -102,9 +102,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -120,9 +120,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -139,9 +139,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -158,9 +158,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -176,9 +176,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -195,9 +195,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -214,9 +214,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -233,9 +233,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
@@ -251,9 +251,9 @@ export const DATATABLE = [
           <Button link href="/components/blog/blogpostdetails">View</Button>
         </OverlayTrigger>
         <OverlayTrigger placement="top" overlay={<Tooltip >Delete</Tooltip>}>
-          <Button>
-            <i className="fa fa-trash"></i>
-          </Button>
+        <Button link href="/components/blog/addjournal"> 
+              <i className="fa fa-plus"></i>
+            </Button>
         </OverlayTrigger>
       </ButtonGroup>
     </span>,
