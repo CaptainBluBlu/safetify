@@ -37,17 +37,21 @@
 @import "../public/assets/scss/plugins/fullcalendar";
 
 
-
-
-
 .circle-button {
     border-radius: 50%;
     width: 150px;
     height: 150px;
     padding: 0;
+    display: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .splitbtn-pill {
