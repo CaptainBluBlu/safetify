@@ -27,10 +27,19 @@ const Register = () => {
     setValidated(true);
   };
 
-  const Gender = [
+  const genderOptions = [
     { value: "0", label: "Male" },
     { value: "1", label: "Female" },
   ];
+
+  const [selectedGender, setSelectedGender] = useState(null);
+
+  const handleGenderChange = (selectedOption) => {
+    setSelectedGender(selectedOption);
+  };
+
+  const isGenderInvalid = selectedGender === null;
+
 
   const Option = [
     { value: "One", label: "One" },
@@ -39,8 +48,29 @@ const Register = () => {
     { value: "Four", label: "Four" },
 
   ];
+  const [email, setEmail] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
+  const handleEmailChange = (event) => {
+    const { value } = event.target;
+    setEmail(value);
 
+  // Validate email using regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  setIsEmailValid(emailRegex.test(value));
+  };
+
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
+
+  const handlePhoneNumberChange = (event) => {
+    const { value } = event.target;
+    setPhoneNumber(value);
+
+    // Validate phone number using regular expression
+    const phoneNumberRegex = /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/;
+    setIsPhoneNumberValid(phoneNumberRegex.test(value));
+  };
 
   return (
 
@@ -59,12 +89,15 @@ const Register = () => {
           <Card.Body>
             <span className="login100-form-title">
               Registration
-            </span>
+            </span>            
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Full name</Form.Label>
                   <Form.Control required type="text" placeholder="Full name" />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide your full name.
+                  </Form.Control.Feedback>
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Col>
               </div>
@@ -72,19 +105,31 @@ const Register = () => {
                 <Col xl={12} className="mb-3">
                   <Form.Label>IC</Form.Label>
                   <Form.Control required type="text" placeholder="IC" />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide your identity.
+                  </Form.Control.Feedback>
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Col>
               </div>
               <div className="form-row">
-              <Col xl={6} className="mb-3">
+              <Col xl={12} className="mb-3">
                   <Form.Label>Gender</Form.Label>
-                  <Select classNamePrefix="Select" options={Gender} placeholder="Gender" />
-                  <Form.Control.Feedback type="invalid"> Please select your gender.</Form.Control.Feedback>
-                </Col>
-                <Col xl={6} className="mb-3">
+                  <Select classNamePrefix="Select" options={genderOptions} placeholder="Gender" value={selectedGender} onChange={handleGenderChange} isInvalid={!selectedGender} required />
+                  {isGenderInvalid && (
+                    <Form.Control.Feedback type="invalid">
+                      Please select your gender.
+                    </Form.Control.Feedback>
+                  )}
+               </Col>
+              </div>
+              <div className="form-row">
+                <Col xl={12} className="mb-3">
                   <Form.Label>Phone Number</Form.Label>
-                  <Form.Control type="number" placeholder="Phone Number" required />
-                  <Form.Control.Feedback type="invalid">Please provide a valid phone number.</Form.Control.Feedback>
+                  <Form.Control type="text" placeholder="Phone Number" value={phoneNumber} onChange={handlePhoneNumberChange} isInvalid={!isPhoneNumberValid && phoneNumber.length > 0} required />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid phone number for Malaysia.
+                  </Form.Control.Feedback>
+                  {isPhoneNumberValid && <Form.Control.Feedback>Looks good!</Form.Control.Feedback>}                
                 </Col>
               </div>
               <div className="form-row">
@@ -99,13 +144,17 @@ const Register = () => {
                   <Form.Label>Username</Form.Label>
                   <Form.Control required type="text" placeholder="Username" />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid"> Please provide a valid username. </Form.Control.Feedback>
                 </Col>
               </div>
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control required type="text" placeholder="Email" />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control required type="text" placeholder="Email" value={email} onChange={handleEmailChange} isInvalid={!isEmailValid && email.length > 0} isValid={isEmailValid} />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid email address.
+                  </Form.Control.Feedback>
+                  {isEmailValid && <Form.Control.Feedback>Looks good!</Form.Control.Feedback>}
                 </Col>
               </div>
               <div className="form-row">
@@ -113,16 +162,17 @@ const Register = () => {
                   <Form.Label>Password</Form.Label>
                   <Form.Control required type="text" placeholder="Password" />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid"> Please provide a valid password. </Form.Control.Feedback>
                 </Col>
               </div>
               <Form.Group className='mb-3'>
-                <Form.Check required label="Agree to terms and conditions" feedback="You must agree before submitting." feedbackType="invalid" />
+                <Form.Check required label={<>Agree to <Link href={`/pages/extension/terms`}>terms and conditions</Link></>} feedback="You must agree before submitting." feedbackType="invalid" />
               </Form.Group>
               <div className="text-center">
-              <Button type="submit">Submit form</Button>
+              <Button type="submit">Submit Form</Button>
               </div>
               <div className="text-center pt-3">
-              <p className="text-dark mb-0">Already have account?<Link href={`/components/pages/login`} className="text-primary ms-1">Sign In</Link></p>
+              <p className="text-dark mb-0">Already have account?<Link href={`/components/authentication/login`} className="text-primary ms-1">Sign In</Link></p>
               </div>
               <label className="login-social-icon"><span>Register with Social</span></label>
               <div className="d-flex justify-content-center">

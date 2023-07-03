@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ListGroup } from 'react-bootstrap';
+import { Button, Modal, ListGroup } from 'react-bootstrap';
 
 const EmergencyPanicButtonCom = () => {
 

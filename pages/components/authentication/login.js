@@ -111,7 +111,7 @@ const Login = () => {
                       <div className="text-center pt-4">
                         <p className="mb-0 fs-13">
                           <Link
-                            href={`/components/pages/forgot-password`}
+                            href={`/components/authentication/forgot-password`}
                             className="text-primary ms-1"
                           >
                             Forgot Password?
@@ -138,7 +138,7 @@ const Login = () => {
                         <p className="text-dark mb-0 fs-13 mx-3">
                           Not a member?
                           <Link
-                            href={`/components/pages/register`}
+                            href={`/components/authentication/register`}
                             className="text-primary ms-1"
                           >
                             Sign Up
