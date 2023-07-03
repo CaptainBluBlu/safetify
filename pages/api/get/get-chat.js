@@ -14,27 +14,29 @@ export default async function handler(req, res) {
   // 3. From the personal rooms get the chat rooms
 
   try {
-    const legalReport = await prisma.personalChatRoom.findMany({
+    const chatRoom = await prisma.personalChatRoom.findMany({
       where: {
         OR: [
-          {
-            UserVolunteer: {
-              id: tempData.userId,
-            },
-          },
-          {
-            UserClient: {
-              id: tempData.userId,
-            },
-          },
+          { UserVolunteerId: tempData.userId },
+          { UserClientId: tempData.userId },
         ],
       },
       include: {
         Message: true,
+        UserClient: {
+          select: {
+            name: true,
+          },
+        },
+        UserVolunteer: {
+          select: {
+            name: true,
+          },
+        },
       },
     });
 
-    res.status(200).json({ legalReport });
+    res.status(200).json({ chatRoom });
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "Unkown Server Error" });

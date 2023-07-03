@@ -1,34 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import PageHeader from "../../layout-components/pageheader/PageHeader";
 import { Card, Col, Row, Form, Button, ListGroup } from "react-bootstrap";
 import ChatBubble from "./ChatBubble.js";
+import { useEffect, useState } from "react";
 
-const ChatPage = ({ userId }) => {
-  const [text, setText] = useState([]);
+const chatComponent = ({ userId }) => {
+  const [chatRoom, setChatRoom] = useState({});
+  const [message, setMessage] = useState([]);
+  const [messageCreate, setMessageCreate] = useState({
+    senderId: "",
+    message: "",
+    isSender: false,
+    timestamp: "",
+    name: "",
+    personalChatRoomId: "",
+  });
+  const [clientName, setClientName] = useState("");
+  const [volunteerName, setVolunteerName] = useState("");
 
-  // text = {
-  //   id: 1,
-  //   text,
-  //   senderName: "",
-  // };
+  const data = {
+    userId,
+  };
 
-  useEffect(async () => {
-    // fetch chats
-    try {
-      const { res } = await fetch("/api/get/get-chat", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+  useEffect(() => {
+    const getChatRooms = async () => {
+      if (chatRoom.chatRoom == undefined) {
+        try {
+          const response = await fetch("/api/get/get-chat", {
+            method: "POST",
+            body: JSON.stringify(data),
+          });
 
-      console.log("tried this handleCreateReport");
-    } catch (e) {
-      return null;
-    }
-    // setChats
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+
+          return null;
+        }
+      }
+    };
+
+    // fetch messages from server
+
+    getChatRooms().then((res) => {
+      console.log(res.chatRoom[0]);
+      setChatRoom(res);
+      setMessage(res.chatRoom[0].Message);
+      setClientName(res.chatRoom[0].UserClient.name);
+      setVolunteerName(res.chatRoom[0].UserVolunteer.name);
+    });
+    // setMessages(messages);
   }, []);
 
-  // ...
   const messages = [
     {
       id: 1,
@@ -53,99 +77,120 @@ const ChatPage = ({ userId }) => {
     },
   ];
 
-  const chats = [
-    {
-      id: 1,
-      name: "John the Therapist",
-      lastMessage: "Hello, how are you?",
-      timestamp: "10:00 AM",
-      isSender: true,
-    },
-    {
-      id: 2,
-      name: "Jane the Lawyer",
-      lastMessage: "I'm good, thanks! How about you?",
-      timestamp: "10:01 AM",
-      isSender: false,
-    },
-    {
-      id: 3,
-      name: "Bob the builder",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-    {
-      id: 4,
-      name: "Joe the biddet",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-    {
-      id: 5,
-      name: "Jack the jill",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-    {
-      id: 6,
-      name: "Jill the pill",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-    {
-      id: 7,
-      name: "Jim the gym bro",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-  ];
+  const handleCreateChat = async (e) => {
+    e.preventDefault();
+    let temp = { ...messageCreate };
+
+    console.log("handleCreateChat");
+
+    if (temp.message == "") {
+      return;
+    }
+
+    const chatRoomId = chatRoom.chatRoom[0].id;
+    console.log(chatRoom.chatRoom[0].UserClient.name);
+    console.log("user id: ", userId);
+
+    temp = {
+      ...temp,
+      personalChatRoomId: chatRoomId,
+      senderId: userId,
+      isSender: userId == chatRoom.chatRoom[0].UserVolunteerId ? true : false,
+      name:
+        userId == chatRoom.chatRoom[0].UserVolunteerId
+          ? "Me"
+          : chatRoom.chatRoom[0].UserClient.name,
+    };
+
+    try {
+      const { res } = await fetch("/api/create/create-message", {
+        method: "POST",
+        body: JSON.stringify(temp),
+      });
+    } catch {
+      alert("something went wrong");
+      return null;
+    }
+
+    setMessageCreate(temp);
+
+    temp.whatever = "swag";
+    temp.createdAt = new Date().toLocaleTimeString();
+    temp.id = message.length + 1 * Math.random();
+
+    console.log(temp);
+
+    setMessage([...message, temp]);
+  };
 
   return (
-    <Col sm={12} md={12} lg={12} xxl={5}>
-      <Card>
-        <div className="main-content-app pt-0">
-          <div className="main-content-body main-content-body-chat h-100">
-            <div className="chat-container">
-              <h2>Chatbox</h2>
-              <div className="message-container">
-                {messages.map((message) => (
-                  <div className="message" key={message.id}>
-                    <strong>{message.sender}: </strong>
-                    <span>{message.content}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="input-container">
-                <input
-                  type="text"
-                  className="message-input"
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
+    <div>
+      <PageHeader titles="Chat" active="Chat" items={["Home"]} />
+      {/* The Chat */}
+      {/* If its mobile view it needs to be different */}
+      <h2 style={{ textAlign: "center" }}>Community Service Officer</h2>
+      <Row>
+        <Col
+          sm={12}
+          md={12}
+          style={{
+            height: "70vh",
+            position: "relative",
+          }}
+        >
+          <div className="chat-container">
+            <div
+              className="chat-messages"
+              style={{ height: "400px", overflow: "auto" }}
+            >
+              {message.map((message) => (
+                <ChatBubble
+                  key={message.id}
+                  sender={
+                    message.senderId == userId ? clientName : volunteerName
+                  }
+                  content={message.text}
+                  timestamp={new Date(message.createdAt).toLocaleTimeString()}
+                  isSender={message.senderId == userId ? true : false}
                 />
-                <button className="send-button" onClick={handleSendMessage}>
-                  Send
-                </button>
-              </div>
+              ))}
             </div>
+            <Form
+              className="chat-input"
+              style={{ position: "absolute", bottom: "10", width: "100%" }}
+              onSubmit={handleCreateChat}
+            >
+              <Form.Group controlId="messageForm" className="mb-0">
+                <Row className="align-items-center">
+                  <Col xs={10}>
+                    <Form.Control
+                      as="textarea"
+                      rows={1}
+                      className="resize-vertical"
+                      placeholder="Type your message..."
+                      value={messageCreate.message}
+                      name="message"
+                      onChange={(e) =>
+                        setMessageCreate({
+                          ...messageCreate,
+                          message: e.target.value,
+                        })
+                      }
+                    />
+                  </Col>
+                  <Col xs={2} className="text-right">
+                    <Button variant="primary" type="submit">
+                      Send
+                    </Button>
+                  </Col>
+                </Row>
+              </Form.Group>
+            </Form>
           </div>
-        </div>
-      </Card>
-    </Col>
-  );
-};
-
-const App = () => {
-  return (
-    <div className="app-container">
-      <h1>My Chat App</h1>
-      <ChatBox />
+        </Col>
+      </Row>
     </div>
   );
 };
 
-export default App;
+export default chatComponent;
