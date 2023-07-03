@@ -17,6 +17,7 @@ const Register = () => {
   const state = [
     { value: ".....", label: "....." },
   ];
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -25,7 +26,20 @@ const Register = () => {
     }
 
     setValidated(true);
+
+    // Log form data
+    console.log({
+      fullName: form.elements.fullName.value,
+      ic: form.elements.ic.value,
+      gender: selectedGender ? selectedGender.value : null,
+      phoneNumber: form.elements.phoneNumber.value,
+      address: form.elements.address.value,
+      username: form.elements.username.value,
+      email: email,
+      password: form.elements.password.value
+    });
   };
+
 
   const genderOptions = [
     { value: "0", label: "Male" },
@@ -39,15 +53,6 @@ const Register = () => {
   };
 
   const isGenderInvalid = selectedGender === null;
-
-
-  const Option = [
-    { value: "One", label: "One" },
-    { value: "Two", label: "Two" },
-    { value: "Three", label: "Three" },
-    { value: "Four", label: "Four" },
-
-  ];
   const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
 
@@ -94,7 +99,7 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Full name</Form.Label>
-                  <Form.Control required type="text" placeholder="Full name" />
+                  <Form.Control name ="fullName" required type="text" placeholder="Full name" />
                   <Form.Control.Feedback type="invalid">
                     Please provide your full name.
                   </Form.Control.Feedback>
@@ -104,7 +109,7 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>IC</Form.Label>
-                  <Form.Control required type="text" placeholder="IC" />
+                  <Form.Control name ="ic" required type="text" placeholder="IC" />
                   <Form.Control.Feedback type="invalid">
                     Please provide your identity.
                   </Form.Control.Feedback>
@@ -125,7 +130,7 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Phone Number</Form.Label>
-                  <Form.Control type="text" placeholder="Phone Number" value={phoneNumber} onChange={handlePhoneNumberChange} isInvalid={!isPhoneNumberValid && phoneNumber.length > 0} required />
+                  <Form.Control name ="phoneNumber" type="text" placeholder="Phone Number" value={phoneNumber} onChange={handlePhoneNumberChange} isInvalid={!isPhoneNumberValid && phoneNumber.length > 0} required />
                   <Form.Control.Feedback type="invalid">
                     Please provide a valid phone number for Malaysia.
                   </Form.Control.Feedback>
@@ -135,14 +140,14 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control type="text" placeholder="Address" required />
+                  <Form.Control name ="address" type="text" placeholder="Address" required />
                   <Form.Control.Feedback type="invalid"> Please provide a valid address. </Form.Control.Feedback>
                 </Col>
               </div>
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Username</Form.Label>
-                  <Form.Control required type="text" placeholder="Username" />
+                  <Form.Control name ="username" required type="text" placeholder="Username" />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   <Form.Control.Feedback type="invalid"> Please provide a valid username. </Form.Control.Feedback>
                 </Col>
@@ -150,7 +155,7 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control required type="text" placeholder="Email" value={email} onChange={handleEmailChange} isInvalid={!isEmailValid && email.length > 0} isValid={isEmailValid} />
+                  <Form.Control name ="email" required type="text" placeholder="Email" value={email} onChange={handleEmailChange} isInvalid={!isEmailValid && email.length > 0} isValid={isEmailValid} />
                   <Form.Control.Feedback type="invalid">
                     Please provide a valid email address.
                   </Form.Control.Feedback>
@@ -160,7 +165,7 @@ const Register = () => {
               <div className="form-row">
                 <Col xl={12} className="mb-3">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control required type="text" placeholder="Password" />
+                  <Form.Control name ="password" required type="text" placeholder="Password" />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   <Form.Control.Feedback type="invalid"> Please provide a valid password. </Form.Control.Feedback>
                 </Col>
