@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
+import { Container, Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 
 const ProfileCom = () => {
     const [profilePicture, setProfilePicture] = useState('');
@@ -45,12 +45,15 @@ const ProfileCom = () => {
 
             <Form>
                 <FormGroup>
-                    <FormLabel>Edit your profile picture</FormLabel>
-                    <FormControl
-                        type="text"
-                        value={profilePicture}
-                        onChange={handleProfilePictureChange}
-                    />
+                    <Container style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <FormLabel>Edit your profile picture</FormLabel>
+                        <img src="../../../assets/images/png/1.png" />
+                    </Container>
                 </FormGroup>
 
                 <FormGroup>
@@ -107,9 +110,18 @@ const ProfileCom = () => {
                     />
                 </FormGroup>
 
-                <Button type="submit">Update</Button>
+                <h2></h2>
+
+                <Container style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <Button type="submit">Update</Button>
+                </Container>
             </Form>
-        </div>
+        </div >
     );
 }
 

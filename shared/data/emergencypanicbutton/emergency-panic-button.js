@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, ListGroup } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
 
 const EmergencyPanicButtonCom = () => {
   const [emergencyContacts, setEmergencyContacts] = useState([]);
@@ -52,7 +52,6 @@ const EmergencyPanicButtonCom = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      n
     </div>
   );
 };
