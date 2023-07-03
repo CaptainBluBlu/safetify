@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Col, Card } from "react-bootstrap";
 
 const LegalReport = () => {
   const [name, setName] = useState("");
@@ -36,8 +36,6 @@ const LegalReport = () => {
 
   return (
     <div>
-      <h2 className="mt-5">Legal Report</h2>
-
       <Alert
         show={showAlert}
         variant="success"
@@ -47,6 +45,12 @@ const LegalReport = () => {
         {message}
       </Alert>
 
+    <Col lg={12} md={12}>
+        <Card>
+          <Card.Header>
+            <Card.Title as='h3'>Legal Report</Card.Title>
+          </Card.Header>
+          <Card.Body>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
@@ -107,6 +111,9 @@ const LegalReport = () => {
           Submit
         </Button>
       </Form>
+      </Card.Body>
+      </Card>
+    </Col>
     </div>
   );
 };
