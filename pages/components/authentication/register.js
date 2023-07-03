@@ -22,6 +22,18 @@ const Register = () => {
     }
 
     setValidated(true);
+
+    // Log form data
+    console.log({
+      fullName: form.elements.fullName.value,
+      ic: form.elements.ic.value,
+      gender: selectedGender ? selectedGender.value : null,
+      phoneNumber: form.elements.phoneNumber.value,
+      address: form.elements.address.value,
+      username: form.elements.username.value,
+      email: email,
+      password: form.elements.password.value,
+    });
   };
 
   const genderOptions = [
