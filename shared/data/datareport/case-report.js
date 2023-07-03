@@ -13,17 +13,19 @@ const LegalReport = () => {
     e.preventDefault();
 
     // If not valid, return
-    if (!validateForm()) {
-      return;
-    }
 
-    // Handle form submission
-    handleUpload();
-
-    // Clear form fields
+    // Clear all input
     setAge("");
     setNeedInterpreter(false);
     setFilePoliceReport(false);
+    setSelectedPoliceReport("");
+    setShowPoliceReportModal(false);
+    setPoliceReports([]);
+
+    alert("Successfully submitted!");
+
+    // Handle form submission
+    handleUpload();
   };
 
   const validateForm = () => {
