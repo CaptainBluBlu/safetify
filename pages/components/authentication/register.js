@@ -14,14 +14,16 @@ const Register = () => {
   // Basic Form validation
 
   const [validated, setValidated] = useState(false);
+  const [isFormDirty, setIsFormDirty] = useState(false);
   const state = [
     { value: ".....", label: "....." },
   ];
 
   const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+  
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
+    if (isFormDirty && form.checkValidity() === false) {
       event.stopPropagation();
     }
   
@@ -38,9 +40,6 @@ const Register = () => {
       email: email,
       password: form.elements.password.value
     });
-  
-    // Reset form validation state
-    setValidated(false);
   };
 
 
@@ -66,6 +65,7 @@ const Register = () => {
   // Validate email using regular expression
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   setIsEmailValid(emailRegex.test(value));
+  setIsFormDirty(true);
   };
 
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -78,6 +78,7 @@ const Register = () => {
     // Validate phone number using regular expression
     const phoneNumberRegex = /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/;
     setIsPhoneNumberValid(phoneNumberRegex.test(value));
+    setIsFormDirty(true);
   };
 
   return (
