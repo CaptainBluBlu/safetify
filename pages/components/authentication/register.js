@@ -13,6 +13,7 @@ const Register = () => {
 
   const [validated, setValidated] = useState(false);
   const state = [{ value: ".....", label: "....." }];
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
