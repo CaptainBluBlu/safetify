@@ -9,7 +9,7 @@ const Lefletmap = dynamic(() => import("@/shared/data/datamaps/lefletmap"), {ssr
 const EmergencyHousing = () => {
     return (
         <div>
-            <Seo title="Emergency Housing"/>
+            <Seo title="OSCC"/>
             <Lefletmap/>
         </div>
     )
