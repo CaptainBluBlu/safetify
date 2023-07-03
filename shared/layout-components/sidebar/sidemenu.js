@@ -19,14 +19,14 @@ export const MENUITEMS = [
         title: "Settings",
       },
       // create for emergency panic button with alert icon
-      {
-        path: `/components/emergency-panic-button/emergency-panic-button`,
-        icon: "fe fe-alert-triangle",
-        type: "link",
-        active: false,
-        selected: false,
-        title: "Panic Button",
-      },
+      // {
+      //   path: `/components/emergency-panic-button/emergency-panic-button`,
+      //   icon: "fe fe-alert-triangle",
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Panic Button",
+      // },
       //create for blog postwith document icon
       {
         path: `/components/blog/blogpost`,
