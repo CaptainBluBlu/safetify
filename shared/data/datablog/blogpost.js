@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 const BlogPostCom = () => {
 
   const [newEntry, setNewEntry] = useState({
-    time: '',
-    name: '',
+    time: '1d',
+    name: 'Darreni Lig',
     text: '',
   });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/blog-posts');
+
+      const fetchedEntries = response.data;
+
+      setEntries(fetchedEntries);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   const [entries, setEntries] = useState([
     {
