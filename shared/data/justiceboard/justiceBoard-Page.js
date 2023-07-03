@@ -2,6 +2,23 @@ import React from "react";
 import { Container, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
+import { createClient } from "contentful";
+
+export async function getStaticProps() {
+	const client = createClient({
+		space: process.env.CONTENTFUL_SPACE_ID,
+		accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+	});
+
+	const res = await client.getEntries({ content_type: "justicePost" });
+
+	return {
+		props: {
+			articles: res.items,
+		},
+	};
+}
+
 const ArticlePage = () => {
 	const { articleId } = useParams();
 
