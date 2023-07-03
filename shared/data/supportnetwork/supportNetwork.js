@@ -17,6 +17,7 @@ const SocialPage = (props) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  // Model open for cerating new chat room
   const handleModalOpen = () => {
     setShowModal(true);
   };
@@ -32,6 +33,13 @@ const SocialPage = (props) => {
     props.createNewRoom({ event });
   };
 
+  // function to create a new room
+  const handleSubmitRoom = async (event) => {
+    event.preventDefault();
+
+    console.log(event);
+  };
+
   let buttonStyling = {
     fontSize: "1.5rem",
   };
@@ -44,9 +52,37 @@ const SocialPage = (props) => {
 
   const [text, setText] = useState("");
 
+  const [chatRooms, setChatRooms] = useState([]);
+  const [newChatRoom, setNewChatRoom] = useState({
+    name: "",
+    description: "",
+    creatorId: "",
+    participantId: [],
+    memebercount: 0,
+  });
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
   const handleChange = (event) => {
     setText(event.target.value);
   };
+
+  const classRoomChangeHandler = (e) => {
+    setNewChatRoom({ ...newChatRoom, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    setChatRooms(groupChat);
+
+    console.log(groupChat);
+    if (isFirstRender) {
+      setIsFirstRender(false);
+    }
+
+    if (!isFirstRender) {
+      // insert rooms here
+      //setChatRooms((prevRooms) => [...prevRooms, newChatRoom]);
+    }
+  }, [groupChat]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,39 +107,6 @@ const SocialPage = (props) => {
     buttonSizing = "sm";
   }
 
-  const publicGroups = [
-    {
-      id: 1,
-      name: "Support Circle",
-      description: "A safe space to connect and support each other.",
-      members: 50,
-    },
-    {
-      id: 2,
-      name: "2 Support Circle 2",
-      description: "A safe space to connect and support each other. 2",
-      members: 40,
-    },
-    {
-      id: 3,
-      name: "3 Support Circle",
-      description: "A safe space to connect and support each other.",
-      members: 50,
-    },
-    {
-      id: 4,
-      name: "4 Support Circle",
-      description: "A safe space to connect and support each other.",
-      members: 50,
-    },
-    {
-      id: 5,
-      name: "5 Support Circle",
-      description: "A safe space to connect and support each other.",
-      members: 50,
-    },
-  ];
-
   let itemsPerPage = 3; // Number of items to display per page
   if (isMobile) {
     itemsPerPage = 2;
@@ -116,7 +119,7 @@ const SocialPage = (props) => {
   const endIndex = startIndex + itemsPerPage;
 
   // Get the chat groups to display on the current page
-  const displayedGroups = publicGroups.slice(startIndex, endIndex);
+  const displayedGroups = chatRooms.slice(startIndex, endIndex);
 
   // Function to handle pagination
   const handlePagination = (direction) => {
@@ -125,6 +128,12 @@ const SocialPage = (props) => {
     } else if (direction === "next" && endIndex < publicGroups.length) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
+  };
+
+  const handleCreateRoom = (event) => {
+    setNewChatRoom({ ...newChatRoom, memeberCount: 1 });
+
+    setChatRooms((prevRooms) => [...prevRooms, newChatRoom]);
   };
 
   return (
@@ -173,7 +182,7 @@ const SocialPage = (props) => {
                     {group.description}
                   </Card.Text>
                   <Card.Text id="members" style={buttonStyling}>
-                    {group.members} members
+                    {group.memeberCount} members
                   </Card.Text>
                   <div style={{ textAlign: "center" }}>
                     <Button className="btn-sm" variant="primary">
@@ -188,7 +197,7 @@ const SocialPage = (props) => {
         <Col xs={1} className="d-flex align-items-left justify-content-center">
           <div style={{ display: "flex", alignItems: "center" }}>
             <Button
-              disabled={endIndex >= publicGroups.length}
+              disabled={endIndex >= groupChat.length}
               onClick={() => handlePagination("next")}
               size={buttonSizing}
             >
@@ -208,21 +217,36 @@ const SocialPage = (props) => {
         {/* Model for pop up for the create new group form */}
         <Modal show={showModal} onHide={handleModalClose} centered>
           <Modal.Header closeButton>
-            <Modal.Title>Modal Title</Modal.Title>
+            <Modal.Title>Create new chat room</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmitRoom}>
               {/* Add your form fields here */}
               <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Label>Chat room name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Chat room name"
+                  name="name"
+                  onChange={classRoomChangeHandler}
+                />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description"
+                  onChange={classRoomChangeHandler}
+                />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
+              <Button
+                variant="primary"
+                type="submit"
+                className="mt-3"
+                onClick={handleCreateRoom}
+              >
+                Create
               </Button>
             </Form>
           </Modal.Body>

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert, Row, Col } from "react-bootstrap";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const LegalReport = () => {
-  const supabaseClient = useSupabaseClient();
-
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
@@ -18,16 +15,38 @@ const LegalReport = () => {
   const [coverReport, setCoverReport] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
+  const [title, setTitle] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    handleUpload();
+    const data = {
+      userId: "cljjerhw20000arbc1hcb3hyv",
+      address: addressLine1,
+      statement: statement,
+      city: city,
+      state: state,
+      zipCode: zipCode,
+      mobileNumber: phoneNumber,
+      hasWitness: hasWitness,
+      isCoverReport: coverReport,
+      evidenceFile: [evidenceFile],
+      dateRequested: Date.now(),
+      title: title,
+    };
+
+    const res = await handleCreateReport(data).then((r) => handleUpload());
+
+    if (res === null) {
+      alert("Error creating report");
+      return;
+    } else {
+      console.log("Res: ", res);
+      alert("Report created successfully");
+    }
+
     // Clear form fields
 
-    const data = {
-      userId: "",
-    };
     // create new evidence
 
     setName("");
@@ -41,6 +60,7 @@ const LegalReport = () => {
     setEvidenceFile(null);
     setHasWitness(false);
     setCoverReport(false);
+    setTitle("");
 
     // Prepare submission message
     setMessage(
@@ -58,8 +78,14 @@ const LegalReport = () => {
 
   const handleCreateReport = async (data) => {
     try {
+      const { res } = await fetch("/api/create/create-legal-report", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      console.log("tried this handleCreateReport");
     } catch (e) {
-      console.log(e);
+      return null;
     }
   };
 
@@ -171,6 +197,17 @@ const LegalReport = () => {
             </Form.Group>
           </Col>
         </Row>
+
+        <Form.Group controlId="phoneNumber">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter statement title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </Form.Group>
 
         <Form.Group controlId="statement">
           <Form.Label>Statement</Form.Label>

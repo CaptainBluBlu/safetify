@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const tempData = JSON.parse(req.body);
 
   try {
-    const legalReport = await prisma.legalReport.create({
+    const publicPost = await prisma.supportPost.create({
       data: {
         title: tempData.title,
         statement: tempData.statement,
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       },
     });
 
-    res.status(200).json({ legalReport });
+    res.status(200).json({ publicPost });
   } catch (e) {
     console.log(e);
     if (e.code == "P2002") {

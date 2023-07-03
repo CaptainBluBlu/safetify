@@ -51,6 +51,7 @@ const Register = () => {
       handleSignUpSupabase();
     } else {
       alert("Please fill in all the required fields");
+      r;
     }
 
     // // Dont know what is happening here
@@ -262,10 +263,7 @@ const Register = () => {
                 <div className="text-center pt-3">
                   <p className="text-dark mb-0">
                     Already have account?
-                    <Link
-                      href={`/components/pages/login`}
-                      className="text-primary ms-1"
-                    >
+                    <Link href={`/`} className="text-primary ms-1">
                       Sign In
                     </Link>
                   </p>

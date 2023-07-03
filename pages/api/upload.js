@@ -23,7 +23,6 @@ const readFile = (req, saveLocally) => {
   const form = formidable(options);
   return new Promise((resolve, reject) => {
     form.parse(req, (err, fields, files) => {
-      console.log(fields, files);
       if (err) reject(err);
       resolve({ fields, files });
     });
