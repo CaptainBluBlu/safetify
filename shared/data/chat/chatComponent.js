@@ -1,136 +1,96 @@
-import React from "react";
-import Link from "next/link";
-import PageHeader from "../../layout-components/pageheader/PageHeader";
-import { Card, Col, Row, Form, Button, ListGroup } from "react-bootstrap";
-import ChatBubble from "./ChatBubble.js";
+import React, { useEffect, useState } from 'react';
+import { Card, Nav, Dropdown, InputGroup, Form, FormControl, Button, Row, Col, Tab } from 'react-bootstrap';
 
-const ChatPage = () => {
-  // ...
-  const messages = [
-    {
-      id: 1,
-      sender: "John",
-      content: "Hello, how are you?",
-      timestamp: "10:00 AM",
-      isSender: false,
-    },
-    {
-      id: 2,
-      sender: "Jane",
-      content: "I'm good, thanks! How about you?",
-      timestamp: "10:01 AM",
-      isSender: true,
-    },
-    {
-      id: 3,
-      sender: "John",
-      content: "I'm doing great!",
-      timestamp: "10:02 AM",
-      isSender: false,
-    },
-  ];
+const messages = [
+  { id: 1, sender: "John", content: "Hello!" },
+  { id: 2, sender: "Jane", content: "Hi there!" },
+  // Add more messages here
+];
 
-  const chats = [
-    {
-      id: 1,
-      name: "John the Therapist",
-      lastMessage: "Hello, how are you?",
-      timestamp: "10:00 AM",
-    },
-    {
-      id: 2,
-      name: "Jane the Lawyer",
-      lastMessage: "I'm good, thanks! How about you?",
-      timestamp: "10:01 AM",
-    },
-    {
-      id: 3,
-      name: "Bob the builder",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-    },
-    {
-      id: 4,
-      name: "Joe the biddet",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-    },
-    {
-      id: 5,
-      name: "Jack the jill",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-    },
-    {
-      id: 6,
-      name: "Jill the pill",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-    },
-    {
-      id: 7,
-      name: "Jim the gym bro",
-      lastMessage: "I'm doing great!",
-      timestamp: "10:02 AM",
-    },
-  ];
+const getMessages = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(messages);
+    }, 500); // Simulate a delay to mimic API response time
+  });
+};
+
+const sendMessage = (sender, content) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const newMessage = { id: messages.length + 1, sender, content };
+      messages.push(newMessage);
+      resolve(newMessage);
+    }, 500); // Simulate a delay to mimic API response time
+  });
+};
+
+const ChatBox = () => {
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  const fetchMessages = async () => {
+    try {
+      const response = await getMessages();
+      setMessages(response);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    try {
+      const response = await sendMessage('John', newMessage);
+      setMessages([...messages, response]);
+      setNewMessage('');
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+  };
 
   return (
-    <div>
-      <PageHeader titles="Chat" active="Chat" items={["Home"]} />
-      {/* The Chat */}
-      {/* If its mobile view it needs to be different */}
-      <h2 style={{ textAlign: "center" }}>Community Service Officer</h2>
-      <Row>
-        <Col
-          sm={12}
-          md={12}
-          style={{
-            height: "70vh",
-            position: "relative",
-          }}
-        >
-          <div className="chat-container">
-            <div className="chat-messages">
-              {messages.map((message) => (
-                <ChatBubble
-                  key={message.id}
-                  sender={message.sender}
-                  content={message.content}
-                  timestamp={message.timestamp}
-                  isSender={message.isSender}
+    <Col sm={12} md={12} lg={12} xxl={5}>
+      <Card>
+        <div className="main-content-app pt-0">
+          <div className="main-content-body main-content-body-chat h-100">
+            <div className="chat-container">
+              <h2>Chatbox</h2>
+              <div className="message-container">
+                {messages.map((message) => (
+                  <div className="message" key={message.id}>
+                    <strong>{message.sender}: </strong>
+                    <span>{message.content}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="input-container">
+                <input
+                  type="text"
+                  className="message-input"
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
                 />
-              ))}
+                <button className="send-button" onClick={handleSendMessage}>Send</button>
+              </div>
             </div>
-            <Form
-              className="chat-input"
-              style={{ position: "absolute", bottom: "10", width: "100%" }}
-            >
-              <Form.Group controlId="messageForm" className="mb-0">
-                <Row className="align-items-center">
-                  <Col xs={10}>
-                    <Form.Control
-                      as="textarea"
-                      rows={1}
-                      className="resize-vertical"
-                      placeholder="Type your message..."
-                    />
-                  </Col>
-                  <Col xs={2} className="text-right">
-                    <Button variant="primary" type="submit">
-                      Send
-                    </Button>
-                  </Col>
-                </Row>
-              </Form.Group>
-            </Form>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </Card>
+    </Col>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="app-container">
+      <h1>My Chat App</h1>
+      <ChatBox />
     </div>
   );
 };
 
-export default ChatPage;
-
-//export default ChatUI;
+export default App;
