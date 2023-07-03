@@ -115,12 +115,16 @@ const chatComponent = ({ userId }) => {
     setMessageCreate(temp);
 
     temp.whatever = "swag";
-    temp.createdAt = new Date().toLocaleTimeString();
+    temp.createdAt = new Date();
     temp.id = message.length + 1 * Math.random();
 
     console.log(temp);
 
     setMessage([...message, temp]);
+
+    let temp2 = {
+      message: "",
+    };
   };
 
   return (
@@ -136,12 +140,13 @@ const chatComponent = ({ userId }) => {
           style={{
             height: "70vh",
             position: "relative",
+            padding: "1em",
           }}
         >
           <div className="chat-container">
             <div
               className="chat-messages"
-              style={{ height: "400px", overflow: "auto" }}
+              style={{ height: "70vh", overflow: "auto", padding: "3em" }}
             >
               {message.map((message) => (
                 <ChatBubble
