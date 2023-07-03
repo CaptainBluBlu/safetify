@@ -90,6 +90,15 @@ export const MENUITEMS = [
         selected: false,
         title: "Support Network",
       },
+      // Create for donation with money icon
+      {
+        path: `/components/donation`,
+        icon: "fe fe-dollar-sign",
+        type: "link",
+        active: false,
+        selected: false,
+        title: "Donation",
+      },
     ],
   },
   //   {

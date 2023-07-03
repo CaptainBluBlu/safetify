@@ -25,6 +25,9 @@ const LegalReport = () => {
     handleUpload();
     // Clear form fields
 
+    const data = {
+      userId: "",
+    };
     // create new evidence
 
     setName("");
@@ -51,6 +54,13 @@ const LegalReport = () => {
     setTimeout(() => {
       setShowAlert(false);
     }, 3000);
+  };
+
+  const handleCreateReport = async (data) => {
+    try {
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleUpload = async () => {
