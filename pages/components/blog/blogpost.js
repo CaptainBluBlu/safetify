@@ -61,7 +61,7 @@ const Userlist = () => {
     <div >
       <Seo title="Journaling"/>
 
-      <PageHeader titles="My Journal" active="User List" items={['Apps']} />
+      <PageHeader titles="My Journal" active="Day 1 - My Journal" items={['Journaling']} />
 
       <Row className="row-cards">
 
