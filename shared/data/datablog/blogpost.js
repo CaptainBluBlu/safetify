@@ -1,7 +1,9 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 const BlogPostCom = () => {
+
+  const [expandedEntry, setExpandedEntry] = useState(null);
 
   const entries = [
     {
@@ -61,6 +63,12 @@ const BlogPostCom = () => {
     },
   ];
 
+  const handleExpandEntry = (entryId) => {
+
+    setExpandedEntry(entryId === expandedEntry ? null : entryId);
+
+  };
+
   return (
 
     <Container className="blog-post">
@@ -69,21 +77,35 @@ const BlogPostCom = () => {
 
         <Row key={entry.id} className="entry">
 
+          <Col xs={12} md={2} className="entry-profile">
+
+            <Button variant='light' className={`profile-button ${expandedEntry === entry.id ? 'expanded' : ''}`} onClick={() => handleExpandEntry(entry.id)}>
+
+              <img src="../../../assets/images/png/1.png" className="img-fluid" />
+
+              {entry.header.substring(0, 1)}
+
+            </Button>
+
+          </Col>
+
           <Col xs={12} md={8} className="entry-timeline">
 
-            <h2><img src="../../../assets/images/png/1.png" className="img-fluid" alt="img" />{entry.header}  {entry.time}</h2>
+            <h2>
 
-          </ Col>
+              {entry.header} {entry.time}
 
+            </h2>
 
-          <Col xs={12} md={8} className="entry-content">
+          </Col>
+
+          <Col xs={12} md={8} className={`entry-content ${expandedEntry === entry.id ? 'expanded' : ''}`}>
 
             <p>{entry.text}</p>
 
-          </ Col>
+          </Col>
 
-
-        </ Row>
+        </Row>
 
       ))}
 
