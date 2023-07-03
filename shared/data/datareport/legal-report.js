@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Form, Button, Alert, Row, Col, Col, Card } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Alert,
+  Row,
+  Col,
+  Card,
+  OverlayTrigger,
+  Popover,
+  Modal,
+} from "react-bootstrap";
 
 const LegalReport = () => {
   const [name, setName] = useState("");
@@ -105,6 +115,29 @@ const LegalReport = () => {
   };
 
   const handleUploadChange = () => {};
+
+  const popoverContent = (
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">What is a Cover Report?</Popover.Title>
+      <Popover.Content>
+        A cover report is a report that provides information about a case
+        without revealing the identities of the individuals involved. It ensures
+        confidentiality and protects the privacy of the parties. It is often
+        used when the reporter wishes to maintain anonymity or when sensitive
+        information is involved.
+      </Popover.Content>
+    </Popover>
+  );
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleModalShow = () => {
+    setShowModal(true);
+  };
 
   return (
     <div>
@@ -236,8 +269,8 @@ const LegalReport = () => {
                 />
               </Form.Group>
 
-              <Row style={{ textAlign: "right" }}>
-                <Col md={6}>
+              <Row style={{ marginTop: "1em" }}>
+                <Col style={{ marginLeft: "1em" }}>
                   <Form.Group controlId="hasWitness">
                     <Form.Check
                       type="switch"
@@ -248,7 +281,7 @@ const LegalReport = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col md={6}>
+                <Col>
                   <Form.Group controlId="coverReport">
                     <Form.Check
                       type="switch"
@@ -259,7 +292,34 @@ const LegalReport = () => {
                     />
                   </Form.Group>
                 </Col>
+                <Col>
+                  <Button variant="link" onClick={handleModalShow}>
+                    What is a Cover Report?
+                  </Button>
+                </Col>
               </Row>
+
+              <Modal show={showModal} onHide={handleModalClose} centered>
+                <Modal.Header closeButton>
+                  <Modal.Title>What is a Cover Report?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <h3>A Cover Report Does Not Take Action</h3>
+                  <p>
+                    A cover report is a report that provides information about a
+                    case without revealing the identities of the individuals
+                    involved. It ensures confidentiality and protects the
+                    privacy of the parties. It is often used when the reporter
+                    wishes to maintain anonymity or when sensitive information
+                    is involved.
+                  </p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleModalClose}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
 
               <Button className="mt-5" variant="primary" type="submit">
                 Submit

@@ -10,6 +10,7 @@ import {
   Alert,
   Card,
   Accordion,
+  Image,
 } from "react-bootstrap";
 
 const CrowdfundingPage = () => {
@@ -82,90 +83,33 @@ const CrowdfundingPage = () => {
                   </Col>
                 </Row>
               </Tab>
-              <Tab eventKey="paypal" title="PayPal">
-                <Row>
-                  <Col md={6} className="mx-auto">
-                    <p>PayPal payment options here</p>
-                  </Col>
-                </Row>
-              </Tab>
               <Tab eventKey="bankTransfer" title="Bank Transfer">
                 <Row>
                   <Col md={6} className="mx-auto">
-                    <p>Bank transfer details here</p>
-                    <p>Maybank</p>
-                    <p>Account Number: </p>
-                    <p>Account Name: </p>
-                    <p>CIMB</p>
-                    <p>Account Number: </p>
-                    <p>Account Name: </p>
+                    <h3>Maybank</h3>
+                    <p>Account Number: 512334321741</p>
+                    <p>Account Name: Women’s Aid Organisation</p>
+                    <h3>CIMB</h3>
+                    <p>Account Number: 80-0238299-7</p>
+                    <p>Account Name: Women’s Aid Organisation</p>
+                  </Col>
+                </Row>
+              </Tab>
+              <Tab eventKey="qrCode" title="QR CODE">
+                <Row>
+                  <Col md={6} className="mx-auto">
+                    {/* -------- QR Code here ------------*/}
+                    <Image
+                      src="https://pbs.twimg.com/media/FEcznhyVkAEeCZc.jpg"
+                      alt="QR Code"
+                      fluid
+                    />
                   </Col>
                 </Row>
               </Tab>
             </Tabs>
-
-            {showSuccess ? (
-              <div>
-                <Alert variant="success">Thank you for your donation!</Alert>
-                <Button variant="primary" onClick={handleReset}>
-                  Make Another Donation
-                </Button>
-              </div>
-            ) : (
-              <div>
-                <h3>Donate via QR Code</h3>
-                <img
-                  src="path_to_qr_code_image" // Replace with the path to your QR code image
-                  alt="QR Code"
-                />
-
-                <h3>Donate Online</h3>
-
-                <Form onSubmit={handleDonate}>
-                  <Form.Group controlId="donationAmount">
-                    <Form.Label>Donation Amount</Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder="Enter amount"
-                      value={donationAmount}
-                      onChange={handleDonationChange}
-                    />
-                  </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Donate
-                  </Button>
-                </Form>
-              </div>
-            )}
           </Col>
         </Row>
-        <Tabs defaultActiveKey="donation" id="donation-tabs">
-          <Tab eventKey="donation" title="Donation">
-            <Row>
-              <Col md={6} className="mx-auto">
-                <Form onSubmit={handleDonate}>
-                  <Form.Group controlId="donationAmount">
-                    <Form.Label>Donation Amount</Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder="Enter amount"
-                      value={donationAmount}
-                      onChange={handleDonationChange}
-                    />
-                  </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Donate
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
-          </Tab>
-          <Tab eventKey="faq" title="FAQ">
-            <Row>
-              <Col md={8} className="mx-auto"></Col>
-            </Row>
-          </Tab>
-        </Tabs>
       </Container>
     </Card>
   );

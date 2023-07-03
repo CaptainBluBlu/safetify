@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Form, Button, Alert, Row, Col } from "react-bootstrap";
+import { Form, Button, Alert, Row, Col, Modal } from "react-bootstrap";
 
 const LegalReport = () => {
   const [age, setAge] = useState("");
   const [needInterpreter, setNeedInterpreter] = useState(false);
   const [filePoliceReport, setFilePoliceReport] = useState(false);
+  const [showPoliceReportModal, setShowPoliceReportModal] = useState(false);
+  const [selectedPoliceReport, setSelectedPoliceReport] = useState("");
+  const [policeReports, setPoliceReports] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +38,52 @@ const LegalReport = () => {
     // If all validations pass, return true
     return true;
   };
+
+  const handlePoliceReportModal = () => {
+    if (policeReports === null || policeReports?.length === 0) {
+      // Get police report
+      const res1 = getPoliceReport().then((res) => {
+        console.log(res);
+        setPoliceReports(res.legalReport);
+      });
+
+      console.log(res1);
+    }
+
+    if (filePoliceReport) {
+      setShowPoliceReportModal(true);
+    } else {
+      setShowPoliceReportModal(false);
+      setSelectedPoliceReport("");
+    }
+  };
+
+  const handlePoliceReportSelection = (event) => {
+    setSelectedPoliceReport(event.target.value);
+  };
+
+  const getPoliceReport = async () => {
+    // Get police report
+    try {
+      const res = await fetch("/api/get/get-legal-reports", {
+        method: "POST",
+        body: JSON.stringify({ userId: "cljjerhw20000arbc1hcb3hyv" }),
+      });
+
+      return await res.json();
+    } catch {
+      alert("something went wrong");
+      return null;
+    }
+  };
+
+  // Custom option component for the two-column dropdown
+  const OptionComponent = ({ title, statement }) => (
+    <div>
+      <div>{title}</div>
+      <div>{statement}</div>
+    </div>
+  );
 
   return (
     <div>
@@ -155,9 +204,44 @@ const LegalReport = () => {
             type="checkbox"
             label="File a police report"
             checked={filePoliceReport}
-            onChange={(e) => setFilePoliceReport(e.target.checked)}
+            onChange={(e) => {
+              setFilePoliceReport(e.target.checked);
+              handlePoliceReportModal();
+            }}
           />
         </Form.Group>
+
+        {/* Additional police report selection modal */}
+
+        <Modal
+          show={showPoliceReportModal}
+          onHide={() => handlePoliceReportModal()}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Select Police Report</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group controlId="policeReport">
+              <Form.Label>Select a police report</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedPoliceReport}
+                onChange={handlePoliceReportSelection}
+              >
+                <option value="">Select a police report</option>
+                {policeReports.map((report) => (
+                  <option key={report.value} value={report.value}>
+                    <OptionComponent
+                      title={report.value}
+                      statement={report.label}
+                    />
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          {/* ... */}
+        </Modal>
 
         <Button className="mt-5" variant="primary" type="submit">
           Submit

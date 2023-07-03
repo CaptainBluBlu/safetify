@@ -36,14 +36,14 @@ export const MENUITEMS = [
         selected: false,
         title: "Journaling",
       },
-      // create for emergency housing with home icon
+      // create for emergency housing with locator icon
       {
         path: `/components/housing/emergency-housing`,
-        icon: "fe fe-home",
+        icon: "fe fe-map-pin",
         type: "link",
         active: false,
         selected: false,
-        title: "Emergency Housing",
+        title: "OSCC Locator",
       },
       //create for file report with file icon
       {

@@ -9,9 +9,22 @@ export default async function handler(req, res) {
   const tempData = JSON.parse(req.body);
 
   try {
-    const legalReport = await prisma.legalReport.findMany();
+    if (tempData.userId != null) {
+      const legalReport = await prisma.legalReport.findMany({
+        where: {
+          userId: tempData.userId,
+        },
+      });
 
-    res.status(200).json({ legalReport });
+      console.log("it ran this");
+
+      console.log(legalReport);
+      res.status(200).json({ legalReport });
+    } else {
+      const legalReport = await prisma.legalReport.findMany();
+
+      res.status(200).json({ legalReport });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "Unkown Server Error" });

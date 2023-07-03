@@ -30,43 +30,43 @@ export const PanicButtonTable = () => {
   const panicButtonData = [
     {
       id: 1,
-      username: "John Doe",
+      username: "Tina",
       time: "12:00 PM",
-      longtitude: 123.323,
-      latitude: 123.323,
+      longtitude: 3.06573,
+      latitude: 101.609268,
       status: "Pending",
     },
     {
       id: 2,
-      username: "John Doe",
-      time: "12:00 PM",
-      longtitude: 123.323,
-      latitude: 123.323,
+      username: "Shakina",
+      time: "03:00 PM",
+      longtitude: 3.073672,
+      latitude: 101.629028,
       status: "Pending",
     },
     {
       id: 3,
-      username: "John Doe",
-      time: "12:00 PM",
-      longtitude: 123.323,
-      latitude: 123.323,
+      username: "Hui Yi",
+      time: "11:59 PM",
+      longtitude: 3.0399,
+      latitude: 101.619415,
       status: "Pending",
     },
     {
       id: 4,
-      username: "Jane Doe",
-      time: "12:00 PM",
-      longtitude: 123.323,
-      latitude: 123.323,
-      status: "Pending",
+      username: "Zeeka",
+      time: "03:00 AM",
+      longtitude: 3.042643,
+      latitude: 101.601563,
+      status: "Deployed",
     },
     {
       id: 5,
-      username: "John Doe",
-      time: "12:00 PM",
-      longtitude: 123.323,
-      latitude: 123.323,
-      status: "Pending",
+      username: "Tina",
+      time: "05:00 AM",
+      longtitude: 3.06573,
+      latitude: 101.609268,
+      status: "Deployed",
     },
   ];
 
@@ -116,8 +116,9 @@ export const PanicButtonTable = () => {
           <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
             <span className="fe fe-edit fs-18 text-primary me-4"></span>
           </OverlayTrigger>
-          <OverlayTrigger placement="top" overlay={<Tooltip>Delete</Tooltip>}>
-            <span className="fe fe-trash-2 text-danger fs-18 me-4"></span>
+          {/* Create a new overlay trigger with location with a locator icon */}
+          <OverlayTrigger placement="top" overlay={<Tooltip>Locate</Tooltip>}>
+            <span className="fe fe-map-pin fs-18 text-primary me-4"></span>
           </OverlayTrigger>
         </div>
       ),

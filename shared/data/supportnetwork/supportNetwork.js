@@ -16,6 +16,7 @@ const SocialPage = (props) => {
   const { supportPost, groupChat } = props;
 
   const [showModal, setShowModal] = useState(false);
+  const [supportPostData, setSupportPostData] = useState(supportPost);
 
   // Model open for cerating new chat room
   const handleModalOpen = () => {
@@ -28,20 +29,28 @@ const SocialPage = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Process form data here
 
-    props.createNewRoom({ event });
+    const newPost = {
+      id: supportPostData.length + 1,
+      author: {
+        name: "Lim Phang Zhen",
+      },
+      content: text,
+      createdAt: new Date(),
+    };
+
+    setSupportPostData((prevData) => [newPost, ...prevData]);
+
+    setText("");
   };
 
   // function to create a new room
   const handleSubmitRoom = async (event) => {
     event.preventDefault();
-
-    console.log(event);
   };
 
   let buttonStyling = {
-    fontSize: "1.5rem",
+    fontSize: "16px",
   };
 
   let listGroupStyling = "w-30 p-0";
@@ -274,7 +283,7 @@ const SocialPage = (props) => {
             </Card.Body>
           </Card>
           {/* For each support post, render the below */}
-          {supportPost.map((post) => (
+          {supportPostData.map((post) => (
             <Card key={post.id} className="mb-3">
               <Card.Body>
                 <Card.Title>{post.author.name}</Card.Title>

@@ -135,6 +135,7 @@ model AbuseReport {
   ethnicity                   Ethnicity
   isChildren                  Boolean
   needTranslator              Boolean
+  translatorLanguage          String?
   lastDateOfAbuse             DateTime
   LegalReport                 LegalReport?
 }
