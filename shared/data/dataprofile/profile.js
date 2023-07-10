@@ -93,6 +93,7 @@ const ProfileCom = () => {
                         onChange={handleAgeChange}
                     />
                 </FormGroup>
+
                 <FormGroup>
                     <FormLabel>Address</FormLabel>
                     <FormControl
@@ -101,6 +102,7 @@ const ProfileCom = () => {
                         onChange={handleAddressChange}
                     />
                 </FormGroup>
+
                 <FormGroup>
                     <FormLabel>Email Address</FormLabel>
                     <FormControl
@@ -119,8 +121,11 @@ const ProfileCom = () => {
                     justifyContent: 'center',
                 }}>
                     <Button type="submit">Update</Button>
+
                 </Container>
+
             </Form>
+
         </div >
     );
 }
