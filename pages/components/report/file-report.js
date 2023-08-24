@@ -1,50 +1,57 @@
-import Seo from '@/shared/layout-components/seo/seo';
-import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
-const Dashboard = dynamic(() => import("../../../shared/data/datadashboard/dashbord"), {ssr: false,});
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import Seo from "@/shared/layout-components/seo/seo";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
-// ReportingCasePage component
-const ReportingCasePage = () => {
-  // State variables
-  const [caseNumber, setCaseNumber] = useState('');
-  const [description, setDescription] = useState('');
+const ReportingCase = dynamic(
+  () => import("../../../shared/data/datareport/legal-report"),
+  { ssr: false }
+);
 
-  // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createPagesServerClient(ctx);
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    // Perform any necessary actions with the case data
-    console.log('Case Number:', caseNumber);
-    console.log('Description:', description);
+  //From the userId, get the user's data from prisma database
+  console.log(session);
+  if (session) {
+    const usersData = await prisma.user.findUnique({
+      where: {
+        authUserId: session.user.id,
+      },
+    });
 
-    // Reset form fields
-    setCaseNumber('');
-    setDescription('');
-  };
+    console.log(usersData);
+    return {
+      props: {
+        usersData: JSON.parse(JSON.stringify(usersData)),
+      },
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+};
 
+// ReportingCase component
+const ReportingCaseCom = ({ props }) => {
+  console.log(props);
   return (
     <div>
-      <h1>Reporting Case Page</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Case Number:</label>
-          <input
-            type="text"
-            value={caseNumber}
-            onChange={(event) => setCaseNumber(event.target.value)}
-          />
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <Seo title="Reporting" />
+
+      <ReportingCase />
     </div>
   );
 };
 
-export default ReportingCasePage;
+ReportingCaseCom.layout = "Contentlayout";
+export default ReportingCaseCom;
